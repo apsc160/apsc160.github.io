@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <title>Excel Tutorial: Plotting and Computing with Excel</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1" class="selected"><a id="navLink_1">Excel Tutorial</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Excel Tutorial: Plotting and Computing with Excel</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">Intro</li>
+              <li id="tabHeader_2">Plotting</li>
+              <li id="tabHeader_3">Computing</li>
+              <li id="tabHeader_4">Solution</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+              <p>
+                In this tutorial, we will go through some of the basics of plotting data in excel,
+                computing a trendline to find a relationship between input and output values,
+                and using formulas to compute new information from our data.
+              </p>
+
+              <p>
+                <b>Note:</b> in this practice problem we introduce some information about electronics,
+                but you are not expected to know or learn these details for this course.  They are there
+                to simply give our problem some context.  If you wish, you can ignore these details and
+                just treat the data as given.
+              </p>
+
+              <h3>The Problem</h3>
+              <p>
+                A rotary potentiometer is an electrical component with three terminals and a knob that can rotate.   It acts as a voltage divider, splitting the voltage applied to the two end terminals based on the rotation angle of the knob. The greater the angle of rotation, the greater the
+                voltage.  For example, if a 9V battery is attached to the potentiometer and the knob is turned about half-way, then the output voltage at the middle terminal will be about 4.5V.
+              </p>
+              <img class="figure" alt="potentiometer" src="./images/pot.png"/>
+
+              <p>
+                Potentiometers are used in almost every kind of knob, dial, or slider you can think of: volume controls, stove-top temperature dials, light dimmers, and even gamepad controllers.
+              </p>
+
+              <p>
+                Let's say you wish to create a physical volume controller to attach to your computer. You buy a potentiometer and attach a 9V battery to the endpoints.  To create
+                our volume controller, we need to relate the rotation angle of the dial to the output voltage of the potentiometer.  To do this, we will collect some data
+                and compute a relationship between the two.
+              </p>
+            </div>
+            <div class="tabpage" id="tabpage_2">
+              To find the relationship between rotation angle and voltage, we
+              start by measuring some data:
+              <br/><br/>
+              <table class="center" style="margin: auto;">
+                <tr>
+                  <th>Angle (degrees)</th>
+                  <th>Voltage (mV)</th>
+                </tr>
+                <tr>
+                  <td>0.0</td>
+                  <td>1021</td>
+                </tr>
+                <tr>
+                  <td>10.0</td>
+                  <td>1402</td>
+                </tr>
+                <tr>
+                  <td>20.0</td>
+                  <td>1678</td>
+                </tr>
+                <tr>
+                  <td>30.0</td>
+                  <td>2007</td>
+                </tr>
+                <tr>
+                  <td>50.0</td>
+                  <td>2301</td>
+                </tr>
+                <tr>
+                  <td>40.0</td>
+                  <td>2400</td>
+                </tr>
+                <tr>
+                  <td>60.0</td>
+                  <td>3101</td>
+                </tr>
+                <tr>
+                  <td>70.0</td>
+                  <td>3340</td>
+                </tr>
+                <tr>
+                  <td>80.0</td>
+                  <td>3780</td>
+                </tr>
+                <tr>
+                  <td>90.0</td>
+                  <td>4020</td>
+                </tr>
+                <tr>
+                  <td>100.0</td>
+                  <td>4333</td>
+                </tr>
+              </table>
+              <br/>
+
+              <p>
+                We will plot the voltage as a function of rotation angle to determine
+                a relationship that describes the potentiometer's voltage characteristics.
+              </p>
+              <ol style="margin-left: 20px">
+                <li>Enter the data into Excel, Numbers, Google Spreadsheets, or similar program</li>
+                <li>Plot the data as a <b>Scatter Plot</b>
+                  <br/><br/>
+                  In Excel, you can do this by selecting all the data, navigating to the <span class="menu">Insert</span> tab, and selecting the appropriate chart type in the <b>Chart</b> toolbar.
+                  <img class="figure" alt="scatter plot" src="./images/excel_scatter.png" />
+                </li>
+                <li>Modify the chart to add an appropriate title and axis labels
+                    <br/><br/>
+                    In Excel, you can do this by clicking on the + icon next to the chart
+                    <img class="figure" alt="axis titles" src="./images/excel_axis_titles.png" />
+                </li>
+                <li>Add a trend-line to the plot and display the equation.<br/><br/>
+                    In Excel, right-click on a the data points and select
+                    <span class="menu">Add Trendline...</span>.
+                    <img class="figure" alt="Excel trendline" src="./images/excel_trendline.png"/>
+                    Scroll down to the button of the settings, and select the checkbox that says <span class="menu">Display Equation on chart</span>
+                    <img class="figure" alt="Excel display trendline equation" src="./images/excel_trendline_chart.png"/>
+                    We now have an estimate of the angle-voltage relationship of the device.
+                </li>
+              </ol>
+            </div>
+            <div class="tabpage" id="tabpage_3">
+              The trendline provides us with a relationship between voltage and angle of the form
+
+              $$\mathrm{voltage} = m\;\mathrm{angle} + b,$$
+
+              where \(m\) and \(b\) are the slope and intercept of the trendline.  We can express angle
+              as a function of voltage by re-arranging the expression:
+
+              $$\mathrm{angle} = \frac{\mathrm{voltage} - b}{m}.$$
+
+              Next, we take some more voltage measurements, and now want to compute the corresponding angle.
+              Use Excel (or equivalent) to complete the following table:
+              <br/>
+              <br/>
+              <table class="center">
+                <tr><th>Voltage (mV)</th><th>Angle (degrees)</th></tr>
+                <tr><td>3333</td><td></td></tr>
+                <tr><td>3219</td><td></td></tr>
+                <tr><td>1109</td><td></td></tr>
+                <tr><td>5987</td><td></td></tr>
+                <tr><td>4572</td><td></td></tr>
+                <tr><td>2098</td><td></td></tr>
+                <tr><td>1087</td><td></td></tr>
+                <tr><td>7783</td><td></td></tr>
+                <tr><td>1876</td><td></td></tr>
+                <tr><td>2381</td><td></td></tr>
+              </table>
+              <br/>
+              <p>
+                If you are not familiar with formulas in Excel, check out the documentation
+                <a href="https://support.office.com/en-us/article/Overview-of-formulas-in-Excel-ecfdc708-9162-49e8-b993-c311f47ca173">here</a>
+                or watch the class videos. Limit the computed angle results to two decimal places.  In Excel, you can change the precision
+                by selecting the values, navigating to the <span class="menu">Home</span> menu and using the
+                increase/decrease decimal buttons on the <span class="menu">Number</span> toolbar.
+              </p>
+              <img alt="decimal" class="figure" src="images/excel_decimal.png"/>
+
+              <p>
+                Finally, we want our volume controller to set the volume equal to the rotation angle, up to
+                a maximum of 100 (since your computer cannot set the volume above 100%).  Add a new column to compute a volume from the angle.
+                In Excel, you can use the method
+                <code>MIN(a,b)</code> for this.  For example, we should get the following results for angle and volume:
+              </p>
+              <table class="center">
+                <tr><th>Voltage (mV)</th><th>Angle (degrees)</th><th>Volume (%)</th></tr>
+                <tr><td>3333</td><td>69.78</td><td>69.78</td></tr>
+                <tr><td>5987</td><td>149.10</td><td>100.00</td></tr>
+                <tr><td>4572</td><td>106.81</td><td>100.00</td></tr>
+              </table>
+            </div>
+            <div class="tabpage" id="tabpage_4">
+              <p>
+              Download the following excel file to see the final solution:
+                <a href="./assets/tutorial_solution.xls">tutorial_solution.xls</a>
+              </p>
+
+              From the trendline, you should have computed the relationship
+
+              $$\mathrm{angle} = \frac{\mathrm{voltage} - 998.27}{33.46}.$$
+
+              The final voltage-angle-volume table should look as follows:<br/><br/>
+
+              <table class="center">
+                <tr><th>Voltage (mV)</th><th>Angle (degrees)</th><th>Volume (%)</th></tr>
+                <tr><td>3333</td><td>69.78</td><td>69.78</td></tr>
+                <tr><td>3219</td><td>66.37</td><td>66.37</td></tr>
+                <tr><td>1109</td><td>3.31</td><td>3.31</td></tr>
+                <tr><td>5987</td><td>149.10</td><td>100.00</td></tr>
+                <tr><td>4572</td><td>106.81</td><td>100.00</td></tr>
+                <tr><td>2098</td><td>32.87</td><td>32.87</td></tr>
+                <tr><td>1087</td><td>2.65</td><td>2.65</td></tr>
+                <tr><td>7783</td><td>202.78</td><td>100.00</td></tr>
+                <tr><td>1876</td><td>26.23</td><td>26.23</td></tr>
+                <tr><td>2381</td><td>41.33</td><td>41.33</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+  <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>

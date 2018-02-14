@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+  <title>DAQlib Library and Simulator</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1"><a id="navLink_1" href="./windows.html">Windows</a></li>
+              <li id="navHeader_2"><a id="navLink_2" href="./macos.html">MacOS</a></li>
+              <li id="navHeader_3" class="selected"><a id="navLink_3">Linux</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">DAQlib Library and Simulator</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">Installation</li>
+              <li id="tabHeader_2">Your First Project</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+              <p>
+                On Linux, we will install the DAQlib library and simulator globally, for all users of the system. This will require
+                <strong>root</strong> access.
+              </p>
+
+              <h3>Installation:</h3> To install the DAQlib library and simulator on Linux, we will first
+              <span class="highlight">download a zip file</span> containing all the required headers, libraries, and binaries, and then run an <span class="highlight">installation script</span> that will put the files in a location where GCC can find
+              them. The library and these instructions have been tested on Ubuntu 16.04.
+              <ol>
+                <li>
+                  Download the DAQlib zip file from connect. For Linux users, the link should have the title <span class="highlight">DAQlib for Linux</span>. This should create a zip file called <span class="file">DAQlib_linux.zip</span> in your downloads
+                  folder.
+                </li>
+                <li>Unzip the file by right-clicking on <span class="file">DAQlib_linux.zip</span> and selecting <strong>Extract Here</strong> from the drop-down menu.
+                  <img class="figure" alt="DAQlib extract" src="./images/linux/extract.png" /> Inside the unzipped folder, you should see a new subfolder named
+                  <span class="file">DAQlib</span>, as well as two script files: <span class="file">install.sh</span> and <span class="file">uninstall.sh</span>.
+                </li>
+                <li>
+                  Open a terminal and navigate to the folder containing the extracted files.
+                  <img class="figure" alt="terminal" src="./images/linux/terminal.png" />
+                </li>
+                <li>The DAQlib hardware interface relies on an external library,
+                  <span class="code">libusb-1.0</span>. This should already be installed on most systems. However, if it is not, we must install it. On Ubuntu and other Debian-based systems, we can do this from the terminal using the <strong>apt</strong>                  command:
+                  <img class="figure" alt="install libusb-1.0" src="./images/linux/libusb.png" />
+                </li>
+                <li>
+                  <p>
+                    Run the <span class="file">install.sh</span> script from the terminal. It must be run with root privileges in order to install necessary device information, and to copy files to a global location.
+                  </p>
+
+                  The script will ask you for an installation prefix (defaults to <strong>/usr/local</strong> if left blank). It will then install
+                  <ul>
+                    <li>all headers to <strong>$PREFIX/include</strong></li>
+                    <li>all libraries to <strong>$PREFIX/lib</strong></li>
+                    <li>all binaries to <strong>$PREFIX/bin</strong></li>
+                  </ul>
+                  <img class="figure" alt="successul installation" src="./images/linux/success.png" /> If you encounter an error that you cannot resolve, please either post a message on the discussion board with the output of the install script, or see
+                  the instructor to help you complete the installation.
+                </li>
+              </ol>
+
+              <h3>Uninstalling the Library:</h3>
+              <p>
+                To uninstall the DAQlib library, simply run the
+                <span class="file">uninstall.sh</span> script. It will again prompt you for the installation prefix used for installation, then will remove all files.
+              </p>
+            </div>
+            <div class="tabpage" id="tabpage_2">
+              <h3>A Simple DAQ Program</h3>
+              <p>
+                To get started, we will create a simple program that uses the DAQ simulator.
+              </p>
+
+              Create a new source file with your favourite text editor or IDE. It should be given a descriptive name (e.g.
+              <span class="code">DAQSimulatorTest.c</span>) Modify the code so that it looks like the following. Include your own name, student number, ... at the top of the code (the green text in the code below).
+
+              <pre data-src="src/simulator.c"></pre>
+
+              <p>
+                We do not expect you to understand the code that you are typing yet (that will come in the next few weeks).
+              </p>
+
+              To compile, link and run the program from the command-line, navigate to the source file location in a terminal, and enter the following:
+              <img class="figure" alt="DAQ compile and run" src="./images/linux/DAQSimulatorTest.png"></div>
+            Note the <strong>-lDAQlib</strong> option, which tells our program to link with the DAQlib library.
+
+            <p>
+              If everything was installed successfully, the simulator should appear:
+              <img class="figure" alt="Simulator with LED off" src="./images/linux/DAQSimulatorOff.png" />
+            </p>
+
+            <p>
+              Click the "<strong>on</strong>" radio button for the switch labelled <strong>ToggleSwitch #0</strong>. The left-most LED should turn green:
+              <img class="figure" alt="Simulator with LED off" src="./images/linux/DAQSimulatorOn.png" /> Congratulations! You have just completed your first DAQ program.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+  <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>

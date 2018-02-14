@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+  <title>Prelab 7: A Simple Counter</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1"><a id="navLink_1" href="./prelab7.html">Overview</a></li>
+              <li id="navHeader_2" class="selected"><a id="navLink_2">Exercise 1</a></li>
+              <li id="navHeader_3"><a id="navLink_3" href="./grading.html">Grading</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Prelab 7: A Simple Counter</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">Problem</li>
+              <li id="tabHeader_2">Development</li>
+              <li id="tabHeader_3">Testing</li>
+              <li id="tabHeader_4">Solution</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+
+              <h3>Problem Statement</h3>
+
+              <p>
+                You are given a system that consists of 8 7-segment LED displays
+                and two toggle switches.  The 8 LED displays are arranged in a row
+                and will be called an LED screen.
+              </p>
+
+              <p>
+                You are to <span style="color:red;">write a program in C</span>
+                that implements a simple counter and displays the counter value
+                on the LED screen. The counter simply counts the number of elapsed
+                seconds (similar to a digital stop-watch). The switches control
+                the operation of the counter.
+              </p>
+              <ul>
+                <li>The two switches are connected to
+                  <span style="text-decoration: underline;">digital input channels
+                  numbered 0 to 1</span>
+                  <ul>
+                    <li>Switch #0 is connected to channel #0, and is called the
+                      <span style="color: rgb(0, 0, 153);">RUN switch</span>.</li>
+                    <li>Switch #1 is connected to channel #1 and is called the
+                      <span style="color: rgb(0, 0, 153);">RESET switch</span>.</li>
+                  </ul>
+                </li>
+                <li>The LED screen consists of 8 LED displays. The first display
+                  on the right is at position #0 and the last display on the left
+                  is at position #7.</li>
+              </ul>
+              <br/>
+
+              Your program should operate as follows:
+              <ul>
+                <li>When the program first starts, it should
+                  <span style="text-decoration: underline;">prompt the user</span>
+                  for the start and stop values of the counter.</li>
+                <li> The program should
+                  <span style="text-decoration: underline;">then verify that</span>
+                  both switches are off, and not do anything else until the two
+                  switches are indeed off.</li>
+                <li>Next the program should
+                  <span style="text-decoration: underline;">set the initial value</span>
+                  of the counter to the start value previously entered by the user
+                  and <span style="text-decoration: underline;">show</span> this
+                  value on the LED screen.</li>
+                <li> While both switches are off, the counter should display
+                  the current value, whatever it happens to be.</li>
+                <li>If the RESET switch is off and the RUN switch is on, then
+                  the counter should increment its value once a second and
+                  show it on the LED screen.</li>
+                <li>When the counter reaches the stop value previously entered
+                  by the user, it should stop counting, but continue to display
+                  this final value on the LED screen. </li>
+                <li>If the RESET switch is on, then it doesn't matter whether the RUN switch is on or off. The value of the counter is reset to the start value and shown on the LED screen. The counter remains at the start value while the RESET switch
+                  is on. </li>
+              </ul>
+
+              <h3>Simulator</h3>
+              <p>
+                The simulator will allow you to test your program without the
+                need for actual physical hardware. To access the configuration
+                for this problem, <span style="color:red;">you should specify a
+                <code>setupNum</code> with value 4</span> when calling the
+                <code>init_daq</code> function. <strong>You will find the
+                  simulator under "Part 2 - Lecture material and resources" on Connect.</strong>
+              </p>
+
+              <p>All Lab computers already have the simulator installed.</p>
+
+              <p>For the in-lab exercise of this lab, you will be using the actual
+                hardware device. The device will also have 2 switches and 8
+                seven-segment LED displays arranged in a row as an LED screen.
+              </p>
+            </div>
+            <div class="tabpage" id="tabpage_2">
+
+              <h3>Algorithm development and coding</h3>
+
+              <p>
+                Carefully read the <strong>Problem Statement</strong> above and
+                try to decompose the problem into smaller manageable parts.
+                Consider the following:
+              </p>
+              <ol>
+                <li>Create a new project in Visual Studio to implement your
+                  program in programming language C. Note that the extension
+                  of your file must be .c (not cpp)</li>
+                <li>You can use the <span style="color:rgb(0, 0, 153);">DAQ general
+                  framework</span> as a starting point. The framework includes
+                  the main function and a work function (that you should rename
+                  to be more descriptive).  Must must call the two DAQ library functions
+                  <code>setupDAQ</code> and <code>continueSuperLoop</code>.
+                </li>
+                <li>Define the <span style="color: rgb(0, 0, 153);">symbolic
+                  constants</span> that you need for your program.</li>
+                <li>You now may include the required statements that would
+                  allow you to <span style="color: rgb(0, 0, 153);">read from
+                  the two switches</span>. You also need to think about where
+                  in your program you are going to include these statements.
+                  Refer to the course notes for information on how to access
+                  the functions provided by the DAQ library.</li>
+                <li>It is a good idea to compile your code regularly and
+                  remove any syntax errors as you proceed.</li>
+                <li>The <span style="color: rgb(0, 0, 153);">writeNumber()
+                  function</span> is also provided to you. This is the function
+                  that you can use to write a non-negative integer number to
+                  the eight 7-segment displays of the hardware module
+                  (discussed thoroughly in class)</li>
+                <li>Now you need to <span style="color: rgb(0, 0, 153);">devise an
+                  algorithm</span> that will implement the counting functionality
+                  that is outlined in the problem statement.
+                  You can do so either by using a flow-chart or an itemized list
+                  in plain language.</li>
+              </ol>
+              <br/>
+
+              Do not attempt to code your entire solution in the <code>main</code> function.
+              Your program should include at least the following two functions:
+              <ul>
+                <li><span style="color:red;"><code>runCounter</code></span>: this function
+                  should implement all of the logic of the counter, and continue looping
+                  until the user decides to quit. </li>
+                <li><span style="color:red;"><code>writeNumber</code></span>: this function
+                  writes the given non-negative integer number to the LED screen. The least
+                  significant digit of the number should be shown on the right-most display
+                  (i.e. position #0). You can assume that the number will fit within the 8
+                  digits of the LED screen.
+                  (Hint: think about how decimal numbers are converted to binary numbers.
+                  You may find the modulos operator (%) useful)</li>
+              </ul>
+              <br/>
+
+              <p>
+                If you are having difficulty using, understanding, or implementing the
+                <code>writeNumber</code> function, then you may want to refer to the function
+                that is posted as part of the notes on LED Displays. Of course, you can
+                also refer to the provided sample solution as a last resort.
+              </p>
+
+              <p>
+                <span style="color:red;">Important</span>: as mentioned earlier,
+                for the in-lab exercise, you will not be expected to implement a
+                function similar to <code>writeNumber</code>. Instead you will
+                be given the source for the <code>writeNumber</code> function and
+                any support functions that it calls. You will be allowed to copy
+                this function into your code.
+              </p>
+            </div>
+
+            <div class="tabpage" id="tabpage_3">
+
+              <h3>Developing a test suite</h3>
+
+              <p>
+                You should think about how to develop a test suite that can be
+                used to test your program once it is written. Refer to the
+                notes in earlier labs on how to choose appropriate test values.
+              </p>
+
+              <p>
+                Having chosen your test values, determine the expected output.
+                Some of the expected outputs may simply be a description of what
+                is happening, rather than a specific number, e.g. the counter
+                is running, the counter is stopped, etc. After you have written
+                your program, you can then test your program with each of your
+                test values and check that your program produces the expected
+                result. If it doesn't, you probably have one or more logic
+                errors in your code.
+              </p>
+              <ul>
+                <li><span style="color: rgb(0, 0, 153);">Testing</span>: once
+                  your code has successfully compiled, verify that it produces
+                  correct results using the test suite that you developed earlier.
+                  If any of your tests fails, you must look for logic errors
+                  in your algorithm.
+                </li>
+                <li><span style="color: rgb(0, 0, 153);">Debugging</span>: now
+                  that the programs that you are writing are becoming a little
+                  more complex, you might find it useful to use the debugger
+                  that is integrated into the Visual Studio environment.
+                </li>
+              </ul>
+            </div>
+
+            <div class="tabpage" id="tabpage_4">
+              <h3>Sample Solution</h3>
+              <p>
+                Use the sample solution to help you to find bugs in your own
+                program. Note that the sample solution is not the only solution.
+              </p>
+
+              <p>
+                <a href="#" onclick="toggle_visibility('soln');"> Sample Solution</a> (click to reveal - but only after you've made a
+                  reasonable effort to construct your own!)
+              </p>
+
+              <div id="soln" style="display: none;">
+                <p>
+                  <strong>Download:</strong> <span class="code">
+                    <a href="./src/prelab7_solution.c">prelab7_solution.c</a>
+                  </span>
+                </p>
+                <pre data-src="./src/prelab7_solution.c" > </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/accordion.js"></script>
+  <script src="../js/prism.max.js"></script>
+</body>
+
+</html>

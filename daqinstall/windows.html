@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+  <title>DAQlib Library and Simulator</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1" class="selected"><a id="navLink_1">Windows</a></li>
+              <li id="navHeader_2"><a id="navLink_2" href="./macos.html">MacOS</a></li>
+              <li id="navHeader_3"><a id="navLink_3" href="./linux.html">Linux</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">DAQlib Library and Simulator</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">Installation</li>
+              <li id="tabHeader_2">Your First Project</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+              <p>
+                With this set of instructions, we will install the <span class="highlight">DAQlib</span> Library and simulator on Windows systems for use with Visual Studio 2017. For other platforms, such as MacOS, go to the appropriate tab.
+              </p>
+
+              <h3>Installation for a Single User:</h3> To install the DAQlib library and simulator for Visual Studio on your local computer, we will first
+              <span class="highlight">download a zip file</span> containing all the required headers, libraries, and binaries, and then run an <span class="highlight">installation script</span> that will create a new project template to access these
+              files.
+              <ol>
+                <li>Download the DAQlib zip file from connect. For Windows users, the link should have the title <span class="highlight">DAQlib for Windows</span>. This should create a zip file called <span class="file">DAQlib_windows.zip</span> in your
+                  downloads folder.
+                </li>
+                <li>Unzip the file by right-clicking on <span class="file">DAQlib_windows.zip</span> and selecting <b>Extract all...</b>
+                  <br/> Leave the checkbox <b>Show extracted files when complete</b> checked.
+
+                  <img alt="zip extraction" class="figure" src="./images/windows/extract.png" /> Inside the unzipped folder, you should see a new subfolder named <span class="file">DAQlib</span>, as well as two script files: <span class="file">install.bat</span>                    and <span class="file">uninstall.bat</span>.
+
+                  <img class="figure" alt="unzipped contents" src="./images/windows/daqunzipped.png" />
+                </li>
+                <li>
+                  Double-click on <span class="file">install.bat</span>
+                  <br/> If you get a security warning about opening a file with an unverified publisher, select <b>Run</b>.
+                  <img class="figure" alt="Windows security message" src="./images/windows/security_highlight.png" /> In Windows 10, if you get a SmartScreen warning message saying that it has prevented you from running the application, first click
+                  on <b>More info</b> and then <b>Run anyway</b>
+                  <img class="figure" alt="windows smartscreen info" src="./images/windows/smartscreen1_highlight.png" />
+                  <img class="figure" alt="windows smartscreen run" src="./images/windows/smartscreen2_highlight.png" />
+                </li>
+                <li>
+                  The installation script will ask you to confirm you wish to install the library and simulator. Type 'Y' or 'y' to accept.
+                  <br/> The script will then install a new Visual Studio project template that is configured to find the DAQlib library and simulator programs. If successful, it should give an output similar to the following:
+                  <img class="figure" alt="successful installation" src="./images/windows/success.png" /> If you encounter an error that you cannot resolve, please either post a message on the discussion board with the output of the install script,
+                  or see a TA or instructor to help you complete the installation.
+                </li>
+              </ol>
+
+              <h3>Installation for All Users:</h3>
+              <p>
+                The previous instructions will install the DAQlib library and simulator only for the current user. To install globally, for all users on a particular machine, follow the same instructions but run the <span class="file">install.bat</span>                  file as Administrator. This can be done by right-clicking on the file and selecting "<span class="highlight">Run as administrator</span>".
+              </p>
+
+              <h3>Uninstalling the Library:</h3>
+              <p>
+                To uninstall the DAQlib library, simply run the <span class="file">uninstall.bat</span> script. If run as Administrator, the script will attempt to uninstall a global installation.
+              </p>
+            </div>
+            <div class="tabpage" id="tabpage_2">
+              <h3>A Simple DAQ Program</h3>
+              <p>
+                To get started, we will create a simple program that uses the DAQ simulator.
+              </p>
+              <p>
+                Start the Visual Studio IDE by double clicking its icon on the desktop. You may see a dialog that prompts you to <em>Start with a familiar environment</em>, in which case select <em>Visual C++</em> for the <strong>Development Settings</strong>                  and then click the <strong>Start Visual Studio</strong> button.
+              </p>
+
+              We will begin by creating a project as follows:
+              <ul>
+                <li>Select the <strong>File</strong> menu, then <strong>New</strong>, then <strong>Project</strong>.</li>
+                <li>When the <strong>New Project</strong> dialog box opens, select <strong>Installed</strong>, <strong>Templates</strong>, <strong>Visual C++</strong> and then <strong>APSC160</strong> in the left panel, and then select <strong>APSC160 - DAQ</strong>                    in the right panel.</li>
+                <li>Enter a descriptive name for your project, e.g. <strong>DAQSimulatorTest</strong></li>
+                <li>Select an appropriate location to save your project using the <strong>Browse</strong> button.</li>
+                <li>The <strong>New Project</strong> dialog should now look like this:
+                  <img class="figure" alt="VS Project" src="./images/windows/DAQProject.png" />
+                </li>
+                <li>Click <strong>OK</strong>.</li>
+              </ul>
+              A new project will be displayed, which should look something like the following:
+              <img class="figure" alt="Solution Explorer" src="./images/windows/DAQInitialProject.png" /> A new source file called <span class="code">main.c</span> will automatically be generated for you. You can change the name of this file to something
+              more descriptive by doing the following:
+              <ul>
+                <li>Right-click on the <span class="code">main.c</span></li>
+                <li>Select <strong>Rename</strong> from the drop-down menu</li>
+                <li>Enter a descriptive name for the new source file (e.g. <span class="code">DAQSimulatorTest.c</span>).</li>
+              </ul>
+              <br/> Now add code to the source file so that it looks like the following. Include your own name, student number, ... at the top of the code (the green text in the code below).
+              <pre data-src="src/simulator.c"></pre>
+
+              <p>
+                We do not expect you to understand the code that you are typing yet (that will come in the next few weeks).
+              </p>
+              <p>
+                To compile and link the source files in your project, choose
+                <strong>Build Solution</strong> from the <strong>Build</strong> menu or press <strong>F7</strong>. This will compile all of the source files in your project (in this case there is only one) and then link them with the DAQlib library
+                to produce an executable file.
+              </p>
+              <p>
+                Run the program. If everything was installed successfully, the simulator should appear:
+
+                <img class="figure" alt="Simulator with LED off" src="./images/windows/DAQSimulatorOff.png" /> Click the "<strong>on</strong>" button for the switch labelled
+                <strong>ToggleSwitch #0</strong>. The left-most LED should turn green:
+                <img class="figure" alt="Simulator with LED off" src="./images/windows/DAQSimulatorOn.png" /> Congratulations! You have just completed your first DAQ program.
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="../../css/style.css" rel="stylesheet" type="text/css">
+  <link href="../../css/verdana.css" rel="stylesheet" type="text/css">
+  <link href="../../css/prism.css" rel="stylesheet" type="text/css">
+  <title>DAQlib Installation Instructions</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../../images/ubcLogoWhite.png"></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1" class="selected"><a id="navLink_1" href="#">Installation</a></li>
+              <li id="navHeader_2"><a id="navLink_2" href="./testing.html">Testing</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">DAQ Library and Simulator Installation</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul data-current="1">
+              <li id="tabHeader_1" class="tabActiveHeader">Installation</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+              <link href="../css/custom.css" rel="stylesheet" type="text/css"> To install the DAQ library and simulator for Visual Studio on your local computer, we will
+              <span class="highlight">download a zip file</span> that contains all the required files, and then run an <span class="highlight">installation
+script</span> that will adjust your Visual Studio properties.
+              <br><br>
+              <h4>Installation Instructions:</h4>
+              <ol>
+                <li>Download the DAQ zip file from connect. This should create a zip file called <span class="file">DAQ_Student.zip</span> in your downloads folder.
+                </li>
+                <li>Unzip the file by right-clicking on <span class="file">DAQ_Student.zip</span> and selecting <b>Extract all...</b><br> Leave the checkbox <b>Show extracted files when complete</b> checked.
+                  <br><br>
+                  <div><img src="../images/extract.png"></div>
+                  <br> Inside the unzipped folder, you should see a new subfolder named <span class="file">DAQ</span>.
+                  <br><br>
+                  <div><img src="../images/daqunzipped.png"></div>
+                  <br><br>
+                </li>
+                <li>Copy the subfolder <span class="file">DAQ</span> to a <b>permanent location</b>. This could be somewhere on the Windows desktop, or directly in your <span class="file">C:\</span> drive. Once we finish installing the library, this folder
+                  <span class="highlight">should not be moved</span>.
+                  <br><br>
+                  <div><img src="../images/desktop.png"></div>
+                  <br><br>
+                </li>
+                <li>
+                  Open the folder and double-click on <span class="file">install.bat</span>
+                  <br><br>
+                  <div><img src="../images/installbat.png"></div>
+                  <br> If you get a security warning about opening a file with an unverified publisher, select <b>Run</b>.
+                  <br><br>
+                  <div><img src="../images/security_highlight.png"></div>
+                  <br> In Windows 10, if you get a SmartScreen warning message saying that it has prevented you from running the application, first click on <b>More info</b> and then <b>Run anyway</b>
+                  <br><br>
+                  <div><img src="../images/smartscreen1_highlight.png"></div>
+                  <br>
+                  <div><img src="../images/smartscreen2_highlight.png"></div>
+                  <br>
+                </li>
+                <li>
+                  The installation script will modify your Visual Studio settings so that it can find the DAQ library and simulator programs. If successful, it should give an output similar to the following:
+                  <br><br>
+                  <div><img src="../images/success.png"></div>
+                  <br> If you encounter an error that you cannot resolve, please either post a message on the discussion board with the output of the install script, or see a TA or instructor to help you complete the installation.
+                </li>
+                <li>
+                  Restart Visual Studio for the new settings to take effect.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../../js/tabs_old.js"></script>
+</body>
+
+</html>

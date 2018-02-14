@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <title>Lab 6: A 2D Digitizer</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1"><a id="navLink_1" href="./lab6.html">Overview</a></li>
+              <li id="navHeader_2"><a id="navLink_2" href="./inlab.html">In-Lab</a></li>
+              <li id="navHeader_3" class="selected"><a id="navLink_3">At-Home</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Lab 6: A 2D Digitizer</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">Overview</li>
+              <li id="tabHeader_2">Handback</li>
+              <li id="tabHeader_3">Graphing Data</li>
+              <li id="tabHeader_4">Submission</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+              <h3>Important Notes:</h3>
+              <ul>
+                <li>This section of the lab is different from the
+                  previous labs in that:
+                  <ul>
+                    <li>You are not required to do this lab during your
+                      normally scheduled lab time. Instead you will be doing
+                      this lab at home, or anywhere else that you have access
+                      to Excel (including the lab if you wish).</li>
+                    <li>Everybody in all lab sections has the same
+                      deadline for this lab, see the course webpage for due date information.
+                      You can submit your files anytime after the in-lab portion of the lab.</li>
+                  </ul>
+                </li>
+                <li>Although you will not be working in your normally scheduled lab period,
+                  you are still required to do your own work, and use your own data.</li>
+                <li>All Excel submissions can be in the ".xls" or ".xlsx" MS Excel formats. If you
+                  use any other software other than Excel, save your file in Excel format.</li>
+                <li>As usual all submissions must be through regular submission procedures.
+                  Absolutely no email submissions are accepted.</li>
+                <li>You will be given access your data files from the "Lab 6 In Lab" assignment
+                    (see the <strong>Handback</strong> tab).</li>
+                <li>TAs will be available holding <span style="color: rgb(255, 0, 0);">office hours</span>
+                  to help with this lab (see the schedule web page of the course outline).</li>
+              </ul>
+
+              <h3>Learning Objectives:</h3>
+              <ul>
+                <li>to analyze the measured data using Excel or other spreadsheet software</li>
+                <li>to graph the results</li>
+              </ul>
+
+              <h3>Summary:</h3>
+              <p>
+                The At-Home part of the lab continues the focus on the hardware
+                module, and in particular you will be using the data that you
+                generated in the In-Lab part.
+              </p>
+
+              <p>
+                You will be graphing your data from the In-Lab Part 2 using
+                Excel. In order to graph your data, you will have to perform some
+                calculations in Excel.
+              </p>
+            </div>
+            <div class="tabpage" id="tabpage_2">
+              <h3>Retrieving In-Lab Materials:</h3>
+              To complete the at-home portion of the lab, you first need access
+              to the files you submitted for the in-lab portion.  These will
+              be returned via <strong>Handback</strong>.
+              <ul>
+                <li>Go to <a href="https://www.ugrad.cs.ubc.ca/~apsc160/handback/" target="_blank">https://www.ugrad.cs.ubc.ca/~apsc160/handback/</a>.</li>
+                <li>Log in with your Ugrad CS account ID</li>
+                <li>You should be presented with a view allowing you to download a zip file containing your in-lab submission, labelled
+                  <strong>Lab6_LXX.zip</strong></li>
+                <li>Download the file and extract it on your local machine.</li>
+              </ul>
+              The downloaded file should contain your full submission from the lab, including the Excel sheet and
+              the two <strong>saveData</strong> text files.
+            </div>
+            <div class="tabpage" id="tabpage_3">
+              <h3>Description of the Problem</h3>
+
+              <p>
+                In the in-lab component, part 2, you generated two data files
+                (two traces) using the hardware module. In this part of the lab, you
+                will use Excel to generate plots of this data. You should create one Excel
+                file containing two Excel worksheets, one for each of the data
+                files that you generated.<br/><br/>
+              </p>
+
+              <h3>1. Calculating X &amp; Y Coordinates</h3>
+
+              To plot your data, you will need to determine the X &amp; Y coordinates
+              of the end-point of the arm. In your data files from In-Lab Part 2, you
+              have the voltage of the base and elbow sensors. The following are the basic
+              steps to convert those voltage values into X &amp; Y coordinates:
+              <ol>
+                <li> Using your results from part 1, convert the voltage values into angles.
+                  Specifically, use the slope and intercept of the angle vs. voltage plots.
+                  This calculation will give you the relative angles for both the base sensor
+                  and the elbow sensor. </li>
+                <li> Convert the relative angles to absolute angles. For the base sensor,
+                  the relative and absolute angles are the same, but for the elbow sensor
+                  they are different. </li>
+                <li> Using the absolute angles, and the lengths of the base and elbow segments,
+                  determine the values of the X &amp; Y coordinates. This is the same
+                  calculation that was performed in Lab 1. Recall that you measured and
+                  recorded the lengths of the segments in the In-Lab Part 1. </li>
+              </ol>
+
+              <img class="figure" alt="DAQ arm" src="./images/two_part_arm.gif"/>
+
+              <p>
+                Recall that for the arm layout above, with angles measured in
+                <span class="highlight">radians</span> in a counter-clockwise
+                direction, and the 2D coordinates of the end-point is
+                given by
+
+                $$x = AB\cos(\theta_1) + BC\cos(\theta_2)$$
+                $$y = AB\sin(\theta_1) + BC\sin(\theta_2)$$
+
+                You can put all of the above calculations into a single equation in excel, or split them
+                across several equations. In either case, your Excel file should contain all of the
+                equations that you used. Do not just put the final values into your Excel file.
+                The TAs must see the expressions used to generate your results.
+              </p>
+
+              <h3>2. Generating Plots</h3>
+              <p>
+                For each of your data files, you should generate a plot of the X &amp; Y coordinates
+                of the data (with the points joined by lines). If all your calculations were
+                done correctly, then the plot should give you a good approximation of the
+                original figure. There may be some rotation or distortion of the figure.
+                A certain amount is likely, but you should be able to easily recognize the
+                original figures.
+              </p>
+            </div>
+            <div class="tabpage" id="tabpage_4">
+
+              <h3>Submission Instructions</h3>
+
+              <p>
+                For this lab, you will be required to submit one Excel file containing
+                all the calculations and graphs for the at-home portion of the lab.
+                The Excel file must have two worksheets, one for each of the figure traces.
+                Properly label the worksheets and include your student info (name,
+                student number, lab section, module # you used) as a note at the top-left
+                of the first worksheet.
+              </p>
+
+              Each Excel worksheet should contain the following:
+              <ol>
+                <li> Your original data that you imported from the data file
+                  created by the <strong>saveData</strong> program. </li>
+                <li> The calculated X &amp; Y coordinates. This can
+                  also include any intermediate calculations that you may have done.</li>
+                <li> The plot of your X &amp; Y data. The plot should have proper labels and title. </li>
+              </ol>
+
+              <h3>Submitting your Files</h3>
+              To submit your excel file
+              <ul>
+                <li>Create a ZIP file containing your Excel file for submission.</li>
+                <li>Go to <a href="https://www.ugrad.cs.ubc.ca/~apsc160/handin/" target="_blank">https://www.ugrad.cs.ubc.ca/~apsc160/handin/</a>.</li>
+                <li>Click on <strong>Start handin</strong>. Login with your undergrad account and password.</li>
+                <li>Select "Lab 6 - at home" from the list of assignments. Then click on <strong>"Choose File"</strong> or <strong>"Browse..."</strong>,
+                  and select the ZIP file you created in the previous steps.</li>
+                <li>If you previously handed in a file for the current lab, check the "Override a previous submission" option, otherwise keep it unchecked.
+                  Then click on <strong>"Handin assignment"</strong>.
+                  When presented with a confirmation dialog, read it and accept it.</li>
+                <li>Read the result of the handin submission. If it lists an error, post on the discussion forum, or ask a TA during office hours.</li>
+                <li>Once you have submitted the file, click on <strong>"Start handin"</strong> again, select <strong>"Lab 6 - at home"</strong> and
+                  click on <strong>"Check submissions"</strong>.
+                  In the resulting page, check that the correct file is listed.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+</body>
+
+</html>

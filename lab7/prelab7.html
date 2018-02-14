@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+  <title>Prelab 7: A Simple Counter</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1" class="selected"><a id="navLink_1">Overview</a></li>
+              <li id="navHeader_2"><a id="navLink_2" href="./exercise1.html">Exercise 1</a></li>
+              <li id="navHeader_3"><a id="navLink_3" href="./grading.html">Grading</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Prelab 7: A Simple Counter</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">Overview</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+              <h3>Learning Goals:</h3>
+
+              <ul>
+                <li>To write a C program that uses switches and LED displays of the DAQ module (data acquisition, I/O)</li>
+                <li>To implement a simple counter</li>
+              </ul>
+
+              <h3>Overview:</h3>
+              <p>
+                You will write a program that implements a simple counter, and
+                displays the counter value on an LED screen. Note that we are
+                using the term <b>LED screen</b> to refer to a number of 7-segment
+                LED displays arranged in a row.
+              </p>
+
+              <img class="figure" alt="A simple counter program" src="./images/DAQcounter.png" />
+
+              Note the following in order to complete this pre-lab for Lab 7.
+              <ul>
+                <li>to develop and test your program, you will need to install
+                  and use the simulator that has been provided to you.</li>
+                <li>to write your program, start from the
+                  <strong>DAQ_general_framework</strong>, then add the required new function(s).</li>
+                <li>Refer to the DAQ functions syntax sheet to read (or write) from (to) an input (output) device.</li>
+                <li>The function <code>writeNumber()</code> (and of course <code>writeDigit()</code>) will be provided to you as a <strong>.c</strong> file in the lab. A sample <code>main()</code> function (from the general framework) and the prototype
+                  of all DAQ functions will be also provided to you.</li>
+                <li>Please make every effort to write your own program first. Only use the sample solution if you need help to improve or find bugs in your own program. Note that this is only one possible solution... there are many others.</li>
+              </ul>
+              <br/>
+
+              <p>
+                As usual, the <span style="color: rgb(255, 0, 0);">in-lab
+                exercise</span> will be described in a print-out that the TAs
+                will give you at the beginning of the lab.
+              </p>
+              <ul>
+                <li>The program will be identical for both the simulator and
+                  the hardware. For the in-lab exercise of this lab, you will
+                  be using the physical hardware device, not the simulator.</li>
+                <li>You are allowed (and encouraged) to have your textbook with you.</li>
+                <li>Obviously, as before you <span style="color: rgb(255, 0, 0);">are
+                  NOT allowed</span> to use the sample solution, prelab info on
+                  Connect or any other unpermitted reference materials during the lab.</li>
+              </ul>
+
+              <h3>Lab Preparation:</h3>
+
+              In preparation for this lab you may find it useful to review:
+              <ul>
+                <li><span style="text-decoration: underline;">relevant lecture
+                  notes (such as on the Display, Digital IO and Sleep()) and
+                  class activities</span>.</li>
+                <li>Review of the programming concepts such as modular programming with functions, repetition, branching, and arrays.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+</body>
+
+</html>

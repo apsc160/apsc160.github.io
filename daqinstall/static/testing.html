@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="../../css/style.css" rel="stylesheet" type="text/css">
+  <link href="../../css/verdana.css" rel="stylesheet" type="text/css">
+  <link href="../../css/prism.css" rel="stylesheet" type="text/css">
+  <link href="../css/custom.css" rel="stylesheet" type="text/css">
+  <title>DAQlib Installation Instructions</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../../images/ubcLogoWhite.png"></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1" class=""><a id="navLink_1" href="./installation.html">Installation</a></li>
+              <li id="navHeader_2" class="selected"><a id="navLink_2" href="#">Testing</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">DAQ Library and Simulator Installation</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul data-current="1">
+              <li id="tabHeader_1" class="tabActiveHeader">Testing</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+
+              To ensure that the simulator and library are installed correctly, we will run a simple program that will initialize and launch the simulator.
+              <br><br>
+              <div><img src="../images/simulator.png"></div>
+              <br><br> Create a new Visual Studio project, and copy the contents into the main source file:
+              <pre data-src="src/simulator.c" class="  language-c"><code class="  language-c"><span class="token comment">/*
+   Author:           Jessica Programmer
+   Student Number:   12345678
+   Lab Section:      L1X
+   Date:             October 13, 2017
+
+   Purpose:          This program loads the DAQ simulator
+*/</span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;DAQlib.h&gt;</span>  </span><span class="token comment">/* DAQ library and simulator */</span>
+
+<span class="token comment">/* simulator 1 has 3 LEDs and 2 switches */</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> DAQ_SIMULATOR_1 1</span>
+
+<span class="token comment">/* main work function */</span>
+<span class="token keyword">void</span> <span class="token function">workFunction</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">setupDAQ</span><span class="token punctuation">(</span>DAQ_SIMULATOR_1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">workFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Failed to initialize DAQ\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* main work function */</span>
+<span class="token keyword">void</span> <span class="token function">workFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* continue looping while the device is powered on */</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">continueSuperLoop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* do something interesting here */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+              <br> Build and run the project to make sure Visual Studio can find the library and launch the simulator.
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../../js/tabs_old.js"></script>
+</body>
+
+</html>

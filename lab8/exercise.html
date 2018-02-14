@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+  <title>Lab 8: A Scrolling Message</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1"><a id="navLink_1" href="./lab8.html">Overview</a></li>
+              <li id="navHeader_2" class="selected"><a id="navLink_2" href="./exercise.html">Exercise</a></li>
+              <li id="navHeader_3"><a id="navLink_3" href="./submission.html">Submission</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Lab 8: A Scrolling Message</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">Problem</li>
+              <li id="tabHeader_2">Development</li>
+              <li id="tabHeader_3">Testing</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+              <h3>Problem Summary</h3>
+              <p>
+                You are given a system that consists of 8 7-segment LED displays
+                and two toggle switches (the DAQ hardware module or the
+                simulator). The 8 LED displays are arranged in a
+                row and will be called an LED screen. You are to write a program in C
+                that displays a scrolling message on the LED screen.
+              </p>
+
+              <p>
+                This lab is divided up into two parts: a required part, and an
+                optional part (for additional bonus marks). Both parts will
+                display a scrolling message on the LED screen. The optional
+                part also uses two switches to control how the message is
+                scrolled and gives an option to the user to select the message.
+              </p>
+
+              <h3>Writing the Message to the Display</h3>
+
+              You can choose the message that you want to display, but please
+              note the following:
+              <ul>
+                <li>ideally your message should be <span style="color: rgb(51, 51, 255);">a
+                  short word or phrase</span>.</li>
+                <li>the message should consist of <span style="color: rgb(51, 51, 255);">at
+                  least 4 non-digit characters</span>.</li>
+                <li>there is no maximum length on your message as long as it can
+                  be used efficiently to test the functionality of the program as
+                  described.</li>
+                <li>your message does not have to be unique; it is OK if you
+                  happen to have the same message as somebody else.</li>
+                <li>note that not all English letters can be displayed easily,
+                  so you may need to mix upper and lower case letters to have a
+                  meaningful word.</li>
+                <li>for each letter, you will have <span style="color: rgb(51, 51, 255);">to
+                  determine the data value</span> to write to the LED display in
+                  order to display the character.</li>
+                <li>In your program you may use one particular message only. However, your
+                  algorithm should not be solely dependent on the message it is
+                  displaying (i.e. it must be algorithmic and it must be possible
+                  to change the message).</li>
+              </ul>
+
+              <p>
+                One way to do this is to store the data values for each character
+                in a message array. Note that your message array would not normally be
+                a C-String.
+              </p>
+
+              <h3>Required Functionality</h3>
+              <p>
+                In this part you only use the LED screen. The screen consists of
+                8 7-segment LED displays. The first display on the right is at
+                position #0 and the last display on the left is at position #7.
+              </p>
+
+              Your program should update the LED screen once per second as follows:
+              <ul>
+                <li>When your program first starts, it should <span style="color: rgb(51, 51, 255);">
+                  display the first character</span> of your message in the right-most position
+                  of the LED display (<span style="color: rgb(51, 51, 255);">position 0</span>).</li>
+                <li>After one second it should <span style="color: rgb(51, 51, 255);">update
+                  the display</span> by scrolling your message one character to the left (i.e. first
+                  character at position 1, second character at position 0).</li>
+                <li>Your program should <span style="color: rgb(51, 51, 255);">continue
+                  to update</span> the display by scrolling your message one character
+                  per second until it has completely scrolled off the left end of the display.</li>
+                <li>Once your message has scrolled off the display, your program should
+                  start again at the first step above, i.e. first character at position 0.</li>
+                <li>Your program should continue this process until you quit the program. </li>
+              </ul>
+
+              <p>
+                As an example, suppose your message is "cat". The following would appear
+                on the LED screen, where each column is the corresponding position on
+                the LED screen, and each row represents the updated screen after one second has elapsed:
+              </p>
+              <table class="center" style="border: 0;">
+                <tr><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>c</td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td><td>c</td><td>a</td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td>c</td><td>a</td><td>t</td></tr>
+                <tr><td></td><td></td><td></td><td></td><td>c</td><td>a</td><td>t</td><td></td></tr>
+                <tr><td></td><td></td><td></td><td>c</td><td>a</td><td>t</td><td></td><td></td></tr>
+                <tr><td></td><td></td><td>c</td><td>a</td><td>t</td><td></td><td></td><td></td></tr>
+                <tr><td></td><td>c</td><td>a</td><td>t</td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>c</td><td>a</td><td>t</td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>a</td><td>t</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td>t</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>&nbsp;</td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>c</td></tr>
+              </table>
+              <br/>
+
+              <p>
+                Note that "cat" is not a valid message - while all the letters
+                can be displayed on the LED screen, it does not meet the
+                minimum length requirement.
+              </p>
+
+              <h3>Optional Component (for 25% extra bonus marks)</h3>
+              <p>
+                <em style="color: rgb(255, 0, 0);">This part is optional,
+                  allowing you to get up to an additional 25% on this lab
+                </em>.
+                Bonus marks will not allow you to get more than
+                100% on your "overall" lab mark, it will help you though
+                to improve your marks of earlier labs.
+                Note that you can also get partial marks if you implement only
+                a part of the bonus functionality. <strong>Add a comment
+                at the top of your program to indicate that you are implementing
+                the bonus part as well.</strong>
+              </p>
+              <p>
+                For the optional part, you will add direction and speed control to
+                your program and you also give the user the option to choose the
+                displayed message.
+              </p>
+
+              <strong>A:</strong> This part uses both the LED screen as well as the
+              two switches. The two switches are connected to digital input channels
+              numbered 0 and 1.
+              <ul>
+                <li>
+                  <span style="color: rgb(51, 51, 255);">Switch #0</span> is
+                  connected to digital channel #0, and is called the
+                  <span style="color: rgb(51, 51, 255);">DIRECTION</span>
+                  switch.
+                </li>
+                <li>
+                  <span style="color: rgb(51, 51, 255);">Switch
+                  #1</span> is connected to channel #1 and is called
+                  the <span style="color: rgb(51, 51, 255);">SPEED</span>
+                  switch.
+                </li>
+              </ul>
+              <br/>
+
+              For this part, your program should operate as described above with
+              the following additions:
+              <ul>
+                <li>
+                  When the SPEED switch is off, the display should be updated
+                  once every second, as before. When the SPEED switch is on, the
+                  display should be updated once every 0.5 seconds.
+                </li>
+                <li>
+                  When the DIRECTION switch is off, the message
+                  should scroll to the left (as in the required part above).
+                  When the DIRECTION switch is on, the display should scroll to
+                  the right. When scrolling to the right, the operation is simply
+                  the reverse of scrolling to the left.
+                </li>
+              </ul>
+              <br/>
+
+              <p><strong>B:</strong> At the very beginning, the program should
+                ask the user to choose between <span style="color: red;">two pre-determined
+                messages</span> (of different sizes). Then your program will use
+                the message user selected to display. Note this selection is done
+                once at the very beginning when the program is run (No need for
+                provision to change it after the message is selected).
+                The two messages must be of two different sizes.
+              </p>
+              <br/>
+
+              <strong>Example:</strong> An example for prompting the user
+              for selecting between the two example messages SHOP and HELLO
+              could be:
+
+<pre><code class="language-c">
+   printf("Please choose which message to display.\n");
+   printf("Message 1: SHOP,\n");
+   printf("Message 2: HELLO.\n");
+   printf("Please enter 1 or 2: ");
+   scanf("%d", &amp;choice);  /* choice is an int variable */
+</code>
+</pre>
+              <h3>Using Simulator / Hardware Module</h3>
+
+              <p>
+                The simulator will allow you to test your program
+                without the need for the actual hardware module. The program will be
+                identical for either the simulator or the hardware. To access the
+                simulator configuration for this problem, you should specify a
+                <span style="color: red;"><code>setupNum</code> of 4</span>
+                when calling the <code>setupDAQ()</code> function.
+              </p>
+              <p>
+                If you are working in a TA-supervised lab, you will be able to
+                use the actual hardware module if you wish. The hardware module
+                also has 2 switches and 8 LED displays arranged in a row as an LED
+                screen. To use the hardware module, you should specify a
+                <span style="color: red;"><code>setupNum</code> of 0</span> when
+                calling the <code>setupDAQ</code> function. Note that you
+                will only have access to the hardware module while a TA is present in
+                the lab.
+              </p>
+            </div>
+            <div class="tabpage" id="tabpage_2">
+              <h3>Algorithm Development and Coding</h3>
+              <p>
+                Carefully read the Problem Description above and try to decompose
+                the problem into smaller and more manageable parts. Proceed step
+                by step, and debug often. As before, you need to use good
+                programming practices, and you need to add sufficient
+                comments to your code.
+              </p>
+              <p>
+                Your program should include at least the <code>main</code>
+                and <code>scrollMessage</code> functions. Your program should
+                follow the same basic structure of the in-class examples,
+                i.e. the <code>main</code> function should perform the necessary
+                initialization and then call the <code>scrollMessage</code>
+                function. You are allowed to use any code segment that you think you
+                may need in your program from the in-class programming exercises.
+              </p>
+
+              <p>
+                The <code>scrollMessage</code> function (and
+                any additional functions you define) should implement all of the logic
+                of the message scrolling, and continue looping until the user decides
+                to quit. You are free to define any additional functions that you may
+                find useful.
+              </p>
+
+              <p>
+                Create a new project in Visual Studio to implement your program
+                in the programming language C. Compile your code regularly and
+                remove any syntax errors as you go. Refer to the course notes for
+                information on how to access the functions provided by the DAQ
+                library.
+              </p>
+            </div>
+            <div class="tabpage" id="tabpage_3">
+              <h3>Developing a Test Suite</h3>
+
+              <p>
+                You should also think about how to develop a test suite that can
+                be used to test your program once it is written.
+                Refer to the notes in earlier labs on how to choose appropriate test
+                values.
+              </p>
+              <p>
+                Having chosen your test values, determine the expected output.
+              </p>
+              <ul>
+                <li><span style="color: rgb(0, 0, 153);">Testing</span>: once
+                  your code has successfully compiled, verify that it produces
+                  correct results using the test suite that you developed earlier.
+                  If any of your tests fails, you must look for logic errors
+                  in your algorithm.
+                </li>
+                <li><span style="color: rgb(0, 0, 153);">Debugging</span>: now
+                  that the programs that you are writing are becoming a little
+                  more complex, you might find it useful to use the debugger
+                  that is integrated into the Visual Studio environment.
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+</body>
+
+</html>

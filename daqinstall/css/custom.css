@@ -1,0 +1,10 @@
+.file {
+  color: blue;
+  font-weight: bold;
+  font-family: courier;
+}
+
+.highlight {
+  color: crimson;
+  font-weight: bold;
+}

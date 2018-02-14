@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+  <title>DAQlib Library and Simulator</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1"><a id="navLink_1" href="./windows.html">Windows</a></li>
+              <li id="navHeader_2" class="selected"><a id="navLink_2">MacOS</a></li>
+              <li id="navHeader_3"><a id="navLink_3" href="./linux.html">Linux</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">DAQlib Library and Simulator</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">Installation</li>
+              <li id="tabHeader_2">Your First Project</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+              <p>
+                On macOS, we will install the DAQlib library and simulator in the user's <span class="file">~/Library</span> directory, as well as an Xcode project template.
+              </p>
+
+              <h3>Installation:</h3> To install the DAQlib library and simulator for Xcode on your local computer, we will first
+              <span class="highlight">download a zip file</span> containing all the required headers, libraries, and binaries, and then run an <span class="highlight">installation script</span> that will create a new project template to access these
+              files.
+              <ol>
+                <li>Download the DAQlib zip file from connect. For macOS users, the link should have the title <span class="highlight">DAQlib for macOS</span>. This should create a zip file called
+                  <span class="file">DAQlib_macos.zip</span> in your downloads folder.</li>
+                <li>Unzip the file by double-clicking on <span class="file">DAQlib_macos.zip</span> in Finder.
+                  <img class="figure" alt="DAQlib extraction" src="./images/macos/extract.png" /> Inside the unzipped folder, you should see a new subfolder named <span class="file">DAQlib</span>, as well as two script files: <span class="file">install.command</span>                    and <span class="file">uninstall.command</span>.
+                </li>
+                <li>
+                  Double-click on <span class="file">install.command</span>
+                  <br/> You may get a security warning about opening the file from an unidentified developer.
+                  <img class="figure" alt="unidentified developer" src="./images/macos/unidentified.png" /> If this occurs, we will by-pass the security setting. Click on "<strong>OK</strong>", then control-click the <span class="file">install.command</span>                    file and select "<span class="highlight">Open</span>" from the menu. You will be asked to confirm opening of the file. Click on the "<span class="highlight">Open</span>" button.
+                  <img class="figure" alt="run unidentified developer" src="./images/macos/open_unidentified.png" />
+                </li>
+                <li>
+                  The installation script will then install the required files and a new Xcode project template that is configured to find the DAQlib library and simulator programs. If successful, it should give an output similar to the following:
+                  <img class="figure" alt="installation successful" src="./images/macos/success.png" /> If you encounter an error that you cannot resolve, please either post a message on the discussion board with the output of the install script, or
+                  see a TA or instructor to help you complete the installation.
+                </li>
+              </ol>
+
+              <h3>Uninstalling the Library:</h3>
+              <p>
+                To uninstall the DAQlib library, simply run the <span class="file">uninstall.command</span> script. This will remove the library and Xcode project template.
+              </p>
+            </div>
+            <div class="tabpage" id="tabpage_2">
+              <h3>A Simple DAQ Program</h3>
+              <p>
+                To get started, we will create a simple program that uses the DAQ simulator.
+              </p>
+
+              Start Xcode from the Applications menu in Finder. Xcode should present the start screen to allow you to select a previous project or create a new one.
+              <img class="figure" alt="Xcode startup" src="./images/macos/XcodeStartup.png" />
+              <ul>
+                <li>Select "<strong>Create a new Xcode project.</strong>"</li>
+                <li>On the following screen, select <strong>OS X</strong>, <strong>Application</strong> in the left panel, and <strong>APSC160 - DAQ</strong> in the right panel.</li>
+                <li>Click "<strong>Next</strong>"</li>
+              </ul>
+              <img class="figure" alt="Xcode template" src="./images/macos/XcodeTemplate.png" />
+              <ul>
+                <li>In the project options form, enter a descriptive Product Name and information (e.g. DAQSimulatorTest).</li>
+                <li>Click "<strong>Next</strong>"</li>
+              </ul>
+              <img class="figure" alt="Xcode product" src="./images/macos/XcodeProductInfo.png" /> A new project will be displayed, which should look something like the following:
+              <img class="figure" alt="Xcode Project Explorer" src="./images/macos/XcodeProject.png" /> A new source file called <span class="code">main.c</span> will automatically be generated for you. You can change the name of this file to something
+              more descriptive by doing the following:
+              <ul>
+                <li>Click on the <span class="code">main.c</span> file to open the file in the main viewer</li>
+                <li>Click on the file again to trigger the file rename cursor</li>
+                <li>Enter a descriptive name for the new source file (e.g.
+                  <span class="code">DAQSimulatorTest.c</span>).</li>
+              </ul>
+              <br/> Now add code to the source file so that it looks like the following. Include your own name, student number, ... at the top of the code (the green text in the code below).
+
+              <pre data-src="src/simulator.c"></pre>
+
+              <p>
+                We do not expect you to understand the code that you are typing yet (that will come in the next few weeks).
+              </p>
+
+              <p>
+                To compile and link the source files in your project, choose
+                <strong>Product > Build</strong> from the menus or press
+                <strong>&#8984;+B</strong>. This will compile all of the source files in your project (in this case there is only one) and then link them with the DAQlib library to produce an executable file.
+              </p>
+
+              <p>
+                Run the program by either using the play button, or
+                <strong>Product > Run</strong>. If everything was installed successfully, the simulator should appear, though it may open behind the Xcode window:
+                <img class="figure" alt="Simulator with LED off" src="./images/macos/DAQSimulatorOff.png" /> Click the "<strong>on</strong>" radio button for the switch labelled <strong>ToggleSwitch #0</strong>. The left-most LED should turn green:
+                <img class="figure" alt="Simulator with LED off" src="./images/macos/DAQSimulatorOn.png" /> Congratulations! You have just completed your first DAQ program.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+  <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>
