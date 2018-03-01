@@ -263,7 +263,8 @@ void loop(void) {
 							we need to manually configure our pin layout using the
 							<code class="language-c">void pinMode(int pin, int mode)</code>
 							function.  For example, we can configure certain pins to be inputs and outputs using
-<pre><code class="language-c">void setup(void) {
+<pre><code class="language-c">void setup(void)
+{
 	pinMode(2, OUTPUT);   /* digital pin 2 as output */
 	pinMode(3, INPUT);    /* digital pin 3 as input */
 	pinMode(A2, INPUT);   /* analog pin A2 as input */
