@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" async
+		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+  <title>Getting Started with Arduino</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+            <ul>
+              <li id="navHeader_1" class="selected"><a id="navLink_1">Arduino</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Getting Started with Arduino</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">Intro</li>
+              <li id="tabHeader_2">Hardware</li>
+              <li id="tabHeader_3">Programming</li>
+							<li id="tabHeader_4">First Program</li>
+							<li id="tabHeader_5">Second Program</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+							<p>
+								This section is completely optional. <em>You do not need to know
+								anything related to hardware, electronics, or Arduino for this course.</em>
+							</p>
+							<p>
+								Having said that, this stuff is extremely fun, will give you something hands-on
+								to work with while learning to program, and can be very useful
+								in later years for your engineering design projects.  If you
+								are at all interested in getting started, I strongly encourage
+								you to give this a try.  There are many tutorials out there
+								that cover the basics.
+							<p>
+							<p>
+								To develop for the Arduino Platform, you will need an Arduino or
+								equivalent board (e.g. Uno R3), as well as some electronic components.
+								A few kits are available to borrow from the UBC library.  Otherwise,
+								you can find cheap knock-off boards that are often bundled with a starter
+								set of components for around $30 online.  They will also usually
+								include a set of sample projects to help you get started.
+							</p>
+            </div>
+            <div class="tabpage" id="tabpage_2">
+							<p>
+								Below are two <em>sample</em> board layouts that will allow you
+								to implement many programs similar to those from the in-class
+								exercises.  You do not need to copy these designs directly,
+								and for a given program, you may want to only connect certain
+								inputs/outputs to the board.  If you build both schematics,
+								you can even attach only parts of each to the Arduino, such as the displays
+								from schematic 2 and the potentiometers from schematic 1 in order
+								to mimic the DAQ.
+							</p>
+							<p>
+								<strong>Important:</strong> note the various resistors in the
+								schematics below.  Never connect
+								a power source directly to the two ends of an LED.  LEDs can only
+								support a certain amount of current (typically around 30 mA) before
+								they burn out. This is why they are always connected in series with a "choke"
+								resistor.  You can estimate the minimum resistance required using the
+								relationship:
+
+								$$R = V/I$$
+
+								For a 5V supply (e.g. from the Arduino Uno), and current of 30mA,
+								you will need a resistance of about 167 Ohms.  If you use a 9V
+								battery directly, you will need 9/0.03 = 300 Ohms.  This is usually
+								why tutorials will tell you to use a 220 Ohm or 330 Ohm resistor.
+
+								The 10 kOhm resistors are being used as pull-down resistors,
+								pulling the output voltage down to zero when the various switches
+								are "open".
+							</p>
+							<p>
+								Each group of 5 vertical holes in the middle section of the breadboard are
+								internally connected, allowing you wire together components.
+								The two long horizontal lines at the top/bottom of the schematic are also
+								connected, forming "power rails".  It's common to attach the high
+								voltage to the red line, and ground to the blue line.  Some
+								breadboards are disconnected at the half-way point, usually marked
+								by broken red/blue lines along the power rails.
+							</p>
+							<p>
+								Also ensure the wiring of your components match their specifications.
+								For some components like resistors/potentiometers, the orientation
+								does not matter.  However, for others like the temperature sensor,
+								accidentally connecting the component backwards can damage the component
+								and lead to a fire hazard.  Keep an eye on the temperature sensor.
+								If it starts heating up quickly, it's in backwards.
+							</p>
+							<p>
+								When purchasing components, you may wish to buy a few extras in
+								case something goes wrong, particularly for the LEDs which can
+								easily burn out if there is a wiring error.  It's also useful
+								to have extra resistors in case you want to change your design,
+								or increase/decrease the resistance.
+							</p>
+							<br/>
+
+							<h3>Schematic 1 - Digital and Analog I/O</h3>
+
+							<p>
+								The following layout contains two types of digital switches,
+								a temperature sensor, light sensor, potentiometers, and several
+								LEDs to practice both digital and analog I/O.
+							</p>
+
+							<img class="figure" alt = "sensor schematic" src="./img/sensor_layout.png"/>
+							Fritzing schematic: <a href="./assets/apsc160_sensors.fzz">apsc160_sensors.fzz</a>
+							<br/><br/>
+
+							<table>
+								<tr><th>Component</th><th>Count</th></tr>
+								<tr><td style="text-align:left;">Full Size Breadboard</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Rotary Potentiometer (10 kOhm, Linear)</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">Photoresister (approx. 10 kOhm - 30 kOhm)</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Temperature Sensor (TMP36 or LM35)</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Slide DIP Switch (2 or 4 positions)</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Tactile Switch</td><td style="text-align:center;">4</td></tr>
+								<tr><td style="text-align:left;">LEDs (5 mm Round, Various)</td><td style="text-align:center;">7</td></tr>
+								<tr><td style="text-align:left;">220 Ohm Resistor</td><td style="text-align:center;">7</td></tr>
+								<tr><td style="text-align:left;">10 kOhm Resistor</td><td style="text-align:center;">7</td></tr>
+								<tr><td style="text-align:left;">Spindle of Wire (22 Gauge Solid)</td><td style="text-align:center;">1</td></tr>
+							</table>
+							<br/><br/>
+
+							<h3>Schematic 2 - 7-Segment Displays</h3>
+
+							<p>
+								This layout contains eight 7-segment displays, similar to the
+								the DAQ module.  Instead of connecting to the displays directly
+								and using up 24 data pins (the Arduino
+								Uno R3 only has 13 digital outputs), it uses two <em>shift registers</em>
+								to "shift out" up to 16 digital values using a sequence of pulses
+								over only three pins.  The other 8 pins of one clock display
+								are connected directly to the other display.  Due to this wiring,
+								we can actually only turn on one of the 8 displays at a time.
+								However, by quickly cycling through them at a rate of faster than 60 Hz,
+								due to <em>persistence of vision</em> it can look like they are all on
+								at the same time.
+							</p>
+
+              <img class="figure" alt="display schematic" src="./img/display_layout.png"/>
+							Fritzing schematic: <a href="./assets/apsc160_sensors.fzz">apsc160_display.fzz</a>
+							<br/>
+							<br/>
+
+							<table>
+								<tr><th>Component</th><th>Count</th></tr>
+								<tr><td style="text-align:left;">Full Size Breadboard</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Shift Register (74HC595, 14-DIP)</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">7-Segment LED Clock Display (Common Anode)</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">220 Ohm Resistor</td><td style="text-align:center;">8</td></tr>
+								<tr><td style="text-align:left;">Wire (22 Gauge Solid)</td><td style="text-align:center;">1</td></tr>
+							</table>
+            </div>
+						<div class="tabpage" id="tabpage_3">
+							<p>
+								For development, you can either use the <a href="https://www.arduino.cc/en/Main/Software">Arduino IDE</a>,
+								or you can use the free <a href="http://www.visualmicro.com/">Visual Micro plugin for Visual Studio</a>.
+							</p>
+							<br/>
+
+
+							<h3>Arduino Program Structure</h3>
+
+							An Arduino program is called a <em>sketch</em>, and typically has
+							a <code>.ino</code> extension instead of a <code>.c</code> extension.
+							It has two standard functions:
+							<pre><code class="language-c">/* the setup function runs once when you press reset or power the board */
+void setup(void) {
+	/* initialize Arduino */
+}
+
+/* the loop function runs over and over again until power down or reset */
+void loop(void) {
+	/* super loop body */
+}</code></pre>
+							<p>
+								The setup function is where we configure the board, telling
+								it which pins are inputs and which are ouputs, and where we
+								initialize any global variables.
+							</p>
+							<p>
+								The loop function is the body of the main super-loop.  It gets called over and
+								over again.
+							</p>
+							<p>
+								Note that there is no <code>main()</code> method.  The details of
+								this method are hidden from you.  It essentially performs the following,
+							</p>
+								<pre><code class="language-c">int main(void)
+{
+	setup();
+	while (TRUE) {
+		loop();
+	}
+	return 0;
+}</code></pre>
+							<p>
+								along with some other initialization and cleanup tasks.
+							</p>
+							<p>
+								There are no headers included by default.  Note that neither
+								<code class="language-c">stdio.h</code> nor <code class="language-c">stdlib.h</code>
+								exist for the Arduino.
+							</p><br/>
+
+							<h3>Arduino Library Functions</h3>
+
+							The Arduino library is very similar to our DAQ library.  It supports the following functions:
+							<ul>
+								<li><code class="language-c">int digitalRead(int pin)</code> - reads from a digital input pin</li>
+								<li><code class="language-c">void digitalWrite(int pin, int val)</code> - writes to a digital output pin</li>
+								<li><code class="language-c">int analogRead(int pin)</code> - reads from an analog input pin</li>
+								<li><code class="language-c">unsigned long millis(void)</code> - time since Arduino was turned on or reset</li>
+								<li><code class="language-c">void delay(unsigned long ms)</code> - sleep for a given time in ms</li>
+							</ul>
+							Note that the <code>analogRead()</code> function returns an integer instead of a double.
+							The value is in the range [0, 1023].  To convert to a voltage value
+							in the range of [0V, 5V],	you can use
+
+							$$\mathrm{voltage} = \frac{5}{1023}\mathrm{analog\_value}$$
+
+							Also note that there is no <code>setupDAQ()</code> or <code>continueSuperLoop()</code>
+							function.  Instead of initializing a pre-set configuration like with <code>setupDAQ()</code>,
+							we need to manually configure our pin layout using the
+							<code class="language-c">void pinMode(int pin, int mode)</code>
+							function.  For example, we can configure certain pins to be inputs and outputs using
+<pre><code class="language-c">void setup(void) {
+	pinMode(2, OUTPUT);   /* digital pin 2 as output */
+	pinMode(3, INPUT);    /* digital pin 3 as input */
+	pinMode(A2, INPUT);   /* analog pin A2 as input */
+}</code></pre>
+							<br/>
+
+							<h3>Display Write</h3>
+
+							<p>
+								Since the Arduino does not come with a standard 7-segment display,
+								there is also no <code>displayWrite()</code> function either.  If you
+								build the <strong>Schematic 2</strong> layout on the
+								previous tab, then you can add the following
+								header and source file to your project to add that functionality:
+							</p>
+							<ul>
+								<li><a href="./src/DisplayWrite.h">DisplayWrite.h</a></li>
+								<li><a href="./src/DisplayWrite.c">DisplayWrite.c</a></li>
+							</ul><br/>
+							<p>
+								To add the files in the Arduino IDE, download them somewhere known
+								on your computer, and go to "Sketch > Add File..." and add the two
+								files one at a time.  In Visual Studio with Visual Micro, right-click
+								on the project and select "Add > Existing Item..." to add the
+								two files.
+							</p>
+							<p>
+								Once the files are added to the project, you need to include the
+								<code>DisplayWrite.h</code> header in your sketch.  Since you are
+								including a custom file, you must use quotes for the include statement
+								instead of angle brackets:
+							</p>
+							<pre><code class="language-c">#include "DisplayWrite.h"</code></pre>
+							<p>
+								You will also need to configure the pins that the Arduino should use.
+								The display requires three pins: a <em>data</em>
+								pin for sending values, a <em>clock</em> pin to shift the data out one bit at a time,
+								and a <em>latch</em> pin to tell the shift
+								registers that the next set of values are ready, and to send them
+								to the displays.  The configuration should be performed in the
+								<code>setup()</code> function:
+							</p>
+							<pre><code class="language-c">void setup(void)
+{
+	setupDisplay(DATA_PIN, LATCH_PIN, CLOCK_PIN);
+}</code></pre>
+							<p>
+								On the layout provided, <code>DATA_PIN</code> is pin 2, <code>LATCH_PIN</code>
+								is pin 3, and <code>CLOCK_PIN</code> is pin 4.  Once connected and initialized,
+								you can use the <code class="language-c">void displayWrite(int data, int pos)</code>
+								function just as for the DAQ.
+							</p>
+            </div>
+						<div class="tabpage" id="tabpage_4">
+							<p>
+								Based on parts of <strong>Schematic 1</strong>, connect an LED to
+								pin 5, and a push-button to pin 6.  Create a sketch with the following
+								code:
+							</p>
+							<pre class="language-c" data-src="src/button_led.ino"></pre>
+							<p>
+								Compile and upload to the Arduino
+								(Build in Visual Studio, or Verify/Compile and Upload in Arduino IDE).
+							</p>
+							<p>
+								Once the program starts running, you should be able to push the button
+								to turn on the LED!!  We could have accomplished the same thing
+								without programming by connecting a wire directly from the button to the LED,
+								but where's the fun in that?
+							</p>
+						</div>
+						<div class="tabpage" id="tabpage_5">
+							<p>
+								Based on parts of <strong>Schematic 1</strong> and
+								<strong>Schematic 2</strong>, connect an LED to
+								pin 5, a push-button to pin 6, and the 7-segment displays to pins
+								2, 3, and 4.  Create a sketch with the following code:
+							</p>
+							<pre class="language-c" data-src="src/button_led_display.ino"></pre>
+							<p>
+								Compile and upload to the Arduino
+								(Build in Visual Studio, or Verify/Compile and Upload in Arduino IDE).
+							</p>
+							<p>
+								This should do the same as the first program (button lights up LED),
+								but it should also print a message to the displays.
+							</p>
+						</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+  <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>
