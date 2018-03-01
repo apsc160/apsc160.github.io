@@ -37,7 +37,7 @@ void loop(void)
   digitalWrite(LED_PIN, val);
 
   /* write message to displays */
-  const int message[] = { 252, 190, 96, 0, 156, 182, 206 , 238 };
+  const int message[] = { 252, 190, 96, 0, 156, 182, 206, 238 };
   for (int i = 0; i < NUM_DISPLAYS; ++i) {
     displayWrite(message[i], i);
   }
