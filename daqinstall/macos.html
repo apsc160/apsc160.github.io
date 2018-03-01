@@ -119,6 +119,39 @@
                 <img class="figure" alt="Simulator with LED off" src="./images/macos/DAQSimulatorOff.png" /> Click the "<strong>on</strong>" radio button for the switch labelled <strong>ToggleSwitch #0</strong>. The left-most LED should turn green:
                 <img class="figure" alt="Simulator with LED off" src="./images/macos/DAQSimulatorOn.png" /> Congratulations! You have just completed your first DAQ program.
               </p>
+
+							<h3>Running DAQ Programs Outside Xcode</h3>
+
+							When you compile your programs with the DAQlib library, they now
+							depend on certain files	contained in the DAQlib installation folder:
+							<ul>
+								<li><strong>libDAQlib.dylib</strong> - dynamic library file containing
+									system-dependent routines</li>
+								<li><strong>daqSimulator</strong> - the DAQ simulator program
+							</ul>
+							<p>
+								When running in Xcode, the project settings tell your
+								computer where to find these files.  However, if you try to run
+								your program outside of Xcode (i.e. by finding the folder
+								the compiled binaries are placed and double-clicking the executable),
+								you will get an error about not finding the above
+								dynamic library or simulator process.
+							</p>
+
+							<p>
+								To resolve this, you need to tell macOS where to look for the
+								required files.  MacOS searches for executables in directories
+								contained in the system's <strong>PATH</strong> environment
+								variable, and for dynamic libraries in the
+								<strong>LD_LIBRARY_PATH</strong> environment variable. You will
+								need to set the following values
+							</p>
+							<ul>
+								<li>PATH=$PATH:$HOME/Library/APSC160/DAQlib/bin</li>
+								<li>LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Library/APSC160/DAQlib/lib</li>
+							</ul>
+							For instructions on creating environment variables and adding to the
+							system <strong>PATH</strong>, see <a href="https://medium.com/@himanshuagarwal1395/setting-up-environment-variables-in-macos-sierra-f5978369b255">Setting up Environment Variables in MacOS Sierra</a>.
             </div>
           </div>
         </div>
