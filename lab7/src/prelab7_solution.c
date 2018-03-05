@@ -122,21 +122,19 @@ void runCounter()
 			 * the final value yet.
 			 */
 			if (counter < counterStop) {
+				/*
+				 * NOTE: there are better ways to handle the timing to
+				 *       minimize delay when flipping the reset switch
+				 */
+				/* windows sleep function */
 				Sleep(DELAY_TIME);
-				
+				/* macOS/Linux sleep function */
+				/* usleep(DELAY_TIME*1000) */
+
 				counter++;
 				writeNumber(counter);
 			}
 		}
-
-		/*
-		 * NOTE: there are better ways to handle the timing to
-		 *       minimize delay when flipping the reset switch
-		 */
-		/* windows sleep function */
-		Sleep(DELAY_TIME);
-		/* macOS/Linux sleep function */
-		/* usleep(DELAY_TIME*1000) */
 	}
 }
 
