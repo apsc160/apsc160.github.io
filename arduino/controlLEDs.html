@@ -32,17 +32,58 @@
         <div id="tabContainer">
           <div id="tabs">
             <ul>
-              <li id="tabHeader_1">Intro</li>
-              <li id="tabHeader_2">Hardware</li>
-              <li id="tabHeader_3">Software</li>
+              <li id="tabHeader_1">controlLEDs</li>
             </ul>
           </div>
           <div id="tabscontent">
             <div class="tabpage" id="tabpage_1">
 							<h3>Task</h3>
-							We will control the state of a set of three LEDs based 
+							We are to control the state of three LEDs based on the values
+							of the two switches according to the following table:<br/><br/>
+
+							<table class="center">
+								<tr><th><code>SWITCH0</code></th><th><code>SWITCH1</code></th>
+									<th><code>LED0</code></th><th><code>LED1</code></th><th><code>LED2</code></th></tr>
+								<tr><td><code>OFF</code></td><td><code>OFF</code></td><td>
+									<code>OFF</code></td><td><code>OFF</code></td><td><code>OFF</code></td></tr>
+								<tr><td><code>ON</code></td><td><code>OFF</code></td><td>
+									<code>ON</code></td><td><code>OFF</code></td><td><code>OFF</code></td></tr>
+								<tr><td><code>OFF</code></td><td><code>ON</code></td>
+									<td><code>OFF</code></td><td><code>ON</code></td><td><code>OFF</code></td></tr>
+								<tr><td><code>ON</code></td><td><code>ON</code></td>
+									<td><code>OFF</code></td><td><code>OFF</code></td><td><code>ON</code></td></tr>
+							</table>
+
+							<img class="figure" alt="arduino hardware" src="./img/arduino_controlLEDs.jpg" />
+
+							<h3>Hardware Setup</h3>
+							<p>
+								We need two switches and three LEDs.  For the switches, we can use
+								either DIP switches, or push-buttons.  The following schematic uses
+								DIP switches.
+							</p>
+							<img class="figure" alt="hardware layout" src="./img/apsc160_sim1.png" />
+
+							Fritzing schematic: <a href="./assets/apsc160_sim1.fzz">apsc160_sim1.fzz</a>
+							<br/><br/>
+
+							<table>
+								<tr><th>Component</th><th>Count</th></tr>
+								<tr><td style="text-align:left;">Full Size Breadboard</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Slide DIP Switch (2 or 4 positions)</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">  <em>or</em> Tactile Switch</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">LEDs (5 mm Round, Various)</td><td style="text-align:center;">3</td></tr>
+								<tr><td style="text-align:left;">220 Ohm Resistor</td><td style="text-align:center;">3</td></tr>
+								<tr><td style="text-align:left;">10 kOhm Resistor</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">Spindle of Wire (22 Gauge Solid)</td><td style="text-align:center;">1</td></tr>
+							</table>
+							<br/><br/>
+
+							<h3>Software Implementation</h3>
+							<a href="./src/controlLEDs.ino">controlLEDs.ino</a><br/>
+							<pre class="language-c" data-src="./src/controlLEDs.ino"></pre>
 						</div>
-          </div>
+					</div>
         </div>
       </div>
     </div>
