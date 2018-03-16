@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" async
+		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+  <title>Worksheet Exercises</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+						<ul>
+							<li id="navHeader_1" ><a id="navLink_1" href="./exercises.html">Exercises</a></li>
+							<li id="navHeader_2"><a id="navLink_2"  href="./controlLEDs.html">controlLEDs</a></li>
+							<li id="navHeader_3" class="selected"><a id="navLink_3">rotateLEDs</a></li>
+						</ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Worksheet Exercises</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">rotateLEDs</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+							<h3>Task</h3>
+							We will write a program that will do the following:
+							<ul>
+								<li>starts by turning on <code>LED0</code></li>
+								<li>once very second, shifts the LED to the right, wrapping around
+									if necessary (e.g. after one second only <code>LED1</code> is on,
+									after 2 seconds only <code>LED2</code> is on, etc.)</li>
+								<li>if <code>RESET</code> is pressed, restarts the cycle, turning
+									<code>LED0</code> on and all others off
+							</ul>
+
+							<img class="figure" alt="arduino hardware" src="./img/arduino_rotateLEDs.jpg" />
+
+							<h3>Hardware Setup</h3>
+							<p>
+								We need two switches and three LEDs.  For the switches, we can use
+								either DIP switches, or push-buttons.  The following schematic uses
+								DIP switches.
+							</p>
+							<img class="figure" alt="hardware layout" src="./img/apsc160_rotateLEDs.png" />
+
+							Fritzing schematic: <a href="./assets/apsc160_rotateLEDs.fzz">apsc160_rotateLEDs.fzz</a>
+							<br/><br/>
+
+							<table>
+								<tr><th>Component</th><th>Count</th></tr>
+								<tr><td style="text-align:left;">Full Size Breadboard</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Tactile Switch</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">LEDs (5 mm Round, Various)</td><td style="text-align:center;">6</td></tr>
+								<tr><td style="text-align:left;">220 Ohm Resistor</td><td style="text-align:center;">6</td></tr>
+								<tr><td style="text-align:left;">10 kOhm Resistor</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Spindle of Wire (22 Gauge Solid)</td><td style="text-align:center;">1</td></tr>
+							</table>
+							<br/><br/>
+
+							<h3>Software Implementation</h3>
+							<a href="./src/controlLEDs.ino">rotateLEDs.ino</a><br/>
+							<pre class="language-c" data-src="./src/rotateLEDs.ino"></pre>
+						</div>
+					</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+  <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>
