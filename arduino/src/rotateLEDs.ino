@@ -4,16 +4,16 @@
  */
 
 /* I/O pins */
-const int RESET = 2;
-const int LED0 = 3;
-const int NUM_LEDS = 6;
+#define RESET    2
+#define LED0     3
+#define NUM_LEDS 6
 
 /* states */
-const int OFF = LOW;
-const int ON = HIGH;
+#define OFF LOW
+#define ON  HIGH
 
 /* timing (ms) */
-const unsigned long DELAY = 1000;
+#define DELAY 1000
 
 /* initialization */
 void setup(void)
@@ -28,8 +28,8 @@ void setup(void)
 }
 
 /* main control loop */
-void loop() {
-
+void loop(void)
+{
 	/* initialize LED index, shared between loop iterations */
 	static int led = 0;
 	/* initialize time variable for last modification */
@@ -59,5 +59,4 @@ void loop() {
 		/* only turn on LED corresponding to 'led' */
 		digitalWrite(LED0 + i, i == led);
 	}
-
 }

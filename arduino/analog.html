@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" async src="../js/MathJax-2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <title>Worksheet Exercises</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+						<ul>
+							<li id="navHeader_1" ><a id="navLink_1" href="./exercises.html">Exercises</a></li>
+							<li id="navHeader_2" ><a id="navLink_2" href="./controlLEDs.html">controlLEDs</a></li>
+							<li id="navHeader_3" ><a id="navLink_3" href="./writeNumber.html">writeNumber</a></li>
+							<li id="navHeader_4" ><a id="navLink_4" href="./rotateLEDs.html">rotateLEDs</a></li>
+							<li id="navHeader_5" ><a id="navLink_5" href="./traffic.html">traffic</a></li>
+							<li id="navHeader_6" class="selected"><a id="navLink_6" href="./analog.html">analog</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Worksheet Exercises</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">analog</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+							<h3>Task</h3>
+							We are to create a program to read from a temperature sensor and
+							a light sensing circuit.
+
+							<img class="figure" alt="arduino hardware" src="./img/arduino_analog.jpg" />
+
+							<h3><a name="hardware">Hardware Setup</a></h3>
+							<img class="figure" alt="hardware layout" src="./img/apsc160_analog.png" />
+
+							Fritzing schematic: <a href="./assets/apsc160_analog.fzz">apsc160_analog.fzz</a>
+							<br/><br/>
+
+							<table>
+								<tr><th>Component</th><th>Count</th></tr>
+								<tr><td style="text-align:left;">Full Size Breadboard</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">Photoresistor (approx. 10 kOhm - 30 kOhm)</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Temperature Sensor (TMP36 or LM35)</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Slide DIP Switch (2 or 4 positions)</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">10 kOhm Resistor</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">Shift Register (74HC595, 14-DIP)</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">4 digit 7-Segment LED Clock Display (Common Anode)</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">220 Ohm Resistor</td><td style="text-align:center;">8</td></tr>
+								<tr><td style="text-align:left;">Spindle of Wire (22 Gauge Solid)</td><td style="text-align:center;">1</td></tr>
+							</table>
+							<br/><br/>
+
+							<h3>Analog Value Conversion</h3>
+
+							To obtain meaningful results from our analog measurements, we need
+							to convert the raw analog values that come out of the
+							Arduino's analog-to-digital converter.
+
+							<h4>Analog to Voltage</h4>
+							On the Arduino, the <code>analogRead(...)</code> function returns a value
+							in the range of [0, 1023], where 0 corresponds to 0 V and 1023
+							corresponds to the reference voltage (5 V by default).  Thus, to
+							convert the raw value to voltage, we must apply
+
+							$$V = \frac{a}{1023}V_\mathrm{ref},$$
+
+							where \(a\) is the raw analog value, and \(V_\mathrm{ref}\) is the reference
+							voltage of 5 V.
+
+							<h4>Temperature</h4>
+							<p>
+								The TMP35 temperature sensor has voltage-temperature characteristics
+								described in the specifications sheet as
+
+								$$T = 10 (V - 0.5)$$
+
+								where voltage is measured in volts, and temperature in degrees Celsius.
+								To convert Celsius to Kelvin, we add 273.15.
+							</p>
+
+							<h4>Illumination</h4>
+							<p>
+								The light sensing circuit is created using a voltage divider with a
+								10 kOhm resistor and a photocell (also referred to as a
+								photoresistor).  The datasheet for the photocell specifies a linear
+								relationship between the log of the resistance and the log of lumination:
+
+								$$\log(L) = M \log(R) + b,$$
+
+								where \(L\) is luminance measured in <em>lux</em>, and \(R\) is the
+								resistance of the photocell. The output voltage of the voltage divider is
+								given by
+
+								$$V = \frac{R_D}{R+R_D}V_\mathrm{ref},$$
+
+								where \(R_D\) is the 10 kOhm resistance, and \(V_\mathrm{ref}\) is the
+								reference voltage of 5 V.  Putting these equations together, we have
+
+								$$L = \exp\left[M\log\left(R_D[V_\mathrm{ref}-V]/V\right) + b\vphantom{\sum}\right]$$
+
+								By measuring luminance in a variety of lightings using a free
+								Android phone application, as well as the corresponding output voltages
+								of the voltage divider, we experimentally
+								determined the parameters \(M = -1.4\), \(b = 16.34\).  These
+								values may need to be calibrated for your photocell (e.g. see
+								<a href="https://www.allaboutcircuits.com/projects/design-a-luxmeter-using-a-light-dependent-resistor/">this tutorial</a>).
+							</p>
+
+							<h3>Software Implementation</h3>
+							<p>
+								For this program, we provide a library to handle the <code>displayWrite(...)</code>
+								functionality, since this is not part of the Arduino API.  This library assumes
+								the exact hardware configuration as given in the <a href="#hardware">Hardware Setup</a>
+								above.
+							</p>
+							<ul>
+								<li>Header: <a href="./src/DisplayWrite.h">DisplayWrite.h</a></li>
+								<li>Implementation: <a href="./src/DisplayWrite.c">DisplayWrite.c</a></li>
+							</ul>
+							<p>
+								To add these files to your program in the Arduino IDE, download
+								them somewhere known on your computer, and go to "Sketch > Add File..."
+								and select both files.
+								In Visual Studio with Visual Micro, right-click
+								on the project and select "Add > Existing Item..." to add the
+								both the header and source files.
+							</p>
+							<a href="./src/analog.ino">analog.ino</a><br/>
+							<pre class="language-c" data-src="./src/analog.ino"></pre>
+						</div>
+					</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+  <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>

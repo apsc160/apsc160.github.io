@@ -1,0 +1,49 @@
+/* Reference: https://www.w3schools.com/css/css_navbar.asp */
+
+ul.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+ul.nav li {
+    float: left;
+}
+
+ul.nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.nav li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #AF3C40;
+}
+
+.main {
+    margin-top: 70px;
+}
+
+body{
+    font-size: 13pt;
+}
+
+td {
+    padding: 2px;
+}
+
+table {
+    border-spacing: 0px;
+    border-collapse: separate;
+}

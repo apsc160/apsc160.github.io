@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+  <title>Worksheet Exercises</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+						<ul>
+							<li id="navHeader_1" ><a id="navLink_1" href="./exercises.html">Exercises</a></li>
+							<li id="navHeader_2" ><a id="navLink_2" href="./controlLEDs.html">controlLEDs</a></li>
+							<li id="navHeader_3" ><a id="navLink_3" href="./writeNumber.html">writeNumber</a></li>
+							<li id="navHeader_4" ><a id="navLink_4" href="./rotateLEDs.html">rotateLEDs</a></li>
+							<li id="navHeader_5" class="selected"><a id="navLink_5" href="./traffic.html">traffic</a></li>
+							<li id="navHeader_6" ><a id="navLink_6" href="./analog.html">analog</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Worksheet Exercises</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">traffic</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+							<h3>Task</h3>
+							We are to create a program to control a pair of traffic lights.
+							One light controls traffic in the East-West direction, and the other
+							in the North-South direction.
+
+							<img class="figure" alt="arduino hardware" src="./img/arduino_traffic.jpg" />
+
+							<h3>Hardware Setup</h3>
+							<p>
+								We need six LEDs for the program.
+							</p>
+							<img class="figure" alt="hardware layout" src="./img/apsc160_traffic.png" />
+
+							Fritzing schematic: <a href="./assets/apsc160_traffic.fzz">apsc160_traffic.fzz</a>
+							<br/><br/>
+
+							<table>
+								<tr><th>Component</th><th>Count</th></tr>
+								<tr><td style="text-align:left;">Full Size Breadboard</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">LEDs (5 mm Round, Various)</td><td style="text-align:center;">6</td></tr>
+								<tr><td style="text-align:left;">220 Ohm Resistor</td><td style="text-align:center;">6</td></tr>
+							</table>
+							<br/><br/>
+
+							<h3>Software Implementation</h3>
+							<a href="./src/traffic.ino">traffic.ino</a><br/>
+							<pre class="language-c" data-src="./src/traffic.ino"></pre>
+						</div>
+					</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+  <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>

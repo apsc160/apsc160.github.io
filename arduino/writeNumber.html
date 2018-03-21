@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <link href="../css/verdana.css" rel="stylesheet" type="text/css" />
+  <link href="../css/prism-vs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" async src="../js/MathJax-2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <title>Worksheet Exercises</title>
+</head>
+
+<body>
+  <section id="wrap">
+    <div id="sideContainer">
+      <div id="logoContainer"><img style="width: 164px; height: 44px;" alt="UBC Logo" src="../images/ubcLogoWhite.png" /></div>
+      <div id="navContainer">
+        <div id="nav">
+          <nav>
+						<ul>
+							<li id="navHeader_1" ><a id="navLink_1" href="./exercises.html">Exercises</a></li>
+							<li id="navHeader_2" ><a id="navLink_2" href="./controlLEDs.html">controlLEDs</a></li>
+							<li id="navHeader_3" class="selected" ><a id="navLink_3" href="./writeNumber.html">writeNumber</a></li>
+							<li id="navHeader_4" ><a id="navLink_4" href="./rotateLEDs.html">rotateLEDs</a></li>
+							<li id="navHeader_5" ><a id="navLink_5" href="./traffic.html">traffic</a></li>
+							<li id="navHeader_6" ><a id="navLink_6" href="./analog.html">analog</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="association">
+      <h1 id="title">Worksheet Exercises</h1>
+      <div id="wrapper">
+        <div id="tabContainer">
+          <div id="tabs">
+            <ul>
+              <li id="tabHeader_1">writeNumber</li>
+            </ul>
+          </div>
+          <div id="tabscontent">
+            <div class="tabpage" id="tabpage_1">
+							<h3>Task</h3>
+							<p>
+								We are going to create a program to write non-negative integers
+								to a set of 7-segment displays.
+							</p>
+							<p>
+								To send the program the number to display, we will open a serial
+								connection to the Arduino over USB.
+							</p>
+
+							<img class="figure" alt="arduino hardware" src="./img/arduino_writeNumber.jpg" />
+
+							<h3><a name="hardware">Hardware Setup</a></h3>
+							<p>
+								In this setup, we use two common-anode 7-segment clock displays
+								to display the numbers, and two 74HC595 shift registers to allow
+								us to send data to the 7-segment display using only 3 pins of our
+								Arduino.  Without the shift registers, we would need to connect
+								16 digital output pins to control the displays.  The shift registers
+								allow us to send information serially (i.e. one bit at a time),
+								store the values in the chips, and output to the displays in parallel.
+							</p>
+							<p>
+								For more information about shift registers, see the
+								<a href="https://www.arduino.cc/en/Tutorial/ShiftOut">Arduino ShiftOut Tutorial</a>.
+							</p>
+							<img class="figure" alt="hardware layout" src="./img/apsc160_display.png" />
+
+							Fritzing schematic: <a href="./assets/apsc160_display.fzz">apsc160_display.fzz</a>
+							<br/><br/>
+
+							<table>
+								<tr><th>Component</th><th>Count</th></tr>
+								<tr><td style="text-align:left;">Full Size Breadboard</td><td style="text-align:center;">1</td></tr>
+								<tr><td style="text-align:left;">Shift Register (74HC595, 14-DIP)</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">4 digit 7-Segment LED Clock Display (Common Anode)</td><td style="text-align:center;">2</td></tr>
+								<tr><td style="text-align:left;">220 Ohm Resistor</td><td style="text-align:center;">8</td></tr>
+							</table>
+							<br/><br/>
+
+							<h3>Software Implementation</h3>
+							<p>
+								For this program, we provide a library to handle the <code>displayWrite(...)</code>
+								functionality, since this is not part of the Arduino API.  This library assumes
+								the exact hardware configuration as given in the <a href="#hardware">Hardware Setup</a>
+								above.
+							</p>
+							<ul>
+								<li>Header: <a href="./src/DisplayWrite.h">DisplayWrite.h</a></li>
+								<li>Implementation: <a href="./src/DisplayWrite.c">DisplayWrite.c</a></li>
+							</ul>
+							<p>
+								To add these files to your program in the Arduino IDE, download
+								them somewhere known on your computer, and go to "Sketch > Add File..."
+								and select both files.
+								In Visual Studio with Visual Micro, right-click
+								on the project and select "Add > Existing Item..." to add the
+								both the header and source files.
+							</p>
+							<p>
+								The main program sketch is below.  Note that on the Arduino, an
+								integer can only store up to a maximum value of \(2^{15}-1=32767\).
+								To allow up to 8-digit numbers, we use the <code class="language-c">long</code> data
+								type, which has a maximum value of \(2,147,483,647\).
+							</p>
+
+							<a href="./src/writeNumber.ino">writeNumber.ino</a><br/>
+							<pre class="language-c" data-src="./src/writeNumber.ino"></pre>
+
+							<h3>Running the Program</h3>
+
+							<p>
+								To send data to the Arduino, we will use the Serial Monitor.
+								In the Arduino IDE, you can show the Serial Monitor by clicking on the
+								<img alt="serial monitor icon" style="margin-bottom: -0.5em" src="./img/arduino_serial_monitor_icon.png"> icon in the top-right
+								of the IDE.  This will show the following window:
+							</p>
+							<img class="figure" alt="Arduino serial monitor" src="./img/arduino_serial_monitor.png"/>
+							<p>
+								The monitor should display the prompt from our program.  Enter an integer in the top
+								textbox and click <em>send</em> or hit the Enter key.  The program should print the
+								number back to you in the monitor, as well as display it on the 7-segment displays.
+							</p>
+							<p>
+								To open the Serial Monitor in Visual Studio using the vMicro plug-in,
+								navigate in the menus to "vMicro > Debugger > View Port Monitor".
+							</p>
+							<img class="figure" alt="vMicro serial monitor" src="./img/vmicro_serial_monitor.png"/>
+							<p>
+								The monitor should display the prompt from our program.  Enter an integer in the top
+								textbox and hit the Enter key to send it to the Arduino.  The program should print the
+								number back to you in the monitor, as well as display it on the 7-segment displays.
+							</p>
+						</div>
+					</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="../js/tabs_old.js"></script>
+  <script src="../js/prism.max.js"></script>
+  <script src="../js/jquery.min.js"></script>
+</body>
+
+</html>
