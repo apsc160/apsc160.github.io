@@ -73,6 +73,7 @@
 							Arduino's analog-to-digital converter.
 
 							<h4>Analog to Voltage</h4>
+
 							On the Arduino, the <code>analogRead(...)</code> function returns a value
 							in the range of [0, 1023], where 0 corresponds to 0 V and 1023
 							corresponds to the reference voltage (5 V by default).  Thus, to
@@ -84,11 +85,17 @@
 							voltage of 5 V.
 
 							<h4>Temperature</h4>
+
 							<p>
-								The TMP35 temperature sensor has voltage-temperature characteristics
+								The TMP36 temperature sensor has voltage-temperature characteristics
 								described in the specifications sheet as
 
-								$$T = 10 (V - 0.5)$$
+								<img class="figure" alt="spec sheet" height="150" src="./img/tmp36_spec.png" />
+
+								Thus, we can compute a temperature from the output voltage using
+								the equation
+
+								$$T = 100 (V - 0.5),$$
 
 								where voltage is measured in volts, and temperature in degrees Celsius.
 								To convert Celsius to Kelvin, we add 273.15.
@@ -98,8 +105,13 @@
 							<p>
 								The light sensing circuit is created using a voltage divider with a
 								10 kOhm resistor and a photocell (also referred to as a
-								photoresistor).  The datasheet for the photocell specifies a linear
-								relationship between the log of the resistance and the log of lumination:
+								photoresistor).
+
+								<img alt="photocell voltage divider" class="figure" height="300" src="./img/photocell_voltage_divider.png" />
+
+								The datasheet for the photocell specifies a linear
+								relationship between the log of the resistance and the log of
+								illumination:
 
 								$$\log(L) = M \log(R) + b,$$
 
@@ -115,9 +127,10 @@
 								$$L = \exp\left[M\log\left(R_D[V_\mathrm{ref}-V]/V\right) + b\vphantom{\sum}\right]$$
 
 								By measuring luminance in a variety of lightings using a free
-								Android phone application, as well as the corresponding output voltages
+								phone application, as well as the corresponding output voltages
 								of the voltage divider, we experimentally
-								determined the parameters \(M = -1.4\), \(b = 16.34\).  These
+								determined the parameters for our particular photocell as
+								\(M = -1.4\), \(b = 15.76\).  These
 								values may need to be calibrated for your photocell (e.g. see
 								<a href="https://www.allaboutcircuits.com/projects/design-a-luxmeter-using-a-light-dependent-resistor/">this tutorial</a>).
 							</p>

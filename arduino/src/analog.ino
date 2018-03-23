@@ -26,12 +26,12 @@
 
 /* symbolic constants for temperature conversion */
 #define VOFF_TEMP  0.5
-#define M_TEMP     10
+#define M_TEMP     100
 #define ZERO_CELIUS_IN_KELVIN 273.15
 
 /* symbolic constants for light conversion */
 #define M_LUX  (-1.4)
-#define B_LUX  16.34
+#define B_LUX  15.76
 #define VD_LUX VREF
 #define RD_LUX 10000
 
