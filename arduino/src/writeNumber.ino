@@ -61,7 +61,8 @@ void writeNumber(long number)
 		182, 190, 224, 254, 246 };
 	static const int OFF = 0;      /* turning display off */
 
-	int digit = 0;                 /* current digits */
+	/* current digit */
+	int digit = 0;
 
 	/* start at the right-most 7-segment display */
 	int pos = 0;
