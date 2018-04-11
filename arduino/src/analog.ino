@@ -124,9 +124,9 @@ void writeNumber(long number)
 	int pos = 0;
 
 	/*
-	* extract one digit at a time until no digits remain (i.e. number == 0)
-	* or we have exhausted our LED displays (i.e. pos >= NUM_DISPLAYS ).
-	*/
+	 * extract one digit at a time until no digits remain (i.e. number == 0)
+	 * or we have exhausted our LED displays (i.e. pos >= NUM_DISPLAYS ).
+	 */
 	do {
 		digit = (int)(number % 10);
 		number = number / 10;

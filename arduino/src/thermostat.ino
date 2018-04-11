@@ -1,7 +1,7 @@
 /*
-* Program:  thermostat.c
-* Purpose:  complete program to create a thermostat
-*/
+ * Program:  thermostat.c
+ * Purpose:  complete program to create a thermostat
+ */
 
 /* headers */
 #include "DisplayWrite.h"
@@ -171,15 +171,15 @@ double readTemperatureDial()
 }
 
 /*
-* Writes a message to a set of 7-segment displays
-* The message is assumed to be read from left-to-right,
-* so that message[0] is the left-most character.
-*
-* Parameters:
-* message - array of 8-bit values to write to the displays
-* length - number of values in the message
-* offset - right-most display index
-*/
+ * Writes a message to a set of 7-segment displays
+ * The message is assumed to be read from left-to-right,
+ * so that message[0] is the left-most character.
+ *
+ * Parameters:
+ *     message - array of 8-bit values to write to the displays
+ *     length - number of values in the message
+ *     offset - right-most display index
+ */
 void writeMessage(const int message[], int length, int offset)
 {
 	int i; /* loop counter */
@@ -192,12 +192,12 @@ void writeMessage(const int message[], int length, int offset)
 }
 
 /*
-* Writes a number to a set of 7-segment displays
-* Parameters:
-* number - non-negative integer to display
-* length - number of displays to write to
-* offset - starting index of number
-*/
+ * Writes a number to a set of 7-segment displays
+ * Parameters:
+ *     number - non-negative integer to display
+ *     length - number of displays to write to
+ *     offset - starting index of number
+ */
 void writeNumber(int number, int length, int offset)
 {
 	/* constant digits table */
@@ -222,7 +222,7 @@ void writeNumber(int number, int length, int offset)
 		displayWrite(DIGITS_TABLE[digit], pos + offset);
 		/* move to next digit */
 		pos++;
-		/* loop while still displays left and number is not zero */
+	/* loop while still displays left and number is not zero */
 	} while (pos < length && number != 0);
 
 	/* clear any remaining displays */

@@ -57,8 +57,8 @@ long readLong(void)
 void writeNumber(long number)
 {
 	/* constant digits table */
-	static const int DIGITS_TABLE[10] = { 252, 96, 218, 242, 102,
-		182, 190, 224, 254, 246 };
+	static const int DIGITS_TABLE[10] = { 252,  96, 218, 242, 102,
+	                                      182, 190, 224, 254, 246 };
 	static const int OFF = 0;      /* turning display off */
 
 	/* current digit */
