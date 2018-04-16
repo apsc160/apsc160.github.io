@@ -76,6 +76,32 @@
                 The previous instructions will install the DAQlib library and simulator only for the current user. To install globally, for all users on a particular machine, follow the same instructions but run the <span class="file">install.bat</span>                  file as Administrator. This can be done by right-clicking on the file and selecting "<span class="highlight">Run as administrator</span>".
               </p>
 
+							<h3>Manual Installation:</h3>
+
+							<p>
+								Due to some machine-specific configurations, the above installation script may fail.
+								If this happens to you, you can still install the simulator and library manually
+								using the following steps.
+							</p>
+							<ol>
+								<li>Extract the the downloaded zip file and copy the contained <span class="highlight">DAQlib</span> folder.</li>
+								<li>In Windows Explorer, type <code>%APPDATA%</code> in the address bar and hit enter.
+									This should bring you a path like <span class="highlight">C:\Users\yourusername\AppData\Roaming</span></li>
+								<li>Create a new folder here called <span class="highlight">APSC160</span>, and paste the
+										copied <span class="highlight">DAQlib</span> folder inside</li>
+								<li>Inside the <span class="highlight">DAQlib</span> folder, go inside <span class="highlight">VS</span>
+									 and copy the <span>DAQTemplate</span> folder</li>
+						 	 	<li>Go to your user's <span class="highlight">Documents</span> folder, which on most systems is
+         						<span class="highlight">C:\Users\yourusername\Documents</span>, though you should see a link
+										in the left Quick-Access panel.</li>
+   							<li>Within the <span class="highlight">Documents</span> folder, navigate to
+									<span class="highlight">Visual Studio 2017\Templates\ProjectTemplates\Visual C++ Project</span></li>
+   							<li>Create a new folder here called <span class="highlight">APSC160</span></li>
+								<li>Inside <span class="highlight">APSC160</span>, create a new folder <span class="highlight">DAQlib</span>,
+									and paste the <span class="highlight">DAQTemplate</span> folder inside</li>
+								<li>Restart Visual Studio</li>
+							</ol>
+
               <h3>Uninstalling the Library:</h3>
               <p>
                 To uninstall the DAQlib library, simply run the <span class="file">uninstall.bat</span> script. If run as Administrator, the script will attempt to uninstall a global installation.
