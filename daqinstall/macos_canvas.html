@@ -1,4 +1,4 @@
-<div id="tabs">
+<div id="tabs" class="enhanceable_content tabs">
   <ul>
     <li id="tabHeader_1"><a style="text-decoration: none;" href="#tabpage_1">Installation</a></li>
     <li id="tabHeader_2"><a style="text-decoration: none;" href="#tabpage_2">Your First Project</a></li>
@@ -10,7 +10,7 @@
   
     For the instructions below, you will need to download the following zip file:
     <ul>
-      <li><a href="./assets/DAQlib_macos.zip">DAQlib_macos.zip</a></li>
+      <li><a href="https://apsc160.github.io/daqinstall/assets/DAQlib_macos.zip">DAQlib_macos.zip</a></li>
     </ul>
     <br/>
 
@@ -22,7 +22,7 @@
       <li>Download the above DAQlib zip file. This should create a zip file called
         <span class="file" style="color: blue; font-weight: bold; font-family: courier;">DAQlib_macos.zip</span> in your downloads folder.</li>
       <li>Unzip the file by double-clicking on <span class="file" style="color: blue; font-weight: bold; font-family: courier;">DAQlib_macos.zip</span> in Finder.
-        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="DAQlib extraction" src="./images/macos/extract.png" /> 
+        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="DAQlib extraction" src="https://apsc160.github.io/daqinstall/images/macos/extract.png" /> 
         Inside the unzipped folder, you should see a new subfolder named <span class="file" style="color: blue; font-weight: bold; font-family: courier;">DAQlib</span>, as well as two script files: <span class="file" style="color: blue; font-weight: bold; font-family: courier;">install.command</span> 
         and <span class="file" style="color: blue; font-weight: bold; font-family: courier;">uninstall.command</span>.
       </li>
@@ -30,18 +30,18 @@
         Double-click on <span class="file" style="color: blue; font-weight: bold; font-family: courier;">install.command</span>
         <br/> 
         You may get a security warning about opening the file from an unidentified developer.
-        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="unidentified developer" src="./images/macos/unidentified.png" /> 
+        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="unidentified developer" src="https://apsc160.github.io/daqinstall/images/macos/unidentified.png" /> 
         If this occurs, we will by-pass the security setting. Click on "<strong>OK</strong>", then control-click the <span class="file" style="color: blue; font-weight: bold; font-family: courier;">install.command</span>
         file and select "<span class="highlight" style="color: crimson; font-weight: bold;">Open</span>" from the menu. You will be asked to confirm opening of the file. 
         Click on the "<span class="highlight" style="color: crimson; font-weight: bold;">Open</span>" button.
-        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="run unidentified developer" src="./images/macos/open_unidentified.png" />
+        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="run unidentified developer" src="https://apsc160.github.io/daqinstall/images/macos/open_unidentified.png" />
       </li>
       <li>
         The installation script will first prompt you to confirm installation.  Enter 'Y' to continue.
         It will then install the required files and a new Xcode project template that is configured to
         find the DAQlib library and simulator programs.
         If successful, it should give an output similar to the following:
-        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="installation successful" src="./images/macos/success.png" /> 
+        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="installation successful" src="https://apsc160.github.io/daqinstall/images/macos/success.png" /> 
         If you encounter an error that you cannot resolve, please either post a message on the discussion 
         board with the output of the install script, or see a TA or instructor to help you complete the 
         installation.
@@ -61,19 +61,19 @@
     </p>
 
     Start Xcode from the Applications menu in Finder. Xcode should present the start screen to allow you to select a previous project or create a new one.
-    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode startup" src="./images/macos/XcodeStartup.png" />
+    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode startup" src="https://apsc160.github.io/daqinstall/images/macos/XcodeStartup.png" />
     <ul>
       <li>Select "<strong>Create a new Xcode project.</strong>"</li>
       <li>On the following screen, select <strong>OS X</strong>, <strong>Application</strong> in the left panel, and <strong>APSC160 - DAQ</strong> in the right panel.</li>
       <li>Click "<strong>Next</strong>"</li>
     </ul>
-    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode template" src="./images/macos/XcodeTemplate.png" />
+    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode template" src="https://apsc160.github.io/daqinstall/images/macos/XcodeTemplate.png" />
     <ul>
       <li>In the project options form, enter a descriptive Product Name and information (e.g. DAQSimulatorTest).</li>
       <li>Click "<strong>Next</strong>"</li>
     </ul>
-    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode product" src="./images/macos/XcodeProductInfo.png" /> A new project will be displayed, which should look something like the following:
-    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode Project Explorer" src="./images/macos/XcodeProject.png" /> A new source file called <span class="code">main.c</span> will automatically be generated for you. You can change the name of this file to something
+    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode product" src="https://apsc160.github.io/daqinstall/images/macos/XcodeProductInfo.png" /> A new project will be displayed, which should look something like the following:
+    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode Project Explorer" src="https://apsc160.github.io/daqinstall/images/macos/XcodeProject.png" /> A new source file called <span class="code">main.c</span> will automatically be generated for you. You can change the name of this file to something
     more descriptive by doing the following:
     <ul>
       <li>Click on the <span class="code">main.c</span> file to open the file in the main viewer</li>
@@ -83,8 +83,8 @@
     </ul>
     <br/> Now add code to the source file so that it looks like the following. Include your own name, student number, ... at the top of the code (the green text in the code below).
 
-    <pre data-src="./src/DAQSimulatorTest.c"></pre>
-    <a href="./src/DAQSimulatorTest.c">DAQSimulatorTest.c</pre>
+    <pre data-src="https://apsc160.github.io/daqinstall/src/DAQSimulatorTest.c"></pre>
+    <a href="https://apsc160.github.io/daqinstall/src/DAQSimulatorTest.c">DAQSimulatorTest.c</pre>
     
     <p>
       We do not expect you to understand the code that you are typing yet (that will come in the next few weeks).
@@ -99,8 +99,8 @@
     <p>
       Run the program by either using the play button, or
       <strong>Product > Run</strong>. If everything was installed successfully, the simulator should appear, though it may open behind the Xcode window:
-      <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Simulator with LED off" src="./images/macos/DAQSimulatorOff.png" /> Click the "<strong>on</strong>" radio button for the switch labelled <strong>ToggleSwitch #0</strong>. The left-most LED should turn green:
-      <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Simulator with LED off" src="./images/macos/DAQSimulatorOn.png" /> Congratulations! You have just completed your first DAQ program.
+      <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Simulator with LED off" src="https://apsc160.github.io/daqinstall/images/macos/DAQSimulatorOff.png" /> Click the "<strong>on</strong>" radio button for the switch labelled <strong>ToggleSwitch #0</strong>. The left-most LED should turn green:
+      <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Simulator with LED off" src="https://apsc160.github.io/daqinstall/images/macos/DAQSimulatorOn.png" /> Congratulations! You have just completed your first DAQ program.
     </p>
 
     <h3>Running DAQ Programs Outside Xcode</h3>
