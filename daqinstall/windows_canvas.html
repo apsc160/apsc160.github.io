@@ -5,7 +5,7 @@
   </ul>
   <div class="tabpage" id="tabpage_1">
     <p>
-      With this set of instructions, we will install the <span class="highlight">DAQlib</span> Library and simulator on Windows systems for use with Visual Studio 2017. 
+      With this set of instructions, we will install the <span class="highlight" style="color: crimson; font-weight: bold;">DAQlib</span> Library and simulator on Windows systems for use with Visual Studio 2017. 
       For other platforms, such as MacOS, go to the appropriate installation page.
     </p>
 
@@ -17,25 +17,25 @@
     <h3>Installation for a Single User:</h3> 
     
     To install the DAQlib library and simulator for Visual Studio on your local computer, we will first
-    <span class="highlight">download a zip file</span> containing all the required headers, libraries, and 
-    binaries, and then run an <span class="highlight">installation script</span> that will create a new project 
+    <span class="highlight" style="color: crimson; font-weight: bold;">download a zip file</span> containing all the required headers, libraries, and 
+    binaries, and then run an <span class="highlight" style="color: crimson; font-weight: bold;">installation script</span> that will create a new project 
     template to access these files.
     <ol>
-      <li>Download the DAQlib zip file for your system above.  This should create a zip file called <span class="file">DAQlib_windows.zip</span> in your
+      <li>Download the DAQlib zip file for your system above.  This should create a zip file called <span class="file" style="color: blue; font-weight: bold; font-family: courier;">DAQlib_windows.zip</span> in your
         downloads folder.
       </li>
-      <li>Unzip the file by right-clicking on <span class="file">DAQlib_windows.zip</span> and selecting <b>Extract all...</b>
+      <li>Unzip the file by right-clicking on <span class="file" style="color: blue; font-weight: bold; font-family: courier;">DAQlib_windows.zip</span> and selecting <b>Extract all...</b>
         <br/> Leave the checkbox <b>Show extracted files when complete</b> checked.
         
         <img alt="zip extraction" class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" src="https://apsc160.github.io/daqinstall/images/windows/extract.png" /> 
         
-        Inside the unzipped folder, you should see a new subfolder named <span class="file">DAQlib</span>, as well as 
-        two script files: <span class="file">install.bat</span> and <span class="file">uninstall.bat</span>.
+        Inside the unzipped folder, you should see a new subfolder named <span class="file" style="color: blue; font-weight: bold; font-family: courier;">DAQlib</span>, as well as 
+        two script files: <span class="file" style="color: blue; font-weight: bold; font-family: courier;">install.bat</span> and <span class="file" style="color: blue; font-weight: bold; font-family: courier;">uninstall.bat</span>.
 
         <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="unzipped contents" src="https://apsc160.github.io/daqinstall/images/windows/daqunzipped.png" />
       </li>
       <li>
-        Double-click on <span class="file">install.bat</span>
+        Double-click on <span class="file" style="color: blue; font-weight: bold; font-family: courier;">install.bat</span>
         <br/> 
         If you get a security warning about opening a file with an unverified publisher, select <b>Run</b>.
         <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Windows security message" src="https://apsc160.github.io/daqinstall/images/windows/security_highlight.png" /> In Windows 10, if you get a SmartScreen warning message saying that it has prevented you from running the application, first click
@@ -58,8 +58,8 @@
     <h3>Installation for All Users:</h3>
     <p>
       The previous instructions will install the DAQlib library and simulator only for the current user. To install globally, for all users on a particular machine, 
-      follow the same instructions but run the <span class="file">install.bat</span> file as Administrator. This can be done by right-clicking on the file and selecting 
-      "<span class="highlight">Run as administrator</span>".
+      follow the same instructions but run the <span class="file" style="color: blue; font-weight: bold; font-family: courier;">install.bat</span> file as Administrator. This can be done by right-clicking on the file and selecting 
+      "<span class="highlight" style="color: crimson; font-weight: bold;">Run as administrator</span>".
     </p>
 
     <h3>Manual Installation:</h3>
@@ -70,27 +70,27 @@
       using the following steps.
     </p>
     <ol>
-      <li>Extract the the downloaded zip file and copy the contained <span class="highlight">DAQlib</span> folder.</li>
+      <li>Extract the the downloaded zip file and copy the contained <span class="highlight" style="color: crimson; font-weight: bold;">DAQlib</span> folder.</li>
       <li>In Windows Explorer, type <code>%APPDATA%</code> in the address bar and hit enter.
-        This should bring you a path like <span class="highlight">C:\Users\yourusername\AppData\Roaming</span></li>
-      <li>Create a new folder here called <span class="highlight">APSC160</span>, and paste the
-          copied <span class="highlight">DAQlib</span> folder inside</li>
-      <li>Inside the <span class="highlight">DAQlib</span> folder, go inside <span class="highlight">VS</span>
+        This should bring you a path like <span class="highlight" style="color: crimson; font-weight: bold;">C:\Users\yourusername\AppData\Roaming</span></li>
+      <li>Create a new folder here called <span class="highlight" style="color: crimson; font-weight: bold;">APSC160</span>, and paste the
+          copied <span class="highlight" style="color: crimson; font-weight: bold;">DAQlib</span> folder inside</li>
+      <li>Inside the <span class="highlight" style="color: crimson; font-weight: bold;">DAQlib</span> folder, go inside <span class="highlight" style="color: crimson; font-weight: bold;">VS</span>
           and copy the <span>DAQTemplate</span> folder</li>
-      <li>Go to your user's <span class="highlight">Documents</span> folder, which on most systems is
-          <span class="highlight">C:\Users\yourusername\Documents</span>, though you should see a link
+      <li>Go to your user's <span class="highlight" style="color: crimson; font-weight: bold;">Documents</span> folder, which on most systems is
+          <span class="highlight" style="color: crimson; font-weight: bold;">C:\Users\yourusername\Documents</span>, though you should see a link
           in the left Quick-Access panel.</li>
-      <li>Within the <span class="highlight">Documents</span> folder, navigate to
-        <span class="highlight">Visual Studio 2017\Templates\ProjectTemplates\Visual C++ Project</span></li>
-      <li>Create a new folder here called <span class="highlight">APSC160</span></li>
-      <li>Inside <span class="highlight">APSC160</span>, create a new folder <span class="highlight">DAQlib</span>,
-        and paste the <span class="highlight">DAQTemplate</span> folder inside</li>
+      <li>Within the <span class="highlight" style="color: crimson; font-weight: bold;">Documents</span> folder, navigate to
+        <span class="highlight" style="color: crimson; font-weight: bold;">Visual Studio 2017\Templates\ProjectTemplates\Visual C++ Project</span></li>
+      <li>Create a new folder here called <span class="highlight" style="color: crimson; font-weight: bold;">APSC160</span></li>
+      <li>Inside <span class="highlight" style="color: crimson; font-weight: bold;">APSC160</span>, create a new folder <span class="highlight" style="color: crimson; font-weight: bold;">DAQlib</span>,
+        and paste the <span class="highlight" style="color: crimson; font-weight: bold;">DAQTemplate</span> folder inside</li>
       <li>Restart Visual Studio</li>
     </ol>
 
     <h3>Uninstalling the Library:</h3>
     <p>
-      To uninstall the DAQlib library, simply run the <span class="file">uninstall.bat</span> script. If run as Administrator, the script will attempt to uninstall a global installation.
+      To uninstall the DAQlib library, simply run the <span class="file" style="color: blue; font-weight: bold; font-family: courier;">uninstall.bat</span> script. If run as Administrator, the script will attempt to uninstall a global installation.
     </p>
   </div>
   <div class="tabpage" id="tabpage_2">
@@ -150,7 +150,7 @@
       Congratulations! You have just completed your first DAQ program.
     </p>
     <p>
-      <strong class="highlight">Important:</strong> do not simply open the above source file by double-clicking on it in
+      <strong class="highlight" style="color: crimson; font-weight: bold;">Important:</strong> do not simply open the above source file by double-clicking on it in
         your downloads folder.  The source file <em>must</em> be added to your project in Visual Studio,
         and the project <em>must</em> have been created using the <strong></strong>APSC160 - DAQ</strong>
         template.  Otherwise, the file will not be compiled, and the project will not be able to find the
