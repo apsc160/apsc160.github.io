@@ -40,20 +40,33 @@
               <p>
                 On macOS, we will install the DAQlib library and simulator in the user's <span class="file">~/Library</span> directory, as well as an Xcode project template.
               </p>
+            
+              For the instructions below, you will need to download the following zip file:
+              <ul>
+                <li><a href="./assets/DAQlib_macos.zip">DAQlib_macos.zip</a></li>
+              </ul>
+              <br/>
 
               <h3>Installation:</h3> To install the DAQlib library and simulator for Xcode on your local computer, we will first
-              <span class="highlight">download a zip file</span> containing all the required headers, libraries, and binaries, and then run an <span class="highlight">installation script</span> that will create a new project template to access these
+              <span class="highlight">download the zip file</span> containing all the required headers, libraries, and binaries, 
+              and then run an <span class="highlight">installation script</span> that will create a new project template to access these
               files.
               <ol>
-                <li>Download the DAQlib zip file from connect. For macOS users, the link should have the title <span class="highlight">DAQlib for macOS</span>. This should create a zip file called
+                <li>Download the above DAQlib zip file. This should create a zip file called
                   <span class="file">DAQlib_macos.zip</span> in your downloads folder.</li>
                 <li>Unzip the file by double-clicking on <span class="file">DAQlib_macos.zip</span> in Finder.
-                  <img class="figure" alt="DAQlib extraction" src="./images/macos/extract.png" /> Inside the unzipped folder, you should see a new subfolder named <span class="file">DAQlib</span>, as well as two script files: <span class="file">install.command</span>                    and <span class="file">uninstall.command</span>.
+                  <img class="figure" alt="DAQlib extraction" src="./images/macos/extract.png" /> 
+                  Inside the unzipped folder, you should see a new subfolder named <span class="file">DAQlib</span>, as well as two script files: <span class="file">install.command</span> 
+                  and <span class="file">uninstall.command</span>.
                 </li>
                 <li>
                   Double-click on <span class="file">install.command</span>
-                  <br/> You may get a security warning about opening the file from an unidentified developer.
-                  <img class="figure" alt="unidentified developer" src="./images/macos/unidentified.png" /> If this occurs, we will by-pass the security setting. Click on "<strong>OK</strong>", then control-click the <span class="file">install.command</span>                    file and select "<span class="highlight">Open</span>" from the menu. You will be asked to confirm opening of the file. Click on the "<span class="highlight">Open</span>" button.
+                  <br/> 
+                  You may get a security warning about opening the file from an unidentified developer.
+                  <img class="figure" alt="unidentified developer" src="./images/macos/unidentified.png" /> 
+                  If this occurs, we will by-pass the security setting. Click on "<strong>OK</strong>", then control-click the <span class="file">install.command</span>
+                  file and select "<span class="highlight">Open</span>" from the menu. You will be asked to confirm opening of the file. 
+                  Click on the "<span class="highlight">Open</span>" button.
                   <img class="figure" alt="run unidentified developer" src="./images/macos/open_unidentified.png" />
                 </li>
                 <li>
@@ -61,8 +74,10 @@
 									It will then install the required files and a new Xcode project template that is configured to
 									find the DAQlib library and simulator programs.
 									If successful, it should give an output similar to the following:
-                  <img class="figure" alt="installation successful" src="./images/macos/success.png" /> If you encounter an error that you cannot resolve, please either post a message on the discussion board with the output of the install script, or
-                  see a TA or instructor to help you complete the installation.
+                  <img class="figure" alt="installation successful" src="./images/macos/success.png" /> 
+                  If you encounter an error that you cannot resolve, please either post a message on the discussion 
+                  board with the output of the install script, or see a TA or instructor to help you complete the 
+                  installation.
                 </li>
               </ol>
 
@@ -101,8 +116,9 @@
               </ul>
               <br/> Now add code to the source file so that it looks like the following. Include your own name, student number, ... at the top of the code (the green text in the code below).
 
-              <pre data-src="src/simulator.c"></pre>
-
+              <pre data-src="./src/DAQSimulatorTest.c"></pre>
+              <a href="./src/DAQSimulatorTest.c">DAQSimulatorTest.c</pre>
+              
               <p>
                 We do not expect you to understand the code that you are typing yet (that will come in the next few weeks).
               </p>

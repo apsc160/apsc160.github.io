@@ -1,0 +1,139 @@
+<div id="tabs">
+  <ul>
+    <li id="tabHeader_1"><a style="text-decoration: none;" href="#tabpage_1">Installation</a></li>
+    <li id="tabHeader_2"><a style="text-decoration: none;" href="#tabpage_2">Your First Project</a></li>
+  </ul>
+  <div class="tabpage" id="tabpage_1">
+    <p>
+      On macOS, we will install the DAQlib library and simulator in the user's <span class="file" style="color: blue; font-weight: bold; font-family: courier;">~/Library</span> directory, as well as an Xcode project template.
+    </p>
+  
+    For the instructions below, you will need to download the following zip file:
+    <ul>
+      <li><a href="./assets/DAQlib_macos.zip">DAQlib_macos.zip</a></li>
+    </ul>
+    <br/>
+
+    <h3>Installation:</h3> To install the DAQlib library and simulator for Xcode on your local computer, we will first
+    <span class="highlight" style="color: crimson; font-weight: bold;">download the zip file</span> containing all the required headers, libraries, and binaries, 
+    and then run an <span class="highlight" style="color: crimson; font-weight: bold;">installation script</span> that will create a new project template to access these
+    files.
+    <ol>
+      <li>Download the above DAQlib zip file. This should create a zip file called
+        <span class="file" style="color: blue; font-weight: bold; font-family: courier;">DAQlib_macos.zip</span> in your downloads folder.</li>
+      <li>Unzip the file by double-clicking on <span class="file" style="color: blue; font-weight: bold; font-family: courier;">DAQlib_macos.zip</span> in Finder.
+        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="DAQlib extraction" src="./images/macos/extract.png" /> 
+        Inside the unzipped folder, you should see a new subfolder named <span class="file" style="color: blue; font-weight: bold; font-family: courier;">DAQlib</span>, as well as two script files: <span class="file" style="color: blue; font-weight: bold; font-family: courier;">install.command</span> 
+        and <span class="file" style="color: blue; font-weight: bold; font-family: courier;">uninstall.command</span>.
+      </li>
+      <li>
+        Double-click on <span class="file" style="color: blue; font-weight: bold; font-family: courier;">install.command</span>
+        <br/> 
+        You may get a security warning about opening the file from an unidentified developer.
+        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="unidentified developer" src="./images/macos/unidentified.png" /> 
+        If this occurs, we will by-pass the security setting. Click on "<strong>OK</strong>", then control-click the <span class="file" style="color: blue; font-weight: bold; font-family: courier;">install.command</span>
+        file and select "<span class="highlight" style="color: crimson; font-weight: bold;">Open</span>" from the menu. You will be asked to confirm opening of the file. 
+        Click on the "<span class="highlight" style="color: crimson; font-weight: bold;">Open</span>" button.
+        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="run unidentified developer" src="./images/macos/open_unidentified.png" />
+      </li>
+      <li>
+        The installation script will first prompt you to confirm installation.  Enter 'Y' to continue.
+        It will then install the required files and a new Xcode project template that is configured to
+        find the DAQlib library and simulator programs.
+        If successful, it should give an output similar to the following:
+        <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="installation successful" src="./images/macos/success.png" /> 
+        If you encounter an error that you cannot resolve, please either post a message on the discussion 
+        board with the output of the install script, or see a TA or instructor to help you complete the 
+        installation.
+      </li>
+    </ol>
+
+    <h3>Uninstalling the Library:</h3>
+    <p>
+      To uninstall the DAQlib library, simply run the <span class="file" style="color: blue; font-weight: bold; font-family: courier;">uninstall.command</span> script.
+      This will remove the library and Xcode project template.
+    </p>
+  </div>
+  <div class="tabpage" id="tabpage_2">
+    <h3>A Simple DAQ Program</h3>
+    <p>
+      To get started, we will create a simple program that uses the DAQ simulator.
+    </p>
+
+    Start Xcode from the Applications menu in Finder. Xcode should present the start screen to allow you to select a previous project or create a new one.
+    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode startup" src="./images/macos/XcodeStartup.png" />
+    <ul>
+      <li>Select "<strong>Create a new Xcode project.</strong>"</li>
+      <li>On the following screen, select <strong>OS X</strong>, <strong>Application</strong> in the left panel, and <strong>APSC160 - DAQ</strong> in the right panel.</li>
+      <li>Click "<strong>Next</strong>"</li>
+    </ul>
+    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode template" src="./images/macos/XcodeTemplate.png" />
+    <ul>
+      <li>In the project options form, enter a descriptive Product Name and information (e.g. DAQSimulatorTest).</li>
+      <li>Click "<strong>Next</strong>"</li>
+    </ul>
+    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode product" src="./images/macos/XcodeProductInfo.png" /> A new project will be displayed, which should look something like the following:
+    <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Xcode Project Explorer" src="./images/macos/XcodeProject.png" /> A new source file called <span class="code">main.c</span> will automatically be generated for you. You can change the name of this file to something
+    more descriptive by doing the following:
+    <ul>
+      <li>Click on the <span class="code">main.c</span> file to open the file in the main viewer</li>
+      <li>Click on the file again to trigger the file rename cursor</li>
+      <li>Enter a descriptive name for the new source file (e.g.
+        <span class="code">DAQSimulatorTest.c</span>).</li>
+    </ul>
+    <br/> Now add code to the source file so that it looks like the following. Include your own name, student number, ... at the top of the code (the green text in the code below).
+
+    <pre data-src="./src/DAQSimulatorTest.c"></pre>
+    <a href="./src/DAQSimulatorTest.c">DAQSimulatorTest.c</pre>
+    
+    <p>
+      We do not expect you to understand the code that you are typing yet (that will come in the next few weeks).
+    </p>
+
+    <p>
+      To compile and link the source files in your project, choose
+      <strong>Product > Build</strong> from the menus or press
+      <strong>&#8984;+B</strong>. This will compile all of the source files in your project (in this case there is only one) and then link them with the DAQlib library to produce an executable file.
+    </p>
+
+    <p>
+      Run the program by either using the play button, or
+      <strong>Product > Run</strong>. If everything was installed successfully, the simulator should appear, though it may open behind the Xcode window:
+      <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Simulator with LED off" src="./images/macos/DAQSimulatorOff.png" /> Click the "<strong>on</strong>" radio button for the switch labelled <strong>ToggleSwitch #0</strong>. The left-most LED should turn green:
+      <img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="Simulator with LED off" src="./images/macos/DAQSimulatorOn.png" /> Congratulations! You have just completed your first DAQ program.
+    </p>
+
+    <h3>Running DAQ Programs Outside Xcode</h3>
+
+    When you compile your programs with the DAQlib library, they now
+    depend on certain files	contained in the DAQlib installation folder:
+    <ul>
+      <li><strong>libDAQlib.dylib</strong> - dynamic library file containing
+        system-dependent routines</li>
+      <li><strong>daqSimulator</strong> - the DAQ simulator program
+    </ul>
+    <p>
+      When running in Xcode, the project settings tell your
+      computer where to find these files.  However, if you try to run
+      your program outside of Xcode (i.e. by finding the folder
+      the compiled binaries are placed and double-clicking the executable),
+      you will get an error about not finding the above
+      dynamic library or simulator process.
+    </p>
+
+    <p>
+      To resolve this, you need to tell macOS where to look for the
+      required files.  MacOS searches for executables in directories
+      contained in the system's <strong>PATH</strong> environment
+      variable, and for dynamic libraries in the
+      <strong>LD_LIBRARY_PATH</strong> environment variable. You will
+      need to set the following values
+    </p>
+    <ul>
+      <li>PATH=$PATH:$HOME/Library/APSC160/DAQlib/bin</li>
+      <li>LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Library/APSC160/DAQlib/lib</li>
+    </ul>
+    For instructions on creating environment variables and adding to the
+    system <strong>PATH</strong>, see <a href="https://medium.com/@himanshuagarwal1395/setting-up-environment-variables-in-macos-sierra-f5978369b255">Setting up Environment Variables in MacOS Sierra</a>.
+  </div>
+</div>
