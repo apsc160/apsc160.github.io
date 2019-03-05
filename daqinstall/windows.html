@@ -38,26 +38,38 @@
           <div id="tabscontent">
             <div class="tabpage" id="tabpage_1">
               <p>
-                With this set of instructions, we will install the <span class="highlight">DAQlib</span> Library and simulator on Windows systems for use with Visual Studio 2017. For other platforms, such as MacOS, go to the appropriate tab.
+                With this set of instructions, we will install the <span class="highlight">DAQlib</span> Library and simulator on Windows systems for use with Visual Studio 2017. For other platforms, such as MacOS, go to the appropriate page.
               </p>
 
-              <h3>Installation for a Single User:</h3> To install the DAQlib library and simulator for Visual Studio on your local computer, we will first
-              <span class="highlight">download a zip file</span> containing all the required headers, libraries, and binaries, and then run an <span class="highlight">installation script</span> that will create a new project template to access these
-              files.
+              For the instructions below, you will need to download the following zip file:
+              <ul>
+                <li><a href="./assets/DAQlib_windows.zip"></a></li>
+              </ul>
+
+              <h3>Installation for a Single User:</h3> 
+              
+              To install the DAQlib library and simulator for Visual Studio on your local computer, we will first
+              <span class="highlight">download a zip file</span> containing all the required headers, libraries, and 
+              binaries, and then run an <span class="highlight">installation script</span> that will create a new project 
+              template to access these files.
               <ol>
-                <li>Download the DAQlib zip file from connect. For Windows users, the link should have the title <span class="highlight">DAQlib for Windows</span>. This should create a zip file called <span class="file">DAQlib_windows.zip</span> in your
+                <li>Download the DAQlib zip file for your system above.  This should create a zip file called <span class="file">DAQlib_windows.zip</span> in your
                   downloads folder.
                 </li>
                 <li>Unzip the file by right-clicking on <span class="file">DAQlib_windows.zip</span> and selecting <b>Extract all...</b>
                   <br/> Leave the checkbox <b>Show extracted files when complete</b> checked.
 
-                  <img alt="zip extraction" class="figure" src="./images/windows/extract.png" /> Inside the unzipped folder, you should see a new subfolder named <span class="file">DAQlib</span>, as well as two script files: <span class="file">install.bat</span>                    and <span class="file">uninstall.bat</span>.
+                  <img alt="zip extraction" class="figure" src="./images/windows/extract.png" /> 
+                  
+                  Inside the unzipped folder, you should see a new subfolder named <span class="file">DAQlib</span>, as well as 
+                  two script files: <span class="file">install.bat</span> and <span class="file">uninstall.bat</span>.
 
                   <img class="figure" alt="unzipped contents" src="./images/windows/daqunzipped.png" />
                 </li>
                 <li>
                   Double-click on <span class="file">install.bat</span>
-                  <br/> If you get a security warning about opening a file with an unverified publisher, select <b>Run</b>.
+                  <br/> 
+                  If you get a security warning about opening a file with an unverified publisher, select <b>Run</b>.
                   <img class="figure" alt="Windows security message" src="./images/windows/security_highlight.png" /> In Windows 10, if you get a SmartScreen warning message saying that it has prevented you from running the application, first click
                   on <b>More info</b> and then <b>Run anyway</b>
                   <img class="figure" alt="windows smartscreen info" src="./images/windows/smartscreen1_highlight.png" />
@@ -65,15 +77,21 @@
                 </li>
                 <li>
                   The installation script will ask you to confirm you wish to install the library and simulator. Type 'Y' or 'y' to accept.
-                  <br/> The script will then install a new Visual Studio project template that is configured to find the DAQlib library and simulator programs. If successful, it should give an output similar to the following:
-                  <img class="figure" alt="successful installation" src="./images/windows/success.png" /> If you encounter an error that you cannot resolve, please either post a message on the discussion board with the output of the install script,
+                  <br/> The script will then install a new Visual Studio project template that is configured to find the DAQlib library and simulator programs. 
+                  If successful, it should give an output similar to the following:
+
+                  <img class="figure" alt="successful installation" src="./images/windows/success.png" /> 
+                  
+                  If you encounter an error that you cannot resolve, please either post a message on the discussion board with the output of the install script,
                   or see a TA or instructor to help you complete the installation.
                 </li>
               </ol>
 
               <h3>Installation for All Users:</h3>
               <p>
-                The previous instructions will install the DAQlib library and simulator only for the current user. To install globally, for all users on a particular machine, follow the same instructions but run the <span class="file">install.bat</span>                  file as Administrator. This can be done by right-clicking on the file and selecting "<span class="highlight">Run as administrator</span>".
+                The previous instructions will install the DAQlib library and simulator only for the current user. To install globally, for all users on a particular machine, 
+                follow the same instructions but run the <span class="file">install.bat</span> file as Administrator. This can be done by right-clicking on the file and selecting 
+                "<span class="highlight">Run as administrator</span>".
               </p>
 
 							<h3>Manual Installation:</h3>
@@ -136,8 +154,10 @@
                 <li>Select <strong>Rename</strong> from the drop-down menu</li>
                 <li>Enter a descriptive name for the new source file (e.g. <span class="code">DAQSimulatorTest.c</span>).</li>
               </ul>
-              <br/> Now add code to the source file so that it looks like the following. Include your own name, student number, ... at the top of the code (the green text in the code below).
-              <pre data-src="src/simulator.c"></pre>
+              <br/> Now add code to the source file so that it looks like the following. Include your own name, student number, <em>et cetera</em> 
+              at the top of the code.
+              <pre data-src="./src/DAQSimulatorTest.c"></pre>
+              <a href="./src/DAQSimulatorTest.c">DAQSimulatorTest.c</a>
 
               <p>
                 We do not expect you to understand the code that you are typing yet (that will come in the next few weeks).
@@ -148,11 +168,25 @@
                 to produce an executable file.
               </p>
               <p>
-                Run the program. If everything was installed successfully, the simulator should appear:
+                Run the program. If everything was installed successfully, a window like this one will appear:
+                <img class="figure" alt="console" src="./images/windows/DAQSimulatorTestConsole.png" />
 
-                <img class="figure" alt="Simulator with LED off" src="./images/windows/DAQSimulatorOff.png" /> Click the "<strong>on</strong>" button for the switch labelled
+                A second or two later, the simulator window should appear:
+
+                <img class="figure" alt="Simulator with LED off" src="./images/windows/DAQSimulatorOff.png" />
+                
+                Click the "<strong>on</strong>" button for the switch labelled
                 <strong>ToggleSwitch #0</strong>. The left-most LED should turn green:
-                <img class="figure" alt="Simulator with LED off" src="./images/windows/DAQSimulatorOn.png" /> Congratulations! You have just completed your first DAQ program.
+                <img class="figure" alt="Simulator with LED off" src="./images/windows/DAQSimulatorOn.png" /> 
+                
+                Congratulations! You have just completed your first DAQ program.
+              </p>
+              <p>
+                <strong class="highlight">Important:</strong> do not simply open the above source file by double-clicking on it in
+                 your downloads folder.  The source file <em>must</em> be added to your project in Visual Studio,
+                 and the project <em>must</em> have been created using the <strong></strong>APSC160 - DAQ</strong>
+                 template.  Otherwise, the file will not be compiled, and the project will not be able to find the
+                 required DAQlib library.
               </p>
 
 							<h3>Running DAQ Programs Outside Visual Studio</h3>
@@ -160,11 +194,13 @@
 							When you compile your programs with the DAQlib library, they now
 							depend on certain files	contained in the DAQlib installation folder:
 							<ul>
-								<li><strong>libDAQlib.dll</strong> - dynamic library file containing
+								<li><strong>DAQlib.dll</strong> - dynamic library file containing
 									system-dependent routines</li>
 								<li><strong>daqHardwareClient.exe</strong> - main client
 									program that communicates with the DAQ hardware</li>
-								<li><strong>daqSimulator.exe</strong> - the DAQ simulator program</li>
+                <li><strong>daqSimulator.exe</strong> - the DAQ simulator program</li>
+                <li>... and several other DLLs and configuration files found in the 
+                  <strong>bin32</strong> or <strong>bin64</strong> subfolder</li>
 							</ul>
 							<p>
 								When running in Visual Studio, the project settings tell your
