@@ -1,0 +1,624 @@
+<div id="tabs" class="enhanceable_content tabs">
+	<ul>
+		<li id="tabHeader_1"><a style="text-decoration: none;" href="#tabpage_1">Overview</a></li>
+		<li id="tabHeader_2"><a style="text-decoration: none;" href="#tabpage_2">In-Lab</a></li>
+		<li id="tabHeader_3"><a style="text-decoration: none;" href="#tabpage_3">At-Home</a></li>
+	</ul>
+	<div class="tabpage" id="tabpage_1">
+		<h3>Learning Goals:</h3>
+		<ul>
+			<li>To become familiar with a typical data acquisition (DAQ) device</li>
+			<li>To experiment with and take laboratory measurements using the device</li>
+			<li>To import, analyze, and plot collected measurements in a spreadsheet</li>
+		</ul>
+
+		<h3>Overview:</h3>
+
+		<p>
+			In this lab, we will compute some characteristics of the hardware device, and
+			use this information to create a 2D digitizer (or tracked pen). The end-goal
+			is to be able to digitally reproduce an image traced using the tip of the
+			jointed arm.
+		</p>
+
+		<img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" width="400px;" alt="The DAQ hardware modules"
+			src="https://apsc160.github.io/lab6/images/DAQstar.jpg">
+
+		This lab is different from previous labs in that:
+		<ul>
+			<li>You will have access to Connect, these instructions, and all
+				course-related materials during the lab</li>
+			<li>There is not C programming involved. The programs you need
+				will be given to you as executables.</li>
+			<li>There are no separate pre-lab and in-lab components. You still need
+				to prepare by studying the material before going to the lab, but the
+				activities described here are exactly what you will do during the lab period.</li>
+			<li>This is not a quiz. You <strong>may</strong> ask for help from the TAs, and
+				from your classmates, but each student must still submit their own work.</li>
+			<li>This lab is a practical example of the system described in Lab 1.</li>
+			<li>This lab is divided into two parts:
+				<ul>
+					<li>An In-Lab componenent, which must be completed and submitted during the scheduled lab period.
+					</li>
+					<li>An At-Home componenent, which is due the following week.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<h3>Timeline</h3>
+
+		<span class="highlight" style="color: crimson; font-weight: bold;">In-Lab Component:</span>
+		<ul>
+			<li>The in-lab portion will be done during your regularly scheduled lab period.
+				The deliverables for this part must be submitted by the end of the period, as usual.</li>
+			<li>The at-home portion will depend on the in-lab material, so it is extremely
+				important to get this first component correct and collect your data carefully.
+				<strong>These materials will be returned to you at the end of the week.</strong></li>
+			<li>It is <em>strongly recommended</em> to attempt the at-home portion during the
+				lab session if you have time, to ensure that there are no errors in your data collection.</li>
+		</ul>
+
+		<span class="highlight" style="color: crimson; font-weight: bold;">At-Home Component:</span>
+		<ul>
+			<li>The at-home portion can be done any time after the lab session, either from home or
+				using the lab computers. It is due at the same time for all lab sections.</li>
+			<li>The data you use for this portion <em>must be the same</em> as the data you collected
+				and submitted during the in-lab portion, so it is extremely important to ensure you
+				collected the data carefully.</li>
+		</ul>
+	</div>
+	<div id="tabpage_2">
+		<div id="lab_tabs" class="tabpage enhanceable_content tabs">
+			<ul>
+				<li id="lab_tabHeader_1"><a style="text-decoration: none;" href="#lab_tabpage_1">Goals</a></li>
+				<li id="lab_tabHeader_2"><a style="text-decoration: none;" href="#lab_tabpage_2">Part 1</a></li>
+				<li id="lab_tabHeader_3"><a style="text-decoration: none;" href="#lab_tabpage_3">Part 2</a></li>
+				<li id="lab_tabHeader_4"><a style="text-decoration: none;" href="#lab_tabpage_4">Submission</a></li>
+			</ul>
+			<div class="tabpage" id="lab_tabpage_1">
+				<h3>Learning Goals:</h3>
+				<ul>
+					<li>To gain experience making laboratory measurements using the hardware module.</li>
+					<li>To calibrate the device, computing important characterstic information using spreadsheet
+						software</li>
+				</ul>
+
+				<h3>Summary:</h3>
+				<p>
+					In this in-lab component, you will use the hardware module to take measurements and collect data
+					to be used for calibration of the 2D digitizer, as well as for digitally reproducing images traced
+					by the tip of the jointed arm.
+				</p>
+
+				<h3>Part 1:</h3>
+				<p>
+					In the first part of the lab, you will take some measurements using the two-part arm. With the aid
+					of a program that will be given to you,
+					you will measure and record the angle of the arms, and the corresponding voltage value of the
+					sensors in the arm.
+					To do this, you will need a protractor and ruler. The purpose is to determine a relationship between
+					angle and voltage,
+					so you can use this information to work backwards: given a set of voltages, determine the angles of
+					the joints, and hence position of the
+					arm tip. It is very important to take care with this part, since if the relationship is incorrect,
+					you will not be able
+					to complete Part 2.
+				</p>
+
+				<h3>Part 2:</h3>
+				<p>
+					In part two, you will be required to trace some figures using the arm, and collect voltage readings
+					from the two sensors.
+					You will be given a program that will read the voltages (in millivolts) and store these values into
+					a file. You will
+					need these files for the at-home portion of the lab.
+				</p>
+
+				<p>
+					Note that you will NOT need to write any code, or compile any programs. All programs that you are
+					required to use will
+					be given to you as an executable.
+				</p>
+			</div>
+			<div class="tabpage" id="lab_tabpage_2">
+				<h3>Problem Decomposition:</h3>
+
+				Here is the list of the steps that you will need to take for this part of the lab:
+				<ol>
+					<li>Understanding the problem</li>
+					<li>Determining data that needs to be measured</li>
+					<li><strong>Performing the measurement</strong> using a provided
+						program (<code>sensorReader</code>)</li>
+					<li>Creating the excel file for computing the relationship between voltage and angles</li>
+				</ol>
+
+				<h3>1. Description of the Problem:</h3>
+				<p>
+					The two-part arm on the hardware module contains two sensors - one at the <strong>base</strong>,
+					where the arm is connected to the
+					module, and one at the <strong>elbow</strong> where the two parts of the arm are connected. The two
+					sensors are simply
+					rotary potentiometers at the base and elbow of the arm that measure a voltage which changes as the
+					knobs are
+					rotated. The sensor values are the voltages read from the potentiometers, measured in millivolts.
+				</p>
+				<p>
+					By using the values read from the sensors, a program can determine the position of the two parts of
+					the arm,
+					as well as the tracing end-point of the arm. For a program to be able to effectively determine the
+					positions, the relationship between the angle of the arms and the associated voltage must be
+					determined.
+					We will call this process <em>calibrating the sensors</em>.
+				</p>
+
+				<h3>2. Measurements:</h3>
+
+				To calibrate the arm sensors, a series of data measurements must be taken. Each data measurement
+				involves moving the
+				arm to a new position, and recording the following information simultaneously:
+				<ul>
+					<li>angle of base (using a protractor)</li>
+					<li>voltage value of base sensor (from the display)</li>
+					<li>angle of elbow (using the protractor)</li>
+					<li>voltage value of elbow sensor (from the display)</li>
+				</ul>
+				The full range of motion of each joint of the arm should be considered when
+				selecting measurement configurations.
+
+				<p>
+					In addition, you should measure the length of the two parts of the arm and record this information.
+					Note that this is the <strong>effective length</strong> of each arm section, which should be
+					measured from joint-centre to
+					joint-centre, not edge to edge.
+				</p>
+
+				<p>
+					The following diagram and description defines various terms and explains how to measure the angles.
+					<strong>Positive angles are measured in the <span class="highlight" style="color: crimson; font-weight: bold;">counter-clockwise</span>
+						direction</strong> and negative angles are
+					measured in the clockwise direction. You should record all your angle measurements in degrees.
+					You may also find it useful to refer to Lab 1.
+				</p>
+
+				<img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" style="border: 2px;" alt="DAQ arm"
+					src="https://apsc160.github.io/lab6/images/two_part_arm.gif" />
+
+				<ul>
+					<li><strong>base segment</strong>: the segment from point A to point B (this is the length of the
+						base segment of the arm).
+						Note that point A and Point B are where the base sensor and elbow sensor are connected to the
+						segment, respectively.</li>
+					<li><strong>elbow segment</strong>: the segment from point B to point C (this is the length of the
+						elbow segment of the arm).
+						Note that point B and point C are where the elbow sensor is connected to the segment and the tip
+						of the arm, respectively.</li>
+					<li><strong>base angle</strong>: this is θ<sub>1</sub> in the diagram. It is the angle from the
+						x-axis to the base segment. </li>
+					<li><strong>absolute elbow angle</strong>: this is θ<sub>2</sub> in the diagram. Assume that the
+						origin of the x and
+						y axis is at point B. The absolute elbow angle is then the angle from the x-axis to the elbow
+						segment. </li>
+					<li><strong>relative elbow angle</strong>: this is θ<sub>3</sub> in the diagram. It is the angle
+						from the base segment to the elbow segment.</li>
+					<li><strong>base sensor</strong>: the sensor located at point A. </li>
+					<li><strong>elbow sensor</strong>: the sensor located at point B. </li>
+				</ul>
+
+				<p>
+					<strong>Double and triple-check your understanding of the angles and directions of
+						measurement.</strong> The most common mistake
+					in this lab is to measure the wrong angles, leading to nonsensical voltage-angle relationships.
+				</p>
+
+				<h3>3. Making Measurements using <strong>sensorReader</strong></h3>
+
+				<p>
+					In order to display the voltages associated with each sensor, you should use the
+					<strong>sensorReader</strong> program.
+					This program reads the voltage values of the two sensors and displays
+					these values on the numeric display of the hardware module.
+					The voltage for the <span style="color: red;">base sensor</span> is displayed on <span
+						style="color: red;">left-most 4 digits</span>, and the
+					voltage for the elbow sensor is displayed on the right-most 4 digits. Note that the voltages are
+					shown in <span style="color: red;">millivolts</span>.
+					For more information about this program, refer to the "Using the sensorReader Program" section
+					below.
+				</p>
+
+				You must determine the positions that you are going to move the arm to, when taking the measurements.
+				For each new position you choose, it is better to move the arm in a manner that as a result both of its
+				segments move.
+				As you move the arm, the angles at the base and elbow will change, and as a result the voltage values of
+				the sensors
+				will also change. Each new position of the arm corresponds to one data measurement. Keep in mind the
+				following:
+				<ul>
+					<li>Each sensor has two physical boundary conditions, which occur when you rotate the sensor all the
+						way clockwise
+						or counterclockwise. These will give you two data measurements per sensor.</li>
+					<li>You should have several additional unique data measurements per sensor.</li>
+					<li>For the elbow angle, you should be measuring the <span style="color: red;">relative elbow
+							angle</span>.
+						You do not need to measure the absolute elbow angle, since it is relatively straightforward to
+						convert between the
+						relative and absolute angles.</li>
+					<li>For the base angle, all your recorded angles should be in the <span style="color: red;">range
+							-180 degrees to +180 degrees</span>. </li>
+					<li>For the elbow angle, all your recorded angles should be in the <span style="color: red;">range 0
+							degrees to 360 degrees</span>. </li>
+				</ul>
+				It is recommended to take as many measurements as required to ensure there is a distinct trend in the
+				data.
+				A <em>minimum</em> of 5 unique measurements for each sensor must be recorded.
+
+				<h3>Using the sensorReader Program</h3>
+
+				<p>
+					In the lab, the <strong>sensorReader</strong> program is available on the <span
+						style="font-weight: bold; color: rgb(255, 0, 0);">Z: drive</span>, in
+					the <span style="font-weight: bold;">SensorReader</span> folder.
+				</p>
+
+				<p>
+					To use the <strong>sensorReader</strong> program, simply double-click on the program to
+					start it, and follow the instructions. The program will open two
+					command line windows with some information. Leave them open until you are done with the
+					measurements.
+					The program will display <span style="color: red;">the base sensor voltage on the left-most four
+						digits</span>
+					of the numeric display and <span style="color: red;">the elbow sensor voltage on the right-most four
+						digits</span>
+					of the numeric display of the hardware module.
+					The maximum value is usually between 4000 and 5000 millivolts, depending on the particular hardware
+					module.
+				</p>
+
+				<p>
+					If the numeric display shows "E" (error), you are getting a negative and invalid voltage because you
+					rotated
+					the sensor too far in one direction. Rotate that sensor in the other direction, until you get a
+					valid number.
+				</p>
+
+				<p>
+					Also note that the hardware module latched the numbers on the display, so when you exit the
+					<strong>sensorReader</strong>
+					program the last number displayed will still be shown on the displays until you run another program
+					or disconnect it from power.
+				</p>
+
+				<h3>4. Excel Data File</h3>
+
+				When you are making your data measurements, you will have a table containing the following information
+				for each data
+				measurement:
+				<ul>
+					<li>voltage value of base sensor </li>
+					<li>base angle </li>
+					<li>voltage value of elbow sensor </li>
+					<li>relative elbow angle</li>
+				</ul>
+
+				<h3>4a) Creating an Excel file and calibrating your data</h3>
+				<p>
+					You should put all the information of the above table into an <span style="color: red;">Excel</span>
+					file.
+					This table should have four columns, one column for each of the data items listed above.
+					Label each column using a short descriptive name, such as "Base voltage (mv)". The number of rows of
+					this table
+					will be determined by the number of data measurements you made. The angles should be given in
+					degrees.
+				</p>
+
+				<h3>4b) Plotting the Angle-Voltage Relationship using Excel</h3>
+				<p>
+					You are also required to draw two <span style="color: red;">X-Y plots</span> using the scatter chart
+					type of
+					Excel: one plot is for the base sensor, and the other plot is for the elbow sensor.
+					Use the same Excel worksheet that you used in part 4a above also for plotting these two
+					figures. <strong>The voltage values should be on the x axis and the angle values on the y
+						axis</strong> of each plot. Add a <span style="color: red;">trendline</span> to each figure and
+					choose "<span style="color: red;">display
+						equation on chart</span>". Properly label the figures and axes.
+				</p>
+
+				<p>
+					Once you have done all of the above, you should have a single Excel file
+					containing your voltage and angle measurement data, and two plots of
+					your data: one plot for the base sensor and one plot for the elbow
+					sensor. You will submit this file as a part of your deliverables.
+					<strong>Ensure that you can see an obvious relationship</strong> between
+					angle and voltage for both sensors, and justify to yourself that the trends
+					make sense. You should show the figure to your TA if you are not sure if
+					your plots are acceptable.
+				</p>
+
+				In addition to the table described above, you must also include the following
+				information at the top of your Excel data file:
+				<ul>
+					<li>your information (name, student number, lab section)</li>
+					<li>the length of the two parts of the arm (in cm)</li>
+					<li>your hardware module number.</li>
+				</ul>
+			</div>
+			<div class="tabpage" id="lab_tabpage_3">
+				<h3>Problem Decomposition:</h3>
+
+				Here is the list of the steps you need to take for this part of the lab:
+				<ol>
+					<li>Understanding the problem</li>
+					<li><strong>Performing data measurements by tracing a figure</strong>
+						and using a provided program (<strong>saveData</strong>) to save
+						the voltages</li>
+				</ol>
+
+				<h3>1. Description of the Problem:</h3>
+				<p>
+					In this part of the lab, you will be required to trace a figure
+					using the two-part arm, and collect the voltage readings from the
+					two sensors.
+				</p>
+
+				<p>
+					Again, you are going to use these measurements in the At-Home part
+					of the lab, <span class="highlight" style="color: crimson; font-weight: bold;">so please make the measurements
+						carefully</span>.
+				</p>
+
+				<h3>2. Tracing the Figure</h3>
+				<p>
+					You will be given one figure in the lab session and will be required
+					to trace the figure using the two part arm. Specifically, you should
+					use the end-point on the arm to follow the path of the figure, returning
+					back to your starting point. When tracing the figure you should not move
+					the end-point too quickly, and be careful not to move the figure itself,
+					as this will reduce the quality of your data.
+				</p>
+
+				<p>
+					While you are tracing the figure, you will use the <strong>saveData</strong>
+					program to save the data from the two sensors of the arm into a file.
+					Refer to the section "Notes on Using the saveData Program" for more information
+					about this program.
+				</p>
+
+				<p>
+					Sometimes, despite your best efforts, your data may turn out not to be accurate.
+					To protect against this, repeat the figure tracing procedure a second time, but
+					in a different method. For instance, you may decide to trace the figure once
+					clockwise and the next counter-clockwise; and/or start from a different point
+					on the figure.
+				</p>
+
+				<p>
+					Once you have completed tracing the figure, you should have two data files.
+				</p>
+
+				<h3>Notes on Using the saveData Program</h3>
+				<p>
+					In the lab, the <strong>saveData</strong> program is available on the
+					<span style="font-weight: bold; color: rgb(255, 0, 0);">Z: drive</span>, in
+					the <span style="font-weight: bold;">SaveData</span> folder. Before using the
+					program, <span class="highlight" style="color: crimson; font-weight: bold;">copy the
+						<span style="text-decoration: underline;">SaveData folder</span> to your
+						work folder on D: drive</span>, since the program will be writing to
+					files. To use the program simply double-click on it, and follow the instructions.
+				</p>
+
+				<p>
+					<span style="font-weight: bold;">NOTE</span>: The <strong>saveData</strong>
+					program cannot be used at the same time as the <strong>sensorReader</strong>
+					program from Part 1. Ensure that only one of these two programs is running
+					at any given time.
+				</p>
+
+				<p>
+					The <strong>saveData</strong> program is used to read the base and elbow
+					sensors and store the voltage values into a data file. The data file is a
+					tab-delimited text file, which by default will be created in the same folder as
+					the program. The voltage values will be stored in
+					<span style="color: red;">millivolts</span>. The <span style="color: red;">first column</span>
+					corresponds to the base sensor voltage and the <span style="color: red;">second column</span>
+					to the elbow sensor voltage.
+				</p>
+				<p>
+					When you run the program, it will open two command-line windows. On one of the windows,
+					it will prompt you for the name of the data file. It will not let you overwrite an existing file,
+					so if you enter the name of an existing file, the program will print an error and ask
+					for a new name. After you have entered the data file name, the program will start reading
+					the sensor data right away, and write it to the file as well as to the console window.
+					<strong>So it is a good idea to keep the tip of the two-part arm at one of the corners of the
+						figure you plan to trace before you run the program.</strong>
+				</p>
+
+				<p>
+					The <strong>saveData</strong> program also displays the values on the display for your
+					convenience. Make sure you do not see an "E" on the display (meaning error or invalid
+					values) or correspondigly negative values on the monitor, while you are tracing the figure.
+					If you do see an "E", that means that you are moving the arm too far in one direction and are
+					in an invalid region. You will have to move the figure and restart the tracing procedure.
+				</p>
+
+				<p>
+					When you have finished tracing the figure, quit the DAQ program by pressing Enter in the
+					second window. This will ensure that the program is properly terminated and
+					that no data is lost.
+				</p>
+			</div>
+			<div class="tabpage" id="lab_tabpage_4">
+				<h3>Submission Instructions:</h3>
+				<ul>
+					<li>Unlike previous labs, you will not be submitting any programs for this lab.</li>
+					<li>Instead you will be submitting a number of data files.</li>
+				</ul>
+
+				<h3>Files to Upload/Submit</h3>
+
+				You must submit the following three data files before the end of your lab period:
+				<ul>
+					<li>Your Excel data file from part 1 containing your
+						angle and voltage measurements and two plots.
+						Don't forget to also include in the data file: the length
+						of the two segments that you measured, your information (name ...),
+						and the number of your hardware module. </li>
+					<li>The two data files from part 2 generated by the
+						<strong>saveData</strong> program for the figure.</li>
+				</ul>
+				<br />
+
+				The three files are to be submitted on the <strong>Lab 6 - In Lab Submission</strong> page on Canvas.
+
+				<strong>Do not</strong> attempt to keep a copy of the work that you have submitted. The files will be
+				returned to you by the end of the week for you to begin the at-home portion.
+
+			</div>
+		</div>
+	</div>
+	<div id="tabpage_3">
+		<div id="home_tabs" class="tabpage enhanceable_content tabs" >
+			<ul>
+				<li id="home_tabHeader_1"><a style="text-decoration: none" href="#home_tabpage_1">Goals</a></li>
+				<li id="home_tabHeader_2"><a style="text-decoration: none" href="#home_tabpage_2">Graphing Data</a></li>
+				<li id="home_tabHeader_3"><a style="text-decoration: none" href="#home_tabpage_3">Submission</a></li>
+			</ul>
+			<div class="tabpage" id="home_tabpage_1">
+				<h3>Important Notes:</h3>
+				<ul>
+					<li>This section of the lab is different from the
+						previous labs in that:
+						<ul>
+							<li>You are not required to do this lab during your
+								normally scheduled lab time. Instead you will be doing
+								this lab at home, or anywhere else that you have access
+								to Excel (including the lab if you wish).</li>
+							<li>Everybody in all lab sections has the same
+								deadline for this lab, see the course webpage for due date information.
+								You can submit your files anytime after the in-lab portion of the lab.</li>
+						</ul>
+					</li>
+					<li>Although you will not be working in your normally scheduled lab period,
+						<span class="highlight" style="color: crimson; font-weight: bold;">you are still required to do your own work, and use your own
+							data.</span></li>
+					<li>All Excel submissions can be in the ".xls" or ".xlsx" MS Excel formats. If you
+						use any other software other than Excel, save your file in Excel format.</li>
+					<li>As usual all submissions must be through regular submission procedures.
+						Absolutely no email submissions are accepted.</li>
+					<li>You will be given access your data files from the "Lab 6 - In Lab Submission" assignment.</li>
+				</ul>
+
+				<h3>Learning Objectives:</h3>
+				<ul>
+					<li>to analyze the measured data using Excel or other spreadsheet software</li>
+					<li>to graph the results</li>
+				</ul>
+
+				<h3>Summary:</h3>
+				<p>
+					The At-Home part of the lab continues the focus on the hardware
+					module, and in particular you will be using the data that you
+					generated in the In-Lab part.
+				</p>
+
+				<p>
+					You will be graphing your data from the In-Lab Part 2 using
+					Excel. In order to graph your data, you will have to perform some
+					calculations in Excel.
+				</p>
+
+				<p>
+					Before continuing, download your in-lab files from Canvas by navigating
+					to the <strong>Lab 6 - In Lab Submission</strong> page and accessing your
+					last submission. <strong>Note:</strong> these files will only be made available
+					on Friday evening, after the last section has completed their in-lab portion.
+				</p>
+			</div>
+			<div class="tabpage" id="home_tabpage_2">
+				<h3>Description of the Problem</h3>
+
+				<p>
+					In the in-lab component, part 2, you generated two data files
+					(two traces) using the hardware module. In this part of the lab, you
+					will use Excel to generate plots of this data. You should create one Excel
+					file containing two Excel worksheets, one for each of the data
+					files that you generated.<br /><br />
+				</p>
+
+				<h3>1. Calculating X &amp; Y Coordinates</h3>
+
+				To plot your data, you will need to determine the X &amp; Y coordinates
+				of the end-point of the arm. In your data files from In-Lab Part 2, you
+				have the voltage of the base and elbow sensors. The following are the basic
+				steps to convert those voltage values into X &amp; Y coordinates:
+				<ol>
+					<li> Using your results from part 1, convert the voltage values into angles.
+						Specifically, use the slope and intercept of the angle vs. voltage plots.
+						This calculation will give you the relative angles for both the base sensor
+						and the elbow sensor. </li>
+					<li> Convert the relative angles to absolute angles. For the base sensor,
+						the relative and absolute angles are the same, but for the elbow sensor
+						they are different. </li>
+					<li> Using the absolute angles, and the lengths of the base and elbow segments,
+						determine the values of the X &amp; Y coordinates. This is the same
+						calculation that was performed in Lab 1. Recall that you measured and
+						recorded the lengths of the segments in the In-Lab Part 1. </li>
+				</ol>
+
+				<img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" alt="DAQ arm" src="https://apsc160.github.io/lab6/images/two_part_arm.gif" />
+
+				<p>
+					Recall that for the arm layout above, with angles measured in
+					<span class="highlight" style="color: crimson; font-weight: bold;">radians</span> in a counter-clockwise
+					direction.  We can relate the three angles together using parallel-line angle rules, and the position of the
+					arm's end-point can be computed using basic trigonometry:
+				</p>
+
+				<img class="figure" style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;" width="500px" alt="equations" src="https://apsc160.github.io/lab6/images/angle_position_equations.png" />
+				<p>
+					You can put all of the above calculations into a single equation in excel, or split them
+					across several equations. In either case, your Excel file should contain all of the
+					equations that you used. Do not just put the final values into your Excel file.
+					The TAs must see the expressions used to generate your results.
+				</p>
+
+				<h3>2. Generating Plots</h3>
+				<p>
+					For each of your data files, you should generate a plot of the X &amp; Y coordinates
+					of the data (with the points joined by lines). If all your calculations were
+					done correctly, then the plot should give you a good approximation of the
+					original figure. There may be some rotation or distortion of the figure.
+					A certain amount is likely, but you should be able to easily recognize the
+					original figures.
+				</p>
+			</div>
+			<div class="tabpage" id="home_tabpage_3">
+
+				<h3>Submission Instructions</h3>
+
+				<p>
+					For this lab, you will be required to submit one Excel file containing
+					all the calculations and graphs for the at-home portion of the lab.
+					The Excel file must have <strong>two worksheets</strong>, one for each of the figure traces.
+					Properly label the worksheets and include your student info (name,
+					student number, lab section, module # you used) as a note at the top-left
+					of the first worksheet.
+				</p>
+
+				Each Excel worksheet should contain the following:
+				<ol>
+					<li> The original data that you imported from the data file
+						created by the <strong>saveData</strong> program. </li>
+					<li> The calculated X &amp; Y coordinates. This can
+						also include any intermediate calculations that you may have done.</li>
+					<li> The plot of your X &amp; Y data. The plot should have proper labels and title. </li>
+				</ol>
+
+				<h3>Submitting your Files</h3>
+
+				Files are to be submitted on Canvas under the <strong>Lab 6 - At Home Submission</strong> page.
+				Upload your single excel file containing the two worksheets. Note that the deadline is the same
+				for all lab sections. <strong>No late submissions will be accepted.</strong>
+
+			</div>
+		</div>
+	</div>
+</div>
