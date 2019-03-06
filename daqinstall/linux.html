@@ -41,13 +41,20 @@
                 On Linux, we will install the DAQlib library and simulator globally, for all users of the system. This will require
                 <strong>root</strong> access.
               </p>
+              For the instructions below, you will need to download the following zip file:
+              <ul>
+                <li><a href="./assets/DAQlib_linux.zip">DAQlib_linux.zip</a></li>
+              </ul>
+              <br/>
 
               <h3>Installation:</h3> To install the DAQlib library and simulator on Linux, we will first
-              <span class="highlight">download a zip file</span> containing all the required headers, libraries, and binaries, and then run an <span class="highlight">installation script</span> that will put the files in a location where GCC can find
-              them. The library and these instructions have been tested on Ubuntu 16.04.
+              <span class="highlight">download the zip file</span> containing all the required headers, 
+              libraries, and binaries, and then run an <span class="highlight">installation script</span> 
+              that will put the files in a location where GCC can find
+              them. The library and these instructions have been tested on Ubuntu 18.04.
               <ol>
                 <li>
-                  Download the DAQlib zip file from connect. For Linux users, the link should have the title <span class="highlight">DAQlib for Linux</span>. This should create a zip file called <span class="file">DAQlib_linux.zip</span> in your downloads
+                  Download the DAQlib zip file above. This should create a zip file called <span class="file">DAQlib_linux.zip</span> in your downloads
                   folder.
                 </li>
                 <li>Unzip the file by right-clicking on <span class="file">DAQlib_linux.zip</span> and selecting <strong>Extract Here</strong> from the drop-down menu.
@@ -97,9 +104,11 @@
               </p>
 
               Create a new source file with your favourite text editor or IDE. It should be given a descriptive name (e.g.
-              <span class="code">DAQSimulatorTest.c</span>) Modify the code so that it looks like the following. Include your own name, student number, ... at the top of the code (the green text in the code below).
+              <span class="code">DAQSimulatorTest.c</span>) Modify the code so that it looks like the following. 
+              Include your own name, student number, <em>et cetera</em>, at the top of the code.
 
-              <pre data-src="src/simulator.c"></pre>
+              <pre data-src="./src/DAQSimulatorTest.c"></pre>
+              <a href="./src/DAQSimulatorTest.c">DAQSimulatorTest.c</a>
 
               <p>
                 We do not expect you to understand the code that you are typing yet (that will come in the next few weeks).
@@ -107,7 +116,7 @@
 
               To compile, link and run the program from the command-line, navigate to the source file location in a terminal, and enter the following:
               <img class="figure" alt="DAQ compile and run" src="./images/linux/DAQSimulatorTest.png">
-              Note the <strong>-lDAQlib</strong> option, which tells our program to link with the DAQlib library.
+              Note the <code>-lDAQlib</code> option, which tells our program to link with the DAQlib library.
 
               If everything was installed successfully, the simulator should appear:
               <img class="figure" alt="Simulator with LED off" src="./images/linux/DAQSimulatorOff.png" />
