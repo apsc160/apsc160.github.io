@@ -1,0 +1,286 @@
+<div id="tabs" class="tabpage enhanceable_content tabs">
+  <ul>
+    <li id="tabHeader_1"><a style="text-decoration: none;" href="#tabpage_1">Overview</a></li>
+    <li id="tabHeader_1"><a style="text-decoration: none;" href="#tabpage_2">Exercise 1</a></li>
+  </ul>
+  <div class="tabpage" id="tabpage_1">
+    <h3>Learning Goals:</h3>
+
+    <ul>
+      <li>To write a C program that uses switches and LED displays of the DAQ module (data acquisition, I/O)</li>
+      <li>To implement a simple counter</li>
+    </ul>
+
+    <h3>Overview:</h3>
+    <p>
+      You will write a program that implements a simple counter, and
+      displays the counter value on an LED screen. Note that we are
+      using the term <b>LED screen</b> to refer to a number of 7-segment
+      LED displays arranged in a row.
+    </p>
+
+    <img class="figure"
+      style="margin-top: 1em; margin-bottom: 1em; display: block; margin-left: auto; margin-right: auto;"
+      alt="A simple counter program" src="https://apsc160.github.io/lab7/images/DAQcounter.png" />
+
+    Note the following in order to complete this pre-lab for Lab 7.
+    <ul>
+      <li>to develop and test your program, you will need to install
+        and use the simulator that has been provided to you.</li>
+      <li>to write your program, start from the
+        <strong>DAQ_general_framework</strong>, then add the required new function(s).</li>
+      <li>Refer to the DAQ functions syntax sheet to read (or write) from (to) an input (output) device.</li>
+      <li>The function <code>writeNumber()</code> (and of course <code>writeDigit()</code>) will be provided to you as a
+        <strong>.c</strong> file in the lab. A sample <code>main()</code> function (from the general framework) and the
+        prototype
+        of all DAQ functions will be also provided to you.</li>
+      <li>Please make every effort to write your own program first. Only use the sample solution if you need help to
+        improve or find bugs in your own program. Note that this is only one possible solution... there are many others.
+      </li>
+    </ul>
+    <br />
+
+    <p>
+      As usual, the <span style="color: rgb(255, 0, 0);">in-lab
+        exercise</span> will be described in a print-out that the TAs
+      will give you at the beginning of the lab.
+    </p>
+    <ul>
+      <li>The program will be identical for both the simulator and
+        the hardware. For the in-lab exercise of this lab, you will
+        be using the physical hardware device, not the simulator.</li>
+      <li>You are allowed (and encouraged) to have your textbook with you.</li>
+      <li>Obviously, as before you <span style="color: rgb(255, 0, 0);">are
+          NOT allowed</span> to use the sample solution, prelab info on
+        Canvas or any other unpermitted reference materials during the lab.</li>
+    </ul>
+
+    <h3>Lab Preparation:</h3>
+
+    In preparation for this lab you may find it useful to review:
+    <ul>
+      <li><span style="text-decoration: underline;">relevant lecture
+          notes (such as on the Display, Digital IO and Sleep()) and
+          class activities</span>.</li>
+      <li>Review of the programming concepts such as modular programming with functions, repetition, branching, and
+        arrays.</li>
+    </ul>
+  </div>
+  <div class="tabpage" id="tabpage_2">
+    <div id="labtabs" class="tabpage enhanceable_content tabs">
+      <ul>
+        <li id="tabHeader_1"><a style="text-decoration: none;" href="#lab_tabpage_1">Problem</a></li>
+        <li id="tabHeader_2"><a style="text-decoration: none;" href="#lab_tabpage_2">Development</a></li>
+        <li id="tabHeader_3"><a style="text-decoration: none;" href="#lab_tabpage_3">Testing</a></li>
+        <li id="tabHeader_4"><a style="text-decoration: none;" href="#lab_tabpage_4">Solution</a></li>
+      </ul>
+      <div class="tabpage" id="lab_tabpage_1">
+
+        <h3>Problem Statement</h3>
+
+        <p>
+          You are given a system that consists of 8 7-segment LED displays
+          and two toggle switches. The 8 LED displays are arranged in a row
+          and will be called an LED screen.
+        </p>
+
+        <p>
+          You are to <span style="color:red;">write a program in C</span>
+          that implements a simple counter and displays the counter value
+          on the LED screen. The counter simply counts the number of elapsed
+          seconds (similar to a digital stop-watch). The switches control
+          the operation of the counter.
+        </p>
+        <ul>
+          <li>The two switches are connected to
+            <span style="text-decoration: underline;">digital input channels
+              numbered 0 to 1</span>
+            <ul>
+              <li>Switch #0 is connected to channel #0, and is called the
+                <span style="color: rgb(0, 0, 153);">RUN switch</span>.</li>
+              <li>Switch #1 is connected to channel #1 and is called the
+                <span style="color: rgb(0, 0, 153);">RESET switch</span>.</li>
+            </ul>
+          </li>
+          <li>The LED screen consists of 8 LED displays. The first display
+            on the right is at position #0 and the last display on the left
+            is at position #7.</li>
+        </ul>
+        <br />
+
+        Your program should operate as follows:
+        <ul>
+          <li>When the program first starts, it should
+            <span style="text-decoration: underline;">prompt the user</span>
+            for the start and stop values of the counter.</li>
+          <li> The program should
+            <span style="text-decoration: underline;">then verify that</span>
+            both switches are off, and not do anything else until the two
+            switches are indeed off.</li>
+          <li>Next the program should
+            <span style="text-decoration: underline;">set the initial value</span>
+            of the counter to the start value previously entered by the user
+            and <span style="text-decoration: underline;">show</span> this
+            value on the LED screen.</li>
+          <li> While both switches are off, the counter should display
+            the current value, whatever it happens to be.</li>
+          <li>If the RESET switch is off and the RUN switch is on, then
+            the counter should increment its value once a second and
+            show it on the LED screen.</li>
+          <li>When the counter reaches the stop value previously entered
+            by the user, it should stop counting, but continue to display
+            this final value on the LED screen. </li>
+          <li>If the RESET switch is on, then it doesn't matter whether the RUN switch is on or off. The value of the
+            counter is reset to the start value and shown on the LED screen. The counter remains at the start value
+            while the RESET switch
+            is on. </li>
+        </ul>
+
+        <h3>Simulator</h3>
+        <p>
+          The simulator will allow you to test your program without the
+          need for actual physical hardware. To access the configuration
+          for this problem, <span style="color:red;">you should specify a
+            <code>setupNum</code> with value 4</span> when calling the
+          <code>setupDAQ</code> function. <strong>You will find the
+            simulator on Canvas.</strong>
+        </p>
+
+        <p>All Lab computers already have the simulator installed.</p>
+
+        <p>For the in-lab exercise of this lab, you will be using the actual
+          hardware device. The device will also have 2 switches and 8
+          seven-segment LED displays arranged in a row as an LED screen.
+        </p>
+      </div>
+      <div class="tabpage" id="lab_tabpage_2">
+
+        <h3>Algorithm development and coding</h3>
+
+        <p>
+          Carefully read the <strong>Problem Statement</strong> and
+          try to decompose the problem into smaller manageable parts.
+          Consider the following:
+        </p>
+        <ol>
+          <li>Create a new project in Visual Studio to implement your
+            program in programming language C. <strong>You must create a project
+              of type <span style="color:rgb(0, 0, 153);">APSC160 - DAQ</span>,
+              otherwise Visual Studio will not be able to find the DAQ header
+              or simulator files.</strong> Also note that the extension
+            of your source file must be .c (not cpp)</li>
+          <li>You can use the <span style="color:rgb(0, 0, 153);">DAQ general
+              framework</span> as a starting point. The framework includes
+            the main function and a work function (that you should rename
+            to be more descriptive). You must call the two DAQ library functions
+            <code>setupDAQ(...)</code> and <code>continueSuperLoop()</code>.
+          </li>
+          <li>Define the <span style="color: rgb(0, 0, 153);">symbolic
+              constants</span> that you need for your program.</li>
+          <li>You now may include the required statements that would
+            allow you to <span style="color: rgb(0, 0, 153);">read from
+              the two switches</span>. You also need to think about where
+            in your program you are going to include these statements.
+            Refer to the course notes for information on how to access
+            the functions provided by the DAQ library.</li>
+          <li>It is a good idea to compile your code regularly and
+            remove any syntax errors as you proceed.</li>
+          <li>The <span style="color: rgb(0, 0, 153);">writeNumber(...)
+              function</span> is also provided to you. This is the function
+            that you can use to write a non-negative integer number to
+            the eight 7-segment displays of the hardware module
+            (discussed thoroughly in class)</li>
+          <li>Now you need to <span style="color: rgb(0, 0, 153);">devise an
+              algorithm</span> that will implement the counting functionality
+            that is outlined in the problem statement.
+            You can do so either by using a flow-chart or an itemized list
+            in plain language.</li>
+        </ol>
+        <br />
+
+        Do not attempt to code your entire solution in the <code>main(...)</code> function.
+        Your program should include at least the following two functions:
+        <ul>
+          <li><span style="color:red;"><code>runCounter</code></span>: this function
+            should implement all of the logic of the counter, and continue looping
+            until the user decides to quit. </li>
+          <li><span style="color:red;"><code>writeNumber</code></span>: this function
+            writes the given non-negative integer number to the LED screen. The least
+            significant digit of the number should be shown on the right-most display
+            (i.e. position #0). You can assume that the number will fit within the 8
+            digits of the LED screen.
+            (Hint: think about how decimal numbers are converted to binary numbers.
+            You may find the modulos operator (%) useful)</li>
+        </ul>
+        <br />
+
+        <p>
+          If you are having difficulty using, understanding, or implementing the
+          <code>writeNumber</code> function, then you may want to refer to the function
+          that is posted as part of the notes on LED Displays. Of course, you can
+          also refer to the provided sample solution as a last resort.
+        </p>
+
+        <p>
+          <span style="color:red;">Important</span>: as mentioned earlier,
+          for the in-lab exercise, you will not be expected to implement a
+          function similar to <code>writeNumber(..)</code>. Instead you will
+          be given the source for the <code>writeNumber(...)</code> function and
+          any support functions that it calls. You will be allowed to copy
+          this function into your code.
+        </p>
+      </div>
+
+      <div class="tabpage" id="lab_tabpage_3">
+
+        <h3>Developing a test suite</h3>
+
+        <p>
+          You should think about how to develop a test suite that can be
+          used to test your program once it is written. Refer to the
+          notes in earlier labs on how to choose appropriate test values.
+        </p>
+
+        <p>
+          Having chosen your test values, determine the expected output.
+          Some of the expected outputs may simply be a description of what
+          is happening, rather than a specific number, e.g. the counter
+          is running, the counter is stopped, etc. After you have written
+          your program, you can then test your program with each of your
+          test values and check that your program produces the expected
+          result. If it doesn't, you probably have one or more logic
+          errors in your code.
+        </p>
+        <ul>
+          <li><span style="color: rgb(0, 0, 153);">Testing</span>: once
+            your code has successfully compiled, verify that it produces
+            correct results using the test suite that you developed earlier.
+            If any of your tests fails, you must look for logic errors
+            in your algorithm.
+          </li>
+          <li><span style="color: rgb(0, 0, 153);">Debugging</span>: now
+            that the programs that you are writing are becoming a little
+            more complex, you might find it useful to use the debugger
+            that is integrated into the Visual Studio environment.
+          </li>
+        </ul>
+      </div>
+
+      <div class="tabpage" id="lab_tabpage_4">
+        <h3>Sample Solution</h3>
+        <p>
+          Use the sample solution to help you to find bugs in your own
+          program. Note that the sample solution is not the only solution.
+        </p>
+
+        <div id="soln">
+          <p>
+            <strong>Download:</strong> <span class="code">
+              <a href="https://apsc160.github.io/lab7/src/prelab7_solution.c">prelab7_solution.c</a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
