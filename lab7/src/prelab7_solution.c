@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <DAQlib.h>
 
-/* Sleep on Windows systems */
+ /* Sleep on Windows systems */
 #include <Windows.h>
 /* usleep on macOS or Linux systems */
 /* #include <unistd.h> */
@@ -53,7 +53,8 @@ int main(void)
 
 	if (setupDAQ(setupNum) == TRUE) {
 		runCounter();
-	} else {
+	}
+	else {
 		printf("ERROR: Cannot initialize system\n");
 	}
 
@@ -101,7 +102,7 @@ void runCounter()
 		/*  decide what to do, based on the values of the switches  */
 		if (resetSwitch == SWITCH_ON) {
 			/*
- 			 * If the reset switch is on, and the counter is currently
+			 * If the reset switch is on, and the counter is currently
 			 * running, then reset the counter
 			 *
 			 * If the counter is not currently running, then do nothing,
@@ -126,12 +127,19 @@ void runCounter()
 				 * NOTE: there are better ways to handle the timing to
 				 *       minimize delay when flipping the reset switch
 				 */
-				/* windows sleep function */
+				 /* windows sleep function */
 				Sleep(DELAY_TIME);
 				/* macOS/Linux sleep function */
 				/* usleep(DELAY_TIME*1000) */
 
-				counter++;
+				/* check reset again prior to showing number */
+				resetSwitch = digitalRead(RESET_SWITCH);
+				if (resetSwitch == SWITCH_ON) {
+					counter = counterStart;
+				} else {
+					counter++;
+				}
+
 				writeNumber(counter);
 			}
 		}
