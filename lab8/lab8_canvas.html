@@ -1,0 +1,422 @@
+<div class="enhanceable_content tabs">
+	<ul>
+		<li><a style="text-decoration: none;" href="#Overview"> Overview</a></li>
+		<li><a style="text-decoration: none;" href="#Option-1"> Option 1: Display</a></li>
+		<li><a style="text-decoration: none;" href="#Option-2"> Option 2: Simon Game</a></li>
+		<li><a style="text-decoration: none;" href="#Deliverables"> Deliverables</a></li>
+	</ul>
+	<div id="Overview">
+		<h3><strong>Lab #8: (Option 1) Implementing a Scrolling Display or (Option 2) the Simon game</strong></h3>
+		<h4><strong>Learning Objectives:</strong></h4>
+		<p>In this take-home lab you have two options. You must select and submit <span style="color: #ff0000;">either
+				option 1 or option 2, not both</span>.</p>
+		<p>You can earn up to 140% in this lab. <em>Note that the bonus marks will not allow you to get more than 100%
+				on your "overall" lab mark, it will help you though to improve your marks of earlier labs (for example
+				lab 7, or/and lab 5, ...).</em></p>
+		<p>As usual, use good programming practice to get full mark. For example, you are not allowed to use any global
+			variables.</p>
+		<p><span style="color: #ff0000;">Option 1</span> : (to earn up to <span style="color: #ff0000;">125%</span> on
+			this lab)</p>
+		<ul>
+			<li>To write a program in C that displays a scrolling message on LED displays</li>
+			<li>To write non-digit characters to 7-segment LEDs</li>
+			<li>To practice reading from switches (digital inputs) as control device</li>
+		</ul>
+		<p><span>You will write a program in C that displays a message on the LED screen and scrolls this message across
+				the LED screen. Note that the term LED screen is used to refer to a number of LED displays arranged in a
+				row. This option has a required part (to earn up to 100%) and a bonus part (added functionality) to earn
+				up to 125% on this lab. The program must work to earn the bonus marks.</span></p>
+		<p><span style="color: #ff0000;">Option 2</span> : (to earn up to <span style="color: #ff0000;">140%</span> on
+			this lab)</p>
+		<ul>
+			<li>To write a program in C that implements the Simon game using the simulator</li>
+			<li>As an alternative option, you can implement the Simon game that will allow you to earn up to 140% on
+				this lab. The program must also work to earn the bonous marks.</li>
+		</ul>
+		<p>As an alternative option, you can implement the Simon game that will allow you to earn up to 140% on this
+			lab. The program must also work to earn the bonus marks.</p>
+		<p>&nbsp;</p>
+		<h3><strong>IMPORTANT (<span style="color: #ff0000;">Please Read</span>):</strong></h3>
+		<p><span>This lab is different from previous C programming labs, in that <span style="color: #ff0000;">you can
+					do this programming lab at home</span>, i.e., you are not "required" to attend your lab section to
+				do this lab (please see the "Lab Access" section below). Everybody has the same programming assignment
+				and the <span style="color: #ff0000;">same due date</span>.</span></p>
+		<p><span style="color: #ff0000;">Plagiarism</span>: Since you will be doing this lab at home, some of you may be
+			tempted to copy the work of somebody else, and submit it as your own. We have various tools to check for
+			copying, so it is much better to get a low mark for this lab, rather than risk the consequences of
+			plagiarism (i.e. getting a zero, up to getting suspended from UBC). Note that <strong>both the person
+				copying the code and the person allowing his/her code to be copied will face the penalties of
+				plagiarism</strong>.</p>
+		<p>While you are allowed to discuss the design/algorithm for your programs, the safest way to avoid plagiarism
+			to <strong>not look at someone else's code, or to allow them to look at your code</strong>. This is an
+			<em>individual</em> assignment. In addition, if you are working in the lab, please make sure that you delete
+			your code from the computer after you are done, to ensure nobody else copies it. Even if somebody copies
+			your code without your consent or knowledge, you may still be responsible for plagiarism.</p>
+		<p>If you are having problems with your program which you can't resolve, then it is best to talk to one of the
+			TAs or the instructor. In addition to the usual office hours, TAs will be available during many of the
+			regularly scheduled lab sessions.</p>
+		<h4><span style="color: #ff0000;"><strong>Lab Access:</strong></span></h4>
+		<p>In order to develop and test your program, you will have the following options:</p>
+		<ul>
+			<li>use the DAQ library/simulator on your own computer;</li>
+			<li>use the DAQ library/simulator on the computers in the lab room (CEME2212) ;</li>
+			<li>use the DAQ library and the real hardware module in the lab room (CEME2212). This will only be possible
+				in one of the scheduled TA office hours.</li>
+		</ul>
+		<p>Note that the Simon game can be implemented/tested using the simulator only.</p>
+		<p><span>At least one TA will be available in the lab room (CEME 2212) during the scheduled TA office hours for
+				lab 8:</span></p>
+		<ul>
+			<li>The TAs will manage and control the lab during these scheduled hours. They will only allow as many
+				students as the lab capacity allows.</li>
+			<li>During these scheduled hours, lab access is on a first come first served basis. Under equal conditions,
+				the priority is given to a student whose lab section is a on that day, or if the student does not have
+				his/her lab section as one of the scheduled lab classes.</li>
+			<li>Do not leave it to the last available TA office hour, if you do want to make sure you have a
+				TA-supervised lab access.</li>
+		</ul>
+	</div>
+	<div id="Option-1">
+		<h3><strong>Lab #8 (Option 1): Implementing a Scrolling Display</strong></h3>
+		<h4><strong>Problem Summary </strong></h4>
+		<p>You are given a system that consists of 8 LED displays and two toggle switches (the DAQ hardware module or
+			the simulator). The 8 LED displays are arranged in a row and will be called an LED screen. You are to write
+			a program in C that displays a scrolling message on the LED screen.</p>
+		<p><span style="color: #ff0000;">This option for the lab is divided up into two parts</span>: a required part,
+			and an optional part (for additional bonus marks). Both parts will display a scrolling message on the LED
+			screen. The optional part also uses two switches to control how the message is scrolled and gives an option
+			to the user to select the message.</p>
+		<p>&nbsp;</p>
+		<h4><strong>Writing the Message to Display</strong></h4>
+		<p>You can choose the message that you want to display, but please note the following:</p>
+		<ul>
+			<li>ideally your message should be <span>a <span style="color: #0000ff;">short word or phrase</span></span>.
+			</li>
+			<li>the message should be <span style="color: #0000ff;">at least 4 characters long</span>, where at least 3
+				of the characters should be English letters (not just digits, etc).</li>
+			<li>there is no maximum length on your message as long as it can be used efficiently to test the
+				functionality of the program as described, but shorter messages are preferred and will probably be
+				easier to test.</li>
+			<li>your message does not have to be unique; it is OK if you happen to have the same message as somebody
+				else.</li>
+			<li>note that not all English letters can be displayed, so you may need to mix upper and lower case letters
+				to have a meaningful word. Do not use a word that has characters that you cannot display on the
+				7-segment displays.</li>
+			<li>for each letter, you will have <span>to <span style="color: #0000ff;">determine the data
+						value</span></span> to write to the LED display in order to display the character.</li>
+			<li>In your program you may use one particular message only. However, your algorithm should not be solely
+				dependent on the message it is displaying (i.e. it must be algorithmic and it must be possible to change
+				the message).</li>
+		</ul>
+		<p>One way to do this is to store the data values for each character in a message array. Note that your message
+			array would not normally be a String.</p>
+		<p>&nbsp;</p>
+		<h4><strong>Problem - <span style="color: #ff0000;">Required Part</span></strong></h4>
+		<p>In this part you only use the LED screen. The LED screen consists of 8 LED displays. The first display on the
+			right is at position #0 and the last display on the left is at position #7.</p>
+		<p>Your program should update the LED screen once a second as follows:</p>
+		<ul>
+			<li>When your program first starts it should <span style="color: #0000ff;">display the first
+					character</span> of your message, in the right-most position of the LED display (<span
+					style="color: #0000ff;">position 0</span>).</li>
+			<li>After one second it should <span style="color: #0000ff;">update the display</span> by scrolling your
+				message one character to the left (i.e. first character at position 1, second character at position 0).
+			</li>
+			<li>Your program should <span style="color: #0000ff;">continue to update</span> the display by scrolling
+				your message one character per second until it has completely scrolled off the left end of the display.
+			</li>
+			<li>Once your message has scrolled off the display, your program should start again at the first step above,
+				i.e. first character at position 0.</li>
+			<li>Your program should continue this process until you quit the program.</li>
+		</ul>
+		<p>As an example, suppose your message is "dog". The following would appear on the LED screen, where each column
+			is the corresponding position on the LED screen, and each row represents the updated screen after one second
+			has elapsed:</p>
+		<pre>          01234567   <br />                 d<br />                do<br />               dog<br />              dog<br />             dog<br />            dog<br />           dog<br />          dog<br />          og<br />          g<br />          <span style="color: #0000ff;">-- note a completely blank display here for 1 second --</span><br />                 d<br />                do<br />               dog<br />              dog<br />          -- etc --</pre>
+		<p>Note that "dog" is not a valid message - while all the letters can be displayed on the LED screen, it does
+			not meet the minimum length requirement.</p>
+		<p>&nbsp;</p>
+		<h4><strong>Problem -<span> <span style="color: #ff0000;">Optional Part</span></span> (for 25% extra bonus
+				marks)</strong></h4>
+		<p><em><span style="color: #ff0000;">This part is optional, allowing you to get up to an additional 25% on this
+					lab</span>. Note that the bonus marks will not allow you to get more than 100% on your "overall" lab
+				mark, it will help you though to improve your marks of earlier labs (for example lab </em><em>7, or/and
+				lab 5, ...</em><em>). </em>Note that you can also get partial mark if you implement only a part of the
+			optional bonus part. You need to add a comment at the top of your program to indicate you are implementing
+			the bonus part as well.</p>
+		<p>For the optional part, you will add the direction and speed control to your program and you also give the
+			user the option to choose the displayed message.</p>
+		<p><strong>A)</strong> This part uses both the LED screen as well as the two switches. The two switches are
+			Canvased to input channels numbered 0 and 1.</p>
+		<ul>
+			<li><span style="color: #0000ff;">Switch #0</span> is Canvased to channel #0, and is called the <span
+					style="color: #0000ff;">DIRECTION</span> switch.</li>
+			<li><span style="color: #0000ff;">Switch #1</span> is Canvased to channel #1 and is called the <span
+					style="color: #0000ff;">SPEED</span> switch.</li>
+		</ul>
+		<p>For this part, your program should operate as described above with the following additions:</p>
+		<ul>
+			<li>When the SPEED switch is off, the display should be updated once every second. When the SPEED switch is
+				on, the display should be updated once every 0.5 seconds.</li>
+			<li>When the DIRECTION switch is off, the message should scroll to the left (as in the required part above).
+				When the DIRECTION switch is on, the display should scroll to the right. When scrolling to the right,
+				the operation is simply the reverse of scrolling to the left.</li>
+		</ul>
+		<p><strong>B)</strong> At the very beginning, the program should ask the user to choose between <span
+				style="color: #ff0000;">two pre-determined messages</span> (of different sizes). Then your program will
+			use the message user selected to display. Note this selection is done once at the very beginning when the
+			program is run (No need for provision to change it after the message is selected). The two messages must be
+			of two different sizes.</p>
+		<p>Example: An example for prompting the user for selecting between the two example messages SHOP and HELLO
+			could be:</p>
+		<p>&nbsp;</p>
+		<pre>printf("Please choose which message to display.\n");
+	printf("Message 1: SHOP,\n");
+	printf("Message 2: HELLO.\n");
+	printf("Please enter 1 or 2: ");
+	scanf("%d", &amp;choice);         /* choice is an int variable */</pre>
+		<p>&nbsp;</p>
+		<h4><strong>Using Simulator / Hardware Module</strong></h4>
+		<p>The simulator will allow you to test your program without the need for the actual hardware module. The
+			program will be identical for either the simulator or the hardware. To access the simulator configuration
+			for this problem, you should specify a <span style="color: #ff0000;">setupNum of 4</span>, when calling the
+			<strong>setupDAQ()</strong> function. You will find the simulator under the "Part 2 - Lecture contents" page
+			on your Canvas home.</p>
+		<p>If you are working in a TA-supervised lab, you will be able to use the actual hardware module if you wish so.
+			The hardware module also has 2 switches and 8 LED displays arranged in a row as an LED screen. To use the
+			hardware module, you should specify a <span style="color: #ff0000;">setupNum of 0</span>, when calling the
+			<strong>setupDAQ</strong> function. Note that you will only have access to the hardware module while a TA is
+			present in the lab.</p>
+		<p>&nbsp;</p>
+		<h4><strong>Algorithm development and coding</strong></h4>
+		<p>Carefully read the Problem Statement above and try to decompose the problem into smaller and manageable
+			parts. Proceed step by step, and debug often. As before, you need to use good programming practices, and you
+			need to add sufficient comments to your code.</p>
+		<p>Your program should include at least the <strong>main</strong> and <strong>scrollMessage</strong> functions.
+			Your program should follow the same basic structure of the in-class examples, i.e. the <strong>main</strong>
+			function should perform the necessary initialization and then call the <strong>scrollMessage</strong>
+			function. You are allowed to use any code segment that you think you may need in your program from the
+			in-class programming exercises E1 to E7 (solutions are posted on Canvas).</p>
+		<p>The <strong>scrollMessage</strong> function (and any additional functions you define) should implement all of
+			the logic of the message scrolling, and continue looping until the user decides to quit. You are free to
+			define any additional functions that you may find useful.</p>
+		<p>Create a new project in Visual Studio to implement your program in programming language C. Compile your code
+			regularly and remove any syntax errors as you go. <span>Refer to the course notes for information on how to
+				access the functions provided by the DAQ library.</span></p>
+		<p>&nbsp;</p>
+		<h4><strong>Developing a test suite</strong></h4>
+		<p>You should also think about how to develop a test suite that can be used to test your program once it is
+			written. Refer to the notes in earlier labs on how to choose appropriate test values.</p>
+		<p>Having chosen your test values, determine the expected output.</p>
+		<ul>
+			<li><span style="color: #0000ff;">Testing</span>: Once your code has successfully compiled, verify that it
+				produces correct results using the test suite that you developed earlier. If any of your tests fails,
+				you must look for logic errors in your algorithm (which will, of course, have resulted in logic errors
+				in your code).</li>
+			<li><span style="color: #0000ff;">Debugging</span>: Now that the programs that you are writing are becoming
+				a little more complex, you might find it useful to use the debugger that is integrated into the Visual
+				Studio environment.</li>
+		</ul>
+	</div>
+	<div id="Option-2">
+		<h4><strong>Problem Summary </strong> <span><span class="Apple-converted-space"></span></span></h4>
+		<p><em><span style="color: #ff0000;">This option allows you to get up to 140% on this lab</span> (</em>
+			Please<span><span class="Apple-converted-space"> </span>select and submit </span><span><span
+					style="color: #ff0000;">either option 1 or option 2</span>,<span style="color: #ff0000;"> not
+					both</span></span> .<em>). Note that the bonus marks will not allow you to get more than 100% on
+				your "overall" lab mark, it will help you though to improve your marks of earlier labs (for example lab
+				7, or/and lab 5, ...). </em><span>Please add a comment at the top of your program indicating that it is
+				the Simon game and follow the instructions on the deliverables tab for the .c file name.</span></p>
+		<p>You are to implement the <span style="color: #ff0000;">Simon game</span> in C using the DAQ simulator. The
+			setup number value for initializing the simulator is 6 (<span style="color: #ff0000;">setupNum of 6</span>).
+			The following figure shows a snapshot of the simulator:</p>
+		<p><img src="https://canvas.ubc.ca/courses/17785/files/3612421/download" alt="SimulatorSnapshot.jpg" width="526"
+				height="197" data-api-endpoint="https://canvas.ubc.ca/api/v1/courses/17785/files/3612421"
+				data-api-returntype="File" /></p>
+		<p>When turned on, the LEDs from 0 to 3 are of the following colours: Green, Red, Yellow, and Blue,
+			respectively. LED0 is associated with PushButton0, LED1 with PushButton1, and so forth.</p>
+		<p>&nbsp;</p>
+		<h4><strong>Simon Game</strong></h4>
+		<p>Simon is a simple<span> <span style="color: #ff0000;">memory skills electronic game</span></span> that goes
+			back to the early era of electronic games.</p>
+		<ul>
+			<li>A sequence of colors are shown to the player. The player should memorize those and reproduce the same
+				sequence by pushing the corresponding switches.</li>
+			<li>The displayed sequence begins with a single colour (displayed on the corresponding LED by blinking
+				once).</li>
+			<li>If the player follows successfully (i.e. remembers the correct colour and pushes the corresponding
+				button correctly), another randomly chosen colour is added to the end of the sequence each time and this
+				new sequence is displayed (displayed on the corresponding LEDs one after the other by blinking each
+				once). So the sequence becomes longer each time (and so harder to memorize).</li>
+			<li>The game ends if the player makes a mistake, or if the player wins (following the pattern all the way up
+				to the (pre-set) maximum length of the sequence.) You program though should start a new game right after
+				that, until the use quits.</li>
+		</ul>
+		<p>You can see <a
+				href="http://en.wikipedia.org/wiki/Simon_%28game%29">http://en.wikipedia.org/wiki/Simon_(game)</a><span>
+				for more info.</span></p>
+		<p>We want to develop a program that implements a <span style="color: #ff0000;">simple</span> version of the
+			game.</p>
+		<ul>
+			<li>There are 4 color LEDs.</li>
+			<li>There are 4 corresponding switches. Note that these switches are push-button switches (like the keys on
+				a keyboard). So you need to implement reading from them.</li>
+			<li>The maximum sequence length is fixed at 5 (although it could be easily modified to be longer).</li>
+		</ul>
+		<p><img src="https://canvas.ubc.ca/courses/17785/files/3612445/download" alt="System.PNG" width="534"
+				height="323" data-api-endpoint="https://canvas.ubc.ca/api/v1/courses/17785/files/3612445"
+				data-api-returntype="File" /></p>
+		<p>The sequence should be different at each instance of the game, and so the program should generate <span
+				style="color: #ff0000;">random</span> sequences.</p>
+		<p><strong>Example: </strong><span>Let&rsquo;s say the computer chooses a sequence of </span><br /><span> (red,
+				red, blue, yellow, green)</span></p>
+		<ul>
+			<li>First the red LED is turned on (flashed).</li>
+			<li>If the player presses the red button, then the sequence (red, red) is displayed (otherwise, the player
+				has made a mistake and a new game is started.)</li>
+			<li>If the player presses (red, red), then the sequence (red, red, blue) is displayed (otherwise, the player
+				has made a mistake and a new game is started.)</li>
+			<li>&hellip;</li>
+			<li>If the player presses (red, red, blue, yellow, green), s/he has won (otherwise lost) and a new game is
+				started.</li>
+		</ul>
+		<p>&nbsp;</p>
+		<h4><strong>Writing the Program</strong></h4>
+		<p>Now that we know what we expect from the program (clear problem statement), we should start implementing it.
+		</p>
+		<ul>
+			<li>We first devise an algorithm for implementing this program.</li>
+			<li>Then we write the primary structure of the program based on the general framework.</li>
+			<li>Then we implement the required functions:</li>
+			<ul>
+				<li>a function to implement the functionality of the Simon game,</li>
+				<li>a function to generate the required random sequence,</li>
+				<li>and any other required functions.</li>
+			</ul>
+			<li>Finally (and periodically), we debug and test the program</li>
+		</ul>
+		<p>&nbsp;</p>
+		<h4><strong>Algorithm</strong></h4>
+		<p>One possible algorithm for implementing the simple Simon game is:</p>
+		<p>- generate a random sequence of 5 numbers between 0 and 3 (inclusive, representing the colours), (sequence
+			length is 5)<br />- start with 1 LED (N=1)<br />- continue while the user wants to play</p>
+		<ul>
+			<li>turn on (flash) the first N LEDs in the sequence one by one</li>
+			<li>read the user's input (i.e. read the buttons)</li>
+			<li>if the user gets it correctly
+				<ul>
+					<li>the user wins (<span style="color: #008000;">flash the green LED three times to indicate a
+							win</span>)</li>
+					<li>start a new game</li>
+				</ul>
+				<ul>
+					<li>increment N</li>
+				</ul>
+			</li>
+			<ul>
+				<li>if N equals to the sequence length</li>
+				<li>else</li>
+			</ul>
+			<li>else</li>
+			<ul>
+				<li>the user loses (<span style="color: #ff0000;">flash the red LED three times to indicate a
+						lose</span>)</li>
+				<li>start a new game</li>
+			</ul>
+		</ul>
+		<p>Use practical and reasonable timing (not too long nor too short): Allow some short time before the game
+			starts/restarts (allowing the player to get ready), use practical LED flashing times, the same goes with the
+			interval between displaying each colour of the random sequence to the player, ...</p>
+		<p>&nbsp;</p>
+		<h4><strong>Program Structure</strong></h4>
+		<p>As before the main skeleton of your program will be:</p>
+		<p><pre>/* include required header files */
+/* define input/output channels */
+
+/* define other symbolic constants, e.g. state of the switches and LEDs */
+
+/* work function */
+void runSimon (void);
+
+/* other function prototypes here*/
+
+int main(void)
+{
+	/* using our usual main function */
+
+	return 0;
+}
+
+void runSimon (void)
+{
+	/* your code here */
+}
+</pre>
+		<p>&nbsp;</p>
+		<h4><strong>Programming Challenges</strong></h4>
+		<h4><strong>1) Reading from push-button switches</strong></h4>
+		<p>In this program, we are reading from push-button switches as opposed to the toggle switches (that we used in
+			earlier exercises). So you need to implement it.</p>
+		<p>Note that when you change the state of a toggle switch (like in Lab 7), it keeps its state until you change
+			it again. So you could just call digitalRead one time (some time after this change of state) and know its
+			new status. For the push-button, when you press it, its state changes to on, but as soon as you release it,
+			it goes back to its default state (off).</p>
+		<p>You simply need to consider this procedure, when you implement reading from the push buttons: a) your program
+			must sense that the push button is pressed (i.e. it is on now) and b) it should wait until it is released
+			(back to off again) -&gt; that constitutes one click of that push button.</p>
+		<p>- Your program still has to be responsive if the the user quits the program.<br />- The push button must be
+			responsive to a brief click as well as a longer press.</p>
+		<p>&nbsp;</p>
+		<h4><strong>2) Generating Random Sequences (Numbers)</strong></h4>
+		<p>The sequence should be different at each instance of the game, and so the program should generate <span
+				style="color: #ff0000;">random</span> sequences. We need to write a function that generates the sequence
+			of random numbers for our game. How do we generate random integers between 0 and 3?</p>
+		<p>The C library stdlib.h declares the function:</p>
+		<p><strong>int rand(void); </strong></p>
+		<ul>
+			<li>Returns a pseudo-random integer in the range 0 to RAND_MAX inclusive, where RAND_MAX is a
+				system-dependent constant (often 32,767).</li>
+			<li>The pseudo-random integers are equally likely to occur (statistically speaking, they have a uniform
+				distribution.)</li>
+		</ul>
+		<p><span>To initialize (seed) the random number generator, we use the following call to the function srand()
+				(just use it exactly as below, you need to include the time.h header file):
+			</span><br /><br /><strong>srand( (unsigned) time( NULL ) );</strong><br /><br /><span>This function call
+				uses the current time (in seconds) from the system clock as the seed for the random number generator.
+			</span><br /><span>Assuming we run the program at different times, different sequences of pseudo-random
+				numbers will be generated. </span><br /><span>The time function is declared in time.h. The srand
+				function is declared in stdlib.h.</span><br /><br /><span>Always seed the random number generator before
+				using it!</span><br /><br /></p>
+		<p><pre>int randInt(int lower, int upper)
+{
+	/* your code here */
+}
+
+void generateSequence(int length, int data[])
+{ 
+	/* use randInt here */
+}
+</pre>
+	</div>
+	<div id="Deliverables">
+		<h3><strong>Lab #8: Deliverables</strong></h3>
+		<h4><strong>Deliverables</strong></h4>
+		<p>You are required to submit the <span style="color: #ff0000;">C code</span><span> for your program via Canvas,
+				as you have done for all previous two labs. </span></p>
+		<ul>
+			<li>Only submit one .c file (that is either option 1 or option 2, not both).</li>
+			<li>Include sufficient <span style="color: #ff0000;">comments</span> for all important sections of your
+				code.</li>
+			<li>You may hand in your code anytime up to the deadline.</li>
+			<li>Submit the file using the usual assignment dropbox (for lab 8) on Canvas. <strong>It is your responsibility to ensure
+				your submission is complete and submitted on time<strong>.</li>
+		</ul>
+		<p>&nbsp;</p>
+		<p>In addition, note the following:</p>
+		<ul>
+			<li>Absolutely no email submission is accepted. Do not leave your submission to the last minute.</li>
+			<li>Please verify that you are submitting your C files, i.e. you should not mistakenly upload any other
+				files.</li>
+		</ul>
+	</div>
+</div>
