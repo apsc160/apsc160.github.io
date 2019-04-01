@@ -31,10 +31,10 @@
 		<ul>
 			<li>To write a program in C that implements the Simon game using the simulator</li>
 			<li>As an alternative option, you can implement the Simon game that will allow you to earn up to 140% on
-				this lab. The program must also work to earn the bonous marks.</li>
+				this lab. The program must work to earn the bonus marks.</li>
 		</ul>
 		<p>As an alternative option, you can implement the Simon game that will allow you to earn up to 140% on this
-			lab. The program must also work to earn the bonus marks.</p>
+			lab. The program must be completely functional to earn the bonus marks.</p>
 		<p>&nbsp;</p>
 		<h3><strong>IMPORTANT (<span style="color: #ff0000;">Please Read</span>):</strong></h3>
 		<p><span>This lab is different from previous C programming labs, in that <span style="color: #ff0000;">you can
@@ -87,6 +87,7 @@
 			screen. The optional part also uses two switches to control how the message is scrolled and gives an option
 			to the user to select the message.</p>
 		<p>&nbsp;</p>
+		<p><img width="526" src="https://apsc160.github.io/lab8/images/hello.gif" alt="sample scrolling message" /></p>
 		<h4><strong>Writing the Message to Display</strong></h4>
 		<p>You can choose the message that you want to display, but please note the following:</p>
 		<ul>
@@ -225,14 +226,17 @@
 					style="color: #ff0000;">either option 1 or option 2</span>,<span style="color: #ff0000;"> not
 					both</span></span> .<em>). Note that the bonus marks will not allow you to get more than 100% on
 				your "overall" lab mark, it will help you though to improve your marks of earlier labs (for example lab
-				7, or/and lab 5, ...). </em><span>Please add a comment at the top of your program indicating that it is
-				the Simon game and follow the instructions on the deliverables tab for the .c file name.</span></p>
+				7, or/and lab 5, ...). </em></p>
 		<p>You are to implement the <span style="color: #ff0000;">Simon game</span> in C using the DAQ simulator. The
 			setup number value for initializing the simulator is 6 (<span style="color: #ff0000;">setupNum of 6</span>).
-			The following figure shows a snapshot of the simulator:</p>
-		<p><img src="https://canvas.ubc.ca/courses/17785/files/3612421/download" alt="SimulatorSnapshot.jpg" width="526"
+			The following figure shows a sample implementation of the game:</p>
+		<p> <!--
+			<img src="https://canvas.ubc.ca/courses/17785/files/3612421/download" alt="SimulatorSnapshot.jpg" width="526"
 				height="197" data-api-endpoint="https://canvas.ubc.ca/api/v1/courses/17785/files/3612421"
-				data-api-returntype="File" /></p>
+				data-api-returntype="File" />-->
+			<img width="526" alt="simon sample gameplay" src="https://apsc160.github.io/lab8/images/simon.gif" />
+			</p>
+			
 		<p>When turned on, the LEDs from 0 to 3 are of the following colours: Green, Red, Yellow, and Blue,
 			respectively. LED0 is associated with PushButton0, LED1 with PushButton1, and so forth.</p>
 		<p>&nbsp;</p>
@@ -397,6 +401,11 @@ void generateSequence(int length, int data[])
 	/* use randInt here */
 }
 </pre>
+	<h4><strong>Bonus Marks</strong></h4>
+	<p>
+		There are no optional bonus <em>features</em> for this lab option.  Instead, since the Simon game is inherently harder than Option 1, the lab will simply be graded out of 140.  Note that to receive full marks, your program must function <em>perfectly</em>.  If there are any oddities, such as <em>"you must hold a button down for at least one second..."</em> then that is not working perfectly.  Your program must also be responsive to button-presses as well as to quitting the simulator.
+	</p>
+
 	</div>
 	<div id="Deliverables">
 		<h3><strong>Lab #8: Deliverables</strong></h3>
@@ -415,7 +424,7 @@ void generateSequence(int length, int data[])
 		<p>In addition, note the following:</p>
 		<ul>
 			<li>Absolutely no email submission is accepted. Do not leave your submission to the last minute.</li>
-			<li>Please verify that you are submitting your C files, i.e. you should not mistakenly upload any other
+			<li>Please verify that you are submitting your C file, i.e. you should not mistakenly upload any other
 				files.</li>
 		</ul>
 	</div>
